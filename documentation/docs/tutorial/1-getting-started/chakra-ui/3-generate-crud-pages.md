@@ -90,7 +90,7 @@ Before we start, let's understand the API that we will be using in this tutorial
 
 :::info
 
-How **refine** apps communicate with the API via the `dataProvider` will be explained in [Unit 3](/docs/tutorial/understanding-dataprovider/index).
+How **refine** apps communicate with the API via the `dataProvider` will be explained in [Unit 3](../../2-understanding-dataprovider/0-intro.md).
 
 :::
 
