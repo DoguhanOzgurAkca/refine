@@ -12,7 +12,7 @@ refine is a react-based framework that enables rapid development of web applicat
 
 ## What do you mean by "headless" ?
 
-Instead of being limited set of pre-styled components, **refine** is a collection of helper `hooks`, `components` and `providers`. These are all decoupled from your _UI components_ and _business logic_, so they never keep you from customizing your _UI_ or coding your own flow.
+Instead of being a limited set of pre-styled components, **refine** is a collection of helper `hooks`, `components` and `providers`. These are all decoupled from your _UI components_ and _business logic_, so they never keep you from customizing your _UI_ or coding your own flow.
 
 **refine** works _seamlessly_ with any custom design or UI framework you may favor. For convenience, it ships with ready-made integrations for Ant Design System, Material UI, Mantine, and Chakra UI.
 
