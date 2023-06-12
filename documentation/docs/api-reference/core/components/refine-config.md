@@ -35,20 +35,17 @@ export default App;
 
 <br />
 
-## `dataProvider`
+## `dataProvider` <div className="required">Required</div>
 
-<div className="required">Required</div>
-<br/>
-<br/>
+A [`dataProvider`](/api-reference/core/providers/data-provider.md) is a place where a **refine** app communicates with an API, making HTTP requests and returning response data back using predefined methods.
 
-A [`dataProvider`](/api-reference/core/providers/data-provider.md) is the place where a refine app communicates with an API.
 Data providers also act as adapters for refine, making it possible for it to consume different API's and data services.
-A [`dataProvider`](/api-reference/core/providers/data-provider.md) makes HTTP requests and returns response data back using predefined methods.
 
-[Refer to the Data Provider documentation for detailed information. &#8594](/api-reference/core/providers/data-provider.md)
+> For more information, refer to the [Data Provider documentation&#8594](/api-reference/core/providers/data-provider.md)
+
 :::tip
 
-To activate multiple data provider in refine, we have to pass the default key with `dataProvider` for the default data provider and we can pass other data providers with any key to the `<Refine />` component.
+To activate multiple data provider in **refine**, we first need to pass the default key with `dataProvider` for the default data provider, and then we can pass other data providers with any key to the `<Refine />` component.
 
 ```tsx title="App.tsx"
 import { Refine } from "@refinedev/core";
@@ -73,31 +70,34 @@ const App: React.FC = () => {
 
 ## `routerProvider`
 
-**refine** provides a simple interface from the `routerProvider` prop to infer the resource from route, pass, parse and sync the query parameters and handle navigation operations. This provider and its properties are optional but it is recommended to use it to get the most out of **refine**. Bindings to pass to the `routerProvider` prop are provided for the following libraries:
+**refine** provides a simple interface from the `routerProvider` prop to infer the resource from the route, pass, parse, and sync the query parameters, and handle navigation operations. This provider and its properties are optional, but it is recommended to use them to get the most out of **refine**. Bindings to pass to the `routerProvider` prop are provided for the following libraries:
 
 -   React Router via `@refinedev/react-router-v6`
 -   Next.js via `@refinedev/nextjs-router`
 -   Remix via `@refinedev/remix-router`
 
-It's also possible to create a custom router bindings for your routing needs.
-
-[Refer to the Router Provider documentation for detailed information. &#8594][routerprovider]
-
 :::info Legacy Router
 
 In prior versions from v4 of **refine**, `routerProvider` had a different interface and it was required. This is no longer the case and `routerProvider` is optional. If you want to keep using the legacy router provider, you can use the `legacyRouterProvider` prop instead.
-
 :::
+
+---
+
+:::tip
+It is also possible to create custom router bindings for your routing needs.
+
+[For more information, refer to the Router Provider documentation &#8594][routerprovider]
+:::
+
+<br />
 
 ## `resources`
 
-`resources` is the main building block of a **refine** app. A resource represents an entity in an endpoint in the API (e.g. https://api.fake-rest.refine.dev/posts). It serves as a bridge between the data from the API and the pages in the app, allowing pages to interact with the data from the API.
+`resources` is the main building block of a **refine** app. A resource represents an entity at an endpoint in the API (e.g., https://api.fake-rest.refine.dev/posts). It serves as a bridge between the data from the API and the pages in the app, allowing pages to interact with the data from the API.
 
-Here's an app that consumes the https://api.fake-rest.refine.dev/posts endpoint as a resource to list multiple items, edit or create an item and show a single item.
+Here's an app that consumes the https://api.fake-rest.refine.dev/posts endpoint as a resource to list multiple items, edit or create an item, and show a single item.
 
 Routes for the action pages that are for interacting with the CRUD API operations are passed as a resource element to `resources`.
-
-<br />
 
 ```tsx title="App.tsx"
 import { Refine } from "@refinedev/core";
@@ -130,16 +130,12 @@ export default App;
 ```
 
 :::tip
-You can use [useResource](/api-reference/core/hooks/resource/useResource.md) hook to get the current active resource by the route or you can pass the `name` or the `identifier` of a resource to the `useResource` hook to get the resource object.
+You can use the [useResource](/api-reference/core/hooks/resource/useResource.md) hook to get the current active resource by the route or you can pass the `name` or the `identifier` of a resource to the `useResource` hook to get the resource object.
 :::
 
-### `name`
+### `name` <div className="required">Required</div>
 
-<div className="required">Required</div>
-<br/>
-<br/>
-
-A string value that identifies a resource in the API. Interacting with the data in a resource will be done using an endpoint determined by the `name`:
+A string value that identifies a resource in the API. Interacting with the data in a resource will be done using an endpoint determined by the `name` :
 
 ```
 https://api.fake-rest.refine.dev/posts
@@ -152,15 +148,17 @@ You can pass this value to a resource and it will be used as the main matching k
 
 ### `list`
 
-The list path of the resource. The value assigned to the `list` will be treated as the `list` action path for the resource and the navigation operations will be performed on this path.
+The list path of the resource. The value assigned to the `list` will be treated as the `list` action path for the resource, and the navigation operations will be performed on this path.
 
-You can also pass a component to this property. In this case the default value for the path will be used, which is the `/${name}`.
+You can also pass a component to this property. In this case, the default value for the path will be used, which is the `/${name}`.
 
 There's also a third option, which is to pass an object with the `component` and `path` properties. This allows you to customize the path of the list action.
 
-:::info
+:::caution
 Passing a component or an object to the action will only take effect if the [`RefineRoutes`](#) component is used in the app to render the routes.
 :::
+
+---
 
 :::caution Legacy Router
 When using the legacy router provider, only the component values will be used. Custom paths are not supported.
@@ -168,15 +166,17 @@ When using the legacy router provider, only the component values will be used. C
 
 ### `create`
 
-The create path of the resource. The value assigned to the `create` will be treated as the `create` action path for the resource and the navigation operations will be performed on this path.
+The create path of the resource. The value assigned to the `create` will be treated as the `create` action path for the resource, and the navigation operations will be performed on this path.
 
-You can also pass a component to this property. In this case the default value for the path will be used, which is the `/${name}/create`.
+You can also pass a component to this property. In this case, the default value for the path will be used, which is the `/${name}/create`.
 
 There's also a third option, which is to pass an object with the `component` and `path` properties. This allows you to customize the path of the list action.
 
 :::info
 Passing a component or an object to the action will only take effect if the [`RefineRoutes`](#) component is used in the app to render the routes.
 :::
+
+---
 
 :::caution Legacy Router
 When using the legacy router provider, only the component values will be used. Custom paths are not supported.
@@ -184,15 +184,17 @@ When using the legacy router provider, only the component values will be used. C
 
 ### `edit`
 
-The edit path of the resource. The value assigned to the `edit` will be treated as the `edit` action path for the resource and the navigation operations will be performed on this path.
+The edit path of the resource. The value assigned to the `edit` will be treated as the `edit` action path for the resource, and the navigation operations will be performed on this path.
 
-You can also pass a component to this property. In this case the default value for the path will be used, which is the `/${name}/edit/:id`.
+You can also pass a component to this property. In this case, the default value for the path will be used, which is the `/${name}/edit/:id`.
 
 There's also a third option, which is to pass an object with the `component` and `path` properties. This allows you to customize the path of the list action.
 
 :::info
 Passing a component or an object to the action will only take effect if the [`RefineRoutes`](#) component is used in the app to render the routes.
 :::
+
+---
 
 :::caution Legacy Router
 When using the legacy router provider, only the component values will be used. Custom paths are not supported.
@@ -200,9 +202,9 @@ When using the legacy router provider, only the component values will be used. C
 
 ### `show`
 
-The show path of the resource. The value assigned to the `show` will be treated as the `show` action path for the resource and the navigation operations will be performed on this path.
+The show path of the resource. The value assigned to the `show` will be treated as the `show` action path for the resource, and the navigation operations will be performed on this path.
 
-You can also pass a component to this property. In this case the default value for the path will be used, which is the `/${name}/show/:id`.
+You can also pass a component to this property. In this case, the default value for the path will be used, which is the `/${name}/show/:id`.
 
 There's also a third option, which is to pass an object with the `component` and `path` properties. This allows you to customize the path of the list action.
 
@@ -210,9 +212,13 @@ There's also a third option, which is to pass an object with the `component` and
 Passing a component or an object to the action will only take effect if the [`RefineRoutes`](#) component is used in the app to render the routes.
 :::
 
+---
+
 :::caution Legacy Router
 When using the legacy router provider, only the component values will be used. Custom paths are not supported.
 :::
+
+---
 
 :::tip Nested Routes and Parameters
 Additional parameters can also be used in the paths for the actions of the resources. Paths like `/:authorId/posts/:id/details` are also valid and supported. When these actions are used in the navigation helpers, the existing parameters from the URL and the `meta` property of these functions will be used to determine the additional parameters when composing the path.
@@ -220,18 +226,18 @@ Additional parameters can also be used in the paths for the actions of the resou
 
 ### `meta`
 
-Menu item name and route on clicking can be customized.
+Menu item name and route can be customized.
 
 ```tsx
 <Refine
-    ...
-    resources={[
-        {
-            ...
-            // highlight-next-line
-            meta: { label: "custom", route: "/custom" }
-        },
-    ]}
+...
+resources={[
+{
+...
+// highlight-next-line
+meta: { label: "custom", route: "/custom" }
+},
+]}
 />
 ```
 
@@ -245,16 +251,16 @@ An icon element can be passed as properties for the icon in the menu.
 
 ```tsx
 <Refine
-    ...
-    resources={[
-        {
-            ...
-            meta: {
-                // highlight-next-line
-                icon: <CustomIcon />
-            }
-        },
-    ]}
+...
+resources={[
+{
+...
+meta: {
+// highlight-next-line
+icon: <CustomIcon />
+}
+},
+]}
 />
 ```
 
@@ -316,47 +322,35 @@ You can also pass any type of property into the `meta` object. This property you
 
 :::
 
-<br />
-
 ## `authProvider`
 
 `authProvider` handles authentication logic like login, logout flow, and checking user credentials. It is an object with methods that refine uses when necessary.
 
-[Refer to the Auth Provider documentation for detailed information. &#8594](/api-reference/core/providers/auth-provider.md)
-
-<br />
+> For more information, refer to the [Auth Provider documentation &#8594](/api-reference/core/providers/auth-provider.md)
 
 ## `i18nProvider`
 
 The `i18nProvider` property lets you add i18n support to your app. Making you able to use any i18n framework.
 
-[Refer to i18n documentation for detailed information. &#8594](/api-reference/core/providers/i18n-provider.md)
-
-<br />
+> For more information, refer to the [i18n documentation &#8594](/api-reference/core/providers/i18n-provider.md)
 
 ## `accessControlProvider`
 
 `accessControlProvider` is the entry point for implementing access control for **refine** apps.
 
-[Refer to access control documentation for detailed information. &#8594](/api-reference/core/providers/accessControl-provider.md)
-
-<br />
+> For more information, refer to the [Access Control documentation &#8594](/api-reference/core/providers/accessControl-provider.md)
 
 ## `liveProvider`
 
 **refine** lets you add Realtime support to your app via `liveProvider`. It can be used to update and show data in Realtime throughout your app.
 
-[Refer to live provider documentation for detailed information. &#8594](/api-reference/core/providers/live-provider.md)
-
-<br />
+> For more information, refer to the [live provider documentation &#8594](/api-reference/core/providers/live-provider.md)
 
 ## `notificationProvider`
 
 `notificationProvider` handles notification logic. It is an object with methods that refine uses when necessary.
 
-[Refer to the Notification Provider documentation for detailed information. &#8594](/api-reference/core/providers/notification-provider.md)
-
-<br />
+> For more information, refer to the [Notification Provider documentation &#8594](/api-reference/core/providers/notification-provider.md)
 
 ## `options`
 
@@ -364,11 +358,11 @@ The `i18nProvider` property lets you add i18n support to your app. Making you ab
 
 ### `breadcrumb`
 
-Customize or disable the breadcrumb. By default it uses the Breadcrumb component from respective package.
+You can use this to customize or disable the breadcrumb. By default it uses the `Breadcrumb` component from its respective package.
 
-The value set in individual CRUD components ([ANTD](/docs/api-reference/antd/components/basic-views/create/#breadcrumb), [Mantine](/docs/api-reference/mantine/components/basic-views/create/#breadcrumb), [Material UI](/docs/api-reference/mui/components/basic-views/create/#breadcrumb)) will override the value set with `breadcrumb`.
-
-[Refer to the Breadcrumb docs for further information. &#8594](/docs/api-reference/antd/components/breadcrumb/)
+:::caution
+The value set in individual CRUD components ([ANTD](/docs/api-reference/antd/components/basic-views/create/#breadcrumb), [Mantine](/docs/api-reference/mantine/components/basic-views/create/#breadcrumb) and [MUI](/docs/api-reference/mui/components/basic-views/create/#breadcrumb)) will override the value set with `breadcrumb`.
+:::
 
 ```tsx title="App.tsx"
 import { Breadcrumb } from "antd";
@@ -379,26 +373,27 @@ import { Breadcrumb } from "@refinedev/mui";
 OR
 import { Breadcrumb } from "my-custom-breadcrumb";
 
+
 const App: React.FC = () => {
-    return (
-        <Refine
-            ...
-            // highlight-start
-            options={{
-                breadcrumb: (
-                    <div
-                        style={{
-                            padding: "3px 6px",
-                            border: "2px dashed cornflowerblue",
-                        }}
-                    >
-                        <Breadcrumb />
-                    </div>
-                ),
-            }}
-            // highlight-end
-        />
-    );
+return (
+<Refine
+...
+// highlight-start
+options={{
+breadcrumb: (
+<div
+style={{
+padding: "3px 6px",
+border: "2px dashed cornflowerblue",
+}}
+>
+<Breadcrumb />
+</div>
+),
+}}
+// highlight-end
+/>
+);
 };
 ```
 
@@ -406,42 +401,44 @@ To disable the breadcrumb
 
 ```tsx title="App.tsx"
 const App: React.FC = () => {
-    return (
-        <Refine
-            ...
-            // highlight-start
-            options={{
-                breadcrumb: false,
-            }}
-            // highlight-end
-        />
-    );
+return (
+<Refine
+...
+// highlight-start
+options={{
+breadcrumb: false,
+}}
+// highlight-end
+/>
+);
 };
 ```
 
+> For more information, refer to the [Breadcrumb docoument &#8594](/docs/api-reference/antd/components/breadcrumb/)
+
 ### `mutationMode`
 
-`mutationMode` determines which mode the mutations run with. (e.g. useUpdate, useDelete).
+`mutationMode` determines which mode the mutations (e.g. useUpdate, useDelete) run with:
 
 ```tsx title="App.tsx"
 const App: React.FC = () => {
-    return (
-        <Refine
-            ...
-            // highlight-next-line
-            options={{ mutationMode: "optimistic" }}
-        />
-    );
+return (
+<Refine
+...
+// highlight-next-line
+options={{ mutationMode: "optimistic" }}
+/>
+);
 };
 ```
 
 `pessimistic`: The mutation runs immediately. Redirection and UI updates are executed after the mutation returns successfully. This is the default setting.
 
-`optimistic`: The mutation is applied locally, and redirection and UI updates are executed immediately as if the mutation is successful. If the mutation returns with an error, UI updates accordingly.
+`optimistic`: The mutation is applied locally, and redirection and UI updates are executed immediately as if the mutation were successful. If the mutation returns with an error, the UI updates accordingly.
 
-`undoable`: The mutation is applied locally, and redirection and UI updates are executed immediately as if the mutation is successful. Waits for a customizable amount of timeout before mutation is applied. During the timeout, mutation can be canceled from the notification with the ?undo? button. UI will revert accordingly.
+`undoable`: The mutation is applied locally, and redirection and UI updates are executed immediately as if the mutation were successful. Waits for a customizable amount of time before mutation is applied. During that time, mutations can be canceled from the notification with the `undo` button. UI will revert accordingly.
 
-[Refer to the Mutation Mode docs for further information. &#8594](/advanced-tutorials/mutation-mode.md)
+> For more information, refer to the [Mutation Mode document &#8594](/advanced-tutorials/mutation-mode.md)
 
 ### `undoableTimeout`
 
@@ -451,20 +448,19 @@ The value set in hooks will override the value set with `undoableTimeout`.
 
 ```tsx title="App.tsx"
 const App: React.FC = () => {
-    return (
-        <Refine
-            ...
-            // highlight-next-line
-            options={{ mutationMode: "undoable", undoableTimeout: 3500 }}
-        />
-    );
+return (
+<Refine
+...
+// highlight-next-line
+options={{ mutationMode: "undoable", undoableTimeout: 3500 }}
+/>
+);
 };
 ```
 
 ### `syncWithLocation`
 
-List query parameter values can be edited manually by typing directly in the URL.
-`syncWithLocation`'s default value is `false`, so you need to set it to `true` to activate the feature.
+List query parameter values can be edited manually by typing directly in the URL with `syncWithLocation`. You just need to set it to `true`
 
 :::info
 
@@ -480,34 +476,39 @@ When `syncWithLocation` is active, the URL on the listing page shows query param
 
 Users can change the current page, items count per page, and sort and filter parameters.
 
+The default value is `false`.
+
 ### `warnWhenUnsavedChanges`
 
 When you have unsaved changes and try to leave the current page, **refine** shows a confirmation modal box.
-`warnWhenUnsavedChanges`'s default value is `false`, so you need to set it to `true` to activate the feature.
+To activate this feature, set the `warnWhenUnsavedChanges` to `true`.
 
-:::caution
+:::info
 This feature also requires `UnsavedChangesNotifier` component to be mounted. You can import this component from your router package.
 :::
 
 <br />
 
-<div style={{textAlign: "center",  backgroundColor:"#efefef",  padding: "13px 10px 10px"}}>
+<div style={{textAlign: "center", backgroundColor:"#efefef", padding: "13px 10px 10px"}}>
 
 <img src="https://refine.ams3.cdn.digitaloceanspaces.com/website/static/img/warnwhen.png" />
 
 </div>
+<br/>
+
+The default value is `false`.
 
 ### `liveMode`
 
-`liveMode` controls whether to update data automatically or not, with `auto` and `manual` respectively if a related live event is recieved. The `off` value can be used to avoid creating a subscription all together.
+Whether to update data automatically (`auto`) or not (`manual`) if a related live event is received. The `off` value is used to avoid creating a subscription.
 
-> For more information, refer to the [live provider documentation &#8594](/api-reference/core/providers/live-provider.md#livemode)
+[Refer to live provider documentation for detailed information. &#8594](/api-reference/core/providers/live-provider.md#livemode)
 
 ### `disableTelemetry`
 
 **refine** implements a simple and transparent telemetry module for collecting usage statistics defined in a very limited scope. This telemetry module is used to improve the **refine** experience. You can disable this by setting `disableTelemetry` to `true`.
 
-> For more information, refer to the [refine telemetry documentation &#8594](/further-readings/telemetry.md)
+[Refer to refine telemetry documentation for detailed information. &#8594](/further-readings/telemetry.md)
 
 ### `redirect`
 
@@ -515,20 +516,20 @@ By default, **refine** redirects to the `list` page of the resource after a succ
 
 ```tsx title="App.tsx"
 const App: React.FC = () => {
-    return (
-        <Refine
-            ...
-            // highlight-start
-            options={{
-                redirect: {
-                    afterCreate: "show",
-                    afterClone: "edit",
-                    afterEdit: false,
-                },
-            }}
-            // highlight-end
-        />
-    );
+return (
+<Refine
+...
+// highlight-start
+options={{
+redirect: {
+afterCreate: "show",
+afterClone: "edit",
+afterEdit: false,
+},
+}}
+// highlight-end
+/>
+);
 };
 ```
 
@@ -550,29 +551,31 @@ Config for React Query client that **refine** uses.
 
 ```ts
 {
-    refetchOnWindowFocus: false,
-    keepPreviousData: true,
+refetchOnWindowFocus: false,
+keepPreviousData: true,
 }
 ```
 
+[Refer to the QueryClient documentation for detailed information. &#8594](https://react-query.tanstack.com/reference/QueryClient#queryclient)
+
 ```tsx
 const App: React.FC = () => (
-    <Refine
-        ...
-        // highlight-start
-        options={{
-            reactQuery: {
-                clientConfig: {
-                    defaultOptions: {
-                        queries: {
-                            staleTime: Infinity,
-                        },
-                    },
-                },
-            },
-        }}
-        // highlight-end
-    />
+<Refine
+...
+// highlight-start
+options={{
+reactQuery: {
+clientConfig: {
+defaultOptions: {
+queries: {
+staleTime: Infinity,
+},
+},
+},
+},
+}}
+// highlight-end
+/>
 );
 ```
 
@@ -581,62 +584,64 @@ Also, you can implement your own [QueryClient](https://react-query.tanstack.com/
 ```tsx
 import { QueryClient } from "@tanstack/react-query";
 
+
 const queryClient = new QueryClient();
 
+
 const App: React.FC = () => (
-    <Refine
-        ...
-        // highlight-start
-        options={{
-            reactQuery: {
-                clientConfig: queryClient
-            },
-        }}
-        // highlight-end
-    />
+<Refine
+...
+// highlight-start
+options={{
+reactQuery: {
+clientConfig: queryClient
+},
+}}
+// highlight-end
+/>
 );
 ```
 
-> For more information, refer to the [QueryClient documentation &#8594](https://react-query.tanstack.com/reference/QueryClient#queryclient)
-
 #### `devtoolConfig`
 
-Config for customizing the React Query Devtools. If you want to disable the Devtools, set `devtoolConfig` to `false`.
+Config for customizing React Query Devtools. If you want to disable the Devtools, set `devtoolConfig` to `false`.
 
 **refine** uses some defaults that apply to react-query devtool:
 
 ```ts
 {
-    initialIsOpen: false,
-    position: "bottom-right"
+initialIsOpen: false,
+position: "bottom-right"
 }
 ```
 
+[Refer to the Devtools documentation for detailed information. &#8594](https://react-query.tanstack.com/devtools#options)
+
 ```tsx {4-7}
 const App: React.FC = () => (
-    <Refine
-        ...
-        // highlight-start
-        options={{
-            reactQuery: {
-                devtoolConfig: {
-                    initialIsOpen: true,
-                    position: "bottom-left",
-                },
-            },
-        }}
-        // highlight-end
-    />
+<Refine
+...
+// highlight-start
+options={{
+reactQuery: {
+devtoolConfig: {
+initialIsOpen: true,
+position: "bottom-left",
+},
+},
+}}
+// highlight-end
+/>
 );
 ```
 
-> For more information, refer to the [Devtools documentation &#8594](https://react-query.tanstack.com/devtools#options)
+<br />
 
 ## `onLiveEvent`
 
 Callback to handle all live events.
 
-> For more information, refer to the [live provider documentation &#8594](/api-reference/core/providers/live-provider.md#refine)
+[Refer to live provider documentation for detailed information. &#8594](/api-reference/core/providers/live-provider.md#refine)
 
 ## ~~`catchAll`~~
 
@@ -652,16 +657,19 @@ When the app is navigated to a non-existent route, **refine** shows a default er
 // highlight-next-line
 const CustomErrorPage = <div>Page not found</div>;
 
+
 const App: React.FC = () => {
-    return (
-        <Refine
-            ...
-            // highlight-next-line
-            catchAll={CustomErrorPage}
-        />
-    );
+return (
+<Refine
+...
+// highlight-next-line
+catchAll={CustomErrorPage}
+/>
+);
 };
 ```
+
+<br />
 
 ## ~~`LoginPage`~~
 
@@ -679,14 +687,17 @@ Custom login component can be passed to the `LoginPage` property.
 // highlight-next-line
 const CustomLoginPage = () => <div> Custom Login Page </div>;
 
+
 const App: React.FC = () => (
-    <Refine
-        ...
-        // highlight-next-line
-        LoginPage={CustomLoginPage}
-    />
+<Refine
+...
+// highlight-next-line
+LoginPage={CustomLoginPage}
+/>
 );
 ```
+
+<br />
 
 ## ~~`DashboardPage`~~
 
@@ -704,14 +715,17 @@ The dashboard item will appear at the top of the sider menu. If `DashboardPage` 
 // highlight-next-line
 const CustomDashboardPage = () => <div> Custom Dashboard Page </div>;
 
+
 const App: React.FC = () => (
-    <Refine
-        ...
-        // highlight-next-line
-        DashboardPage={CustomDashboardPage}
-    />
+<Refine
+...
+// highlight-next-line
+DashboardPage={CustomDashboardPage}
+/>
 );
 ```
+
+<br />
 
 ## ~~`ReadyPage`~~
 
@@ -729,14 +743,17 @@ Custom ready page component can be set by passing to the `ReadyPage` property?.
 // highlight-next-line
 const CustomReadyPage = () => <div> Custom Ready Page </div>;
 
+
 const App: React.FC = () => (
-    <Refine
-        ...
-        // highlight-next-line
-        ReadyPage={CustomReadyPage}
-    />
+<Refine
+...
+// highlight-next-line
+ReadyPage={CustomReadyPage}
+/>
 );
 ```
+
+<br />
 
 ## ~~`Sider`~~
 
@@ -750,7 +767,9 @@ The default sidebar can be customized by using refine hooks and passing custom c
 
 **refine** uses [Ant Design Sider](https://ant.design/components/layout/#Layout.Sider) component by default.
 
-> For more information, refer to the [`useMenu` hook documentation &#8594](/api-reference/core/hooks/ui/useMenu.md)
+[Refer to the `useMenu` hook documentation for detailed sidebar customization. &#8594](/api-reference/core/hooks/ui/useMenu.md)
+
+<br />
 
 ## ~~`Footer`~~
 
@@ -766,14 +785,17 @@ The default app footer can be customized by passing the `Footer` property.
 // highlight-next-line
 const CustomFooter = () => <div>Custom Footer</div>;
 
+
 const App: React.FC = () => (
-    <Refine
-        ...
-        // highlight-next-line
-        Footer={CustomFooter}
-    />
+<Refine
+...
+// highlight-next-line
+Footer={CustomFooter}
+/>
 );
 ```
+
+<br />
 
 ## ~~`Header`~~
 
@@ -789,12 +811,13 @@ The default app header can be customized by passing the `Header` property.
 // highlight-next-line
 const CustomHeader = () => <div>Custom Header</div>;
 
+
 const App: React.FC = () => (
-    <Refine
-        ...
-        // highlight-next-line
-        Header={CustomHeader}
-    />
+<Refine
+...
+// highlight-next-line
+Header={CustomHeader}
+/>
 );
 ```
 
@@ -816,52 +839,54 @@ Layout property will receive individual layout components as property.
 
 ```tsx title="App.tsx"
 const App: React.FC = () => (
-    <Refine
-        ...
-        // highlight-start
-        Layout={({ children, Sider, Footer, Header, OffLayoutArea }) => (
-            <AntdLayout style={{ minHeight: "100vh", flexDirection: "row" }}>
-                {Sider && <Sider />}
-                <AntdLayout>
-                    {Header && <Header />}
-                    <AntdLayout.Content>
-                        <div style={{ padding: 24, minHeight: 360 }}>
-                            {children}
-                        </div>
-                    </AntdLayout.Content>
-                    {Footer && <Footer />}
-                </AntdLayout>
-                {OffLayoutArea && <OffLayoutArea />}
-            </AntdLayout>
-        )}
-        // highlight-end
-    />
+<Refine
+...
+// highlight-start
+Layout={({ children, Sider, Footer, Header, OffLayoutArea }) => (
+<AntdLayout style={{ minHeight: "100vh", flexDirection: "row" }}>
+{Sider && <Sider />}
+<AntdLayout>
+{Header && <Header />}
+<AntdLayout.Content>
+<div style={{ padding: 24, minHeight: 360 }}>
+{children}
+</div>
+</AntdLayout.Content>
+{Footer && <Footer />}
+</AntdLayout>
+{OffLayoutArea && <OffLayoutArea />}
+</AntdLayout>
+)}
+// highlight-end
+/>
 );
 ```
+
+<br />
 
 A completely custom layout can also be implemented instead of the **refine**'s default [Ant Design based layout](https://ant.design/components/layout) like below.
 
 ```tsx title="App.tsx"
 const App: React.FC = () => (
-    <Refine
-        ...
-        // highlight-start
-        Layout={({ children }) => (
-            <div style={{ display: "flex", flexDirection: "column" }}>
-                <div>Custom Layout</div>
-                <div>{children}</div>
-            </div>
-        )}
-        // highlight-end
-    />
+<Refine
+...
+// highlight-start
+Layout={({ children }) => (
+<div style={{ display: "flex", flexDirection: "column" }}>
+<div>Custom Layout</div>
+<div>{children}</div>
+</div>
+)}
+// highlight-end
+/>
 );
 ```
 
-:::note
-children` will be what is passed as a component for the route in a resource(list, edit..) or a custom route.
-:::
+[Refer to the Custom Layout documentation for detailed information. &#8594](/advanced-tutorials/custom-layout.md)
 
-> For more information, refer to the [Custom Layout documentation &#8594](/advanced-tutorials/custom-layout.md)
+> `children` will be what is passed as a component for the route in a resource(list, edit..) or a custom route.
+
+<br />
 
 ## ~~`OffLayoutArea`~~
 
@@ -877,12 +902,13 @@ The component wanted to be placed out of the app layout structure can be set by 
 // highlight-next-line
 import { Refine } from "@refinedev/core";
 
+
 const App: React.FC = () => (
-    <Refine
-        ...
-        // highlight-next-line
-        OffLayoutArea={() => <div>Some elements to place outside the layout</div>}
-    />
+<Refine
+...
+// highlight-next-line
+OffLayoutArea={() => <div>Some elements to place outside the layout</div>}
+/>
 );
 ```
 
@@ -901,16 +927,17 @@ The app title can be set by passing the `Title` property.
 ```tsx title="App.tsx"
 // highlight-start
 const CustomTitle = ({ collapsed }) => (
-    <div>{collapsed ? "Collapsed Title" : "Full Title"}</div>
+<div>{collapsed ? "Collapsed Title" : "Full Title"}</div>
 );
 // highlight-end
 
+
 const App: React.FC = () => (
-    <Refine
-        ...
-        // highlight-next-line
-        Title={CustomTitle}
-    />
+<Refine
+...
+// highlight-next-line
+Title={CustomTitle}
+/>
 );
 ```
 

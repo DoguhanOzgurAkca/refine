@@ -101,9 +101,9 @@ const Wrapper = (children) => {
 
 ## Usage
 
-The `<AuthPage>` component can be used like this:
+`<AuthPage>` component can be used like this:
 
-```tsx live disableScroll  previewHeight=333px url=http://localhost:3000/login
+```tsx live disableScroll previewHeight=333px url=http://localhost:3000/login
 setInitialRoutes(["/login"]);
 
 // visible-block-start
@@ -152,7 +152,7 @@ render(<App />);
 
 ## Types
 
-The `<AuthPage>` component has the following types:
+`<AuthPage>` component has the following types:
 
 -   [`login`](#login) - a type of login page and default type.
 -   [`register`](#register) - a type of registration page.
@@ -502,10 +502,10 @@ const authProvider: AuthBindings = {
 ### `providers`
 
 :::info
-`providers` property is only available for `login` and `register` types.
+`providers` property is only available for types `login` and `register`.
 :::
 
-`providers` property defines the list of providers used to handle login authentication. `providers` accepts an array of `Provider` type.
+`providers` property defines the list of providers used to handle login authentication. `providers` accepts an array of `Provider` type. Check out the [Interface](#interface) section for more information.
 
 ```tsx
 const LoginPage = () => {
@@ -527,8 +527,6 @@ const LoginPage = () => {
     );
 };
 ```
-
-> For more information, refer to the [Interface section down below](#interface)
 
 ### `rememberMe`
 
@@ -735,7 +733,7 @@ const MyLoginPage = () => {
 
 ### `renderContent`
 
-`renderContent` is used to render the form content. You can use this property to render your own content. `renderContent` gives you default content you can use to add some extra elements to the content.
+`renderContent` uses to render the form content. You can use this property to render your own content or `renderContent` gives you default content you can use to add some extra elements to the content.
 
 ```tsx
 const MyLoginPage = () => {
@@ -786,3 +784,6 @@ interface OAuthProvider {
 [register]: /docs/api-reference/core/providers/auth-provider/#register
 [forgot-password]: /docs/api-reference/core/providers/auth-provider/#forgotpassword
 [update-password]: /docs/api-reference/core/providers/auth-provider/#updatepassword
+[get-permissions]: /docs/api-reference/core/providers/auth-provider/#getpermissions-
+[check-auth]: /docs/api-reference/core/providers/auth-provider/#check-
+[logout]: /docs/api-reference/core/providers/auth-provider/#logout-
