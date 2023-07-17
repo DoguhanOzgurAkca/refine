@@ -1,35 +1,35 @@
 import {
-    GitHubBanner,
-    Refine,
-    AuthBindings,
-    Authenticated,
-} from "@refinedev/core";
-import {
-    notificationProvider,
-    ThemedLayoutV2,
     ErrorComponent,
+    notificationProvider,
     RefineThemes,
+    ThemedLayoutV2,
 } from "@refinedev/antd";
 import {
     AppwriteException,
     dataProvider,
     liveProvider,
 } from "@refinedev/appwrite";
+import {
+    AuthBindings,
+    Authenticated,
+    GitHubBanner,
+    Refine,
+} from "@refinedev/core";
 import routerProvider, {
     CatchAllNavigate,
+    DocumentTitleHandler,
     NavigateToResource,
     UnsavedChangesNotifier,
-    DocumentTitleHandler,
 } from "@refinedev/react-router-v6";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 
-import { ConfigProvider } from "antd";
 import "@refinedev/antd/dist/reset.css";
+import { ConfigProvider } from "antd";
 
-import { appwriteClient, account } from "utility";
+import { account, appwriteClient } from "./utility";
 
-import { PostCreate, PostList, PostEdit, PostShow } from "pages/posts";
-import { Login } from "pages/login";
+import { Login } from "./pages/login";
+import { PostCreate, PostEdit, PostList, PostShow } from "./pages/posts";
 
 const authProvider: AuthBindings = {
     login: async ({ email, password }) => {

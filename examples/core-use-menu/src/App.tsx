@@ -1,13 +1,13 @@
 import { ErrorComponent, GitHubBanner, Refine } from "@refinedev/core";
 import routerProvider, {
+    DocumentTitleHandler,
     NavigateToResource,
     UnsavedChangesNotifier,
-    DocumentTitleHandler,
 } from "@refinedev/react-router-v6";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import dataProvider from "@refinedev/simple-rest";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 
-import { Layout } from "components/layout";
+import { Layout } from "./components/layout";
 
 const API_URL = "https://api.fake-rest.refine.dev";
 

@@ -1,21 +1,22 @@
+import { BaseKey, useTranslate } from "@refinedev/core";
 import { useState } from "react";
-import { useTranslate, BaseKey } from "@refinedev/core";
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
-import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
-import CardMedia from "@mui/material/CardMedia";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import Tooltip from "@mui/material/Tooltip";
-import Popover from "@mui/material/Popover";
-import Button from "@mui/material/Button";
-import Divider from "@mui/material/Divider";
-import TextField from "@mui/material/TextField";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import EditIcon from "@mui/icons-material/Edit";
 
-import { IProduct } from "interfaces";
+import EditIcon from "@mui/icons-material/Edit";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardHeader from "@mui/material/CardHeader";
+import CardMedia from "@mui/material/CardMedia";
+import Divider from "@mui/material/Divider";
+import IconButton from "@mui/material/IconButton";
+import Popover from "@mui/material/Popover";
+import TextField from "@mui/material/TextField";
+import Tooltip from "@mui/material/Tooltip";
+import Typography from "@mui/material/Typography";
+
+import { IProduct } from "../../interfaces";
 
 type PropductItem = {
     updateStock?: (changedValue: number, clickedProduct: IProduct) => void;

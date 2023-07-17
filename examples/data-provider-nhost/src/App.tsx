@@ -1,32 +1,32 @@
+import { NhostAuthProvider } from "@nhost/react-auth";
+import {
+    AuthPage,
+    ErrorComponent,
+    notificationProvider,
+    RefineThemes,
+    ThemedLayoutV2,
+} from "@refinedev/antd";
 import {
     AuthBindings,
     Authenticated,
     GitHubBanner,
     Refine,
 } from "@refinedev/core";
-import {
-    notificationProvider,
-    ThemedLayoutV2,
-    AuthPage,
-    ErrorComponent,
-    RefineThemes,
-} from "@refinedev/antd";
 import dataProvider from "@refinedev/nhost";
-import { NhostAuthProvider } from "@nhost/react-auth";
 import routerProvider, {
-    NavigateToResource,
     CatchAllNavigate,
-    UnsavedChangesNotifier,
     DocumentTitleHandler,
+    NavigateToResource,
+    UnsavedChangesNotifier,
 } from "@refinedev/react-router-v6";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 
 import "@refinedev/antd/dist/reset.css";
 
-import { nhost } from "utility";
-import { PostList, PostCreate, PostEdit, PostShow } from "pages/posts";
-import { CategoryList, CategoryCreate, CategoryEdit } from "pages/categories";
 import { ConfigProvider } from "antd";
+import { CategoryCreate, CategoryEdit, CategoryList } from "./pages/categories";
+import { PostCreate, PostEdit, PostList, PostShow } from "./pages/posts";
+import { nhost } from "./utility";
 
 const authProvider: AuthBindings = {
     login: async ({ email, password }) => {

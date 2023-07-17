@@ -1,35 +1,30 @@
 import {
-    Authenticated,
-    GitHubBanner,
-    Refine,
-    useParsed,
-} from "@refinedev/core";
-import {
-    notificationProvider,
-    ThemedLayoutV2,
-    ErrorComponent,
     AuthPage,
+    ErrorComponent,
+    notificationProvider,
     RefineThemes,
+    ThemedLayoutV2,
 } from "@refinedev/antd";
 import { dataProvider, liveProvider } from "@refinedev/appwrite";
+import { Authenticated, GitHubBanner, Refine } from "@refinedev/core";
 import routerProvider, {
     CatchAllNavigate,
+    DocumentTitleHandler,
     NavigateToResource,
     UnsavedChangesNotifier,
-    DocumentTitleHandler,
 } from "@refinedev/react-router-v6";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 
-import { ConfigProvider } from "antd";
 import "@refinedev/antd/dist/reset.css";
+import { ConfigProvider } from "antd";
 
-import { appwriteClient } from "utility";
 import { authProvider } from "./authProvider";
+import { appwriteClient } from "./utility";
 
-import { ProductList } from "pages/products";
-import { OrderCreate, OrderList, OrderEdit } from "pages/orders";
-import { ProductShow } from "components/product";
-import { Header } from "components/header";
+import { Header } from "./components/header";
+import { ProductShow } from "./components/product";
+import { OrderCreate, OrderEdit, OrderList } from "./pages/orders";
+import { ProductList } from "./pages/products";
 
 function App() {
     // inital tenant

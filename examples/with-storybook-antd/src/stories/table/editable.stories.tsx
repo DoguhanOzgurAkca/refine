@@ -1,4 +1,3 @@
-import { ComponentMeta } from "@storybook/react";
 import {
     EditButton,
     List,
@@ -8,10 +7,11 @@ import {
     useEditableTable,
     useSelect,
 } from "@refinedev/antd";
+import { useDeleteMany, useMany } from "@refinedev/core";
+import { ComponentMeta } from "@storybook/react";
 import { Button, Form, Input, Select, Space, Table } from "antd";
-import { useMany, useDeleteMany } from "@refinedev/core";
-import { IPost, ICategory } from "../../interfaces";
-import React, { useState } from "react";
+import React from "react";
+import { ICategory, IPost } from "../../interfaces";
 
 import MDEditor from "@uiw/react-md-editor";
 

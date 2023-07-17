@@ -4,7 +4,7 @@ import { List, TextField, useTable } from "@refinedev/antd";
 
 import { Table } from "antd";
 
-import { IPost, ICategory } from "interfaces";
+import { ICategory, IPost } from "../../interfaces";
 
 export const PostList: React.FC<IResourceComponentsProps> = () => {
     const { tableProps } = useTable<IPost>();

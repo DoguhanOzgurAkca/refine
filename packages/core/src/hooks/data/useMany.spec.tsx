@@ -1,10 +1,10 @@
 import { renderHook, waitFor } from "@testing-library/react";
 
-import { MockJSONServer, TestWrapper, mockRouterBindings } from "@test";
+import { MockJSONServer, mockRouterBindings, TestWrapper } from "@test";
 
-import { useMany } from "./useMany";
 import { defaultRefineOptions } from "@contexts/refine";
 import { IRefineContextProvider } from "../../interfaces";
+import { useMany } from "./useMany";
 
 const mockRefineProvider: IRefineContextProvider = {
     hasDashboard: false,
@@ -388,6 +388,34 @@ describe("useMany Hook", () => {
                 message: "Success",
                 type: "success",
             });
+        });
+
+        it("should not call `open` from notification provider on return `false`", async () => {
+            const openNotificationMock = jest.fn();
+
+            const { result } = renderHook(
+                () =>
+                    useMany({
+                        resource: "posts",
+                        ids: ["1", "2"],
+                        successNotification: () => false,
+                    }),
+                {
+                    wrapper: TestWrapper({
+                        dataProvider: MockJSONServer,
+                        notificationProvider: {
+                            open: openNotificationMock,
+                        },
+                        resources: [{ name: "posts" }],
+                    }),
+                },
+            );
+
+            await waitFor(() => {
+                expect(result.current.isSuccess).toBeTruthy();
+            });
+
+            expect(openNotificationMock).toBeCalledTimes(0);
         });
 
         it("should call `open` from notification provider on error with custom notification params", async () => {

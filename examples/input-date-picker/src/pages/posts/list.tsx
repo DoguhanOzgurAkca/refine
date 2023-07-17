@@ -1,20 +1,18 @@
-import { IResourceComponentsProps, useMany } from "@refinedev/core";
-
 import {
-    List,
-    TextField,
-    useTable,
-    EditButton,
-    ShowButton,
-    FilterDropdown,
-    useSelect,
-    TagField,
     DateField,
+    EditButton,
+    FilterDropdown,
+    List,
+    ShowButton,
+    TagField,
+    TextField,
+    useSelect,
+    useTable,
 } from "@refinedev/antd";
+import { IResourceComponentsProps, useMany } from "@refinedev/core";
+import { Radio, Select, Space, Table } from "antd";
 
-import { Table, Space, Select, Radio } from "antd";
-
-import { IPost, ICategory } from "interfaces";
+import { ICategory, IPost } from "../../interfaces";
 
 export const PostList: React.FC<IResourceComponentsProps> = () => {
     const { tableProps } = useTable<IPost>();

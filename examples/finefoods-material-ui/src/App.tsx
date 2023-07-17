@@ -1,48 +1,48 @@
+import AddShoppingCartOutlined from "@mui/icons-material/AddShoppingCartOutlined";
+import CategoryOutlined from "@mui/icons-material/CategoryOutlined";
+import Dashboard from "@mui/icons-material/Dashboard";
+import LocalPizzaOutlined from "@mui/icons-material/LocalPizzaOutlined";
+import PeopleOutlineOutlined from "@mui/icons-material/PeopleOutlineOutlined";
+import StarBorderOutlined from "@mui/icons-material/StarBorderOutlined";
+import StoreOutlined from "@mui/icons-material/StoreOutlined";
+import CssBaseline from "@mui/material/CssBaseline";
+import GlobalStyles from "@mui/material/GlobalStyles";
 import { Authenticated, GitHubBanner, Refine } from "@refinedev/core";
 import { KBarProvider } from "@refinedev/kbar";
 import {
     ErrorComponent,
     notificationProvider,
-    ThemedLayoutV2,
     RefineSnackbarProvider,
+    ThemedLayoutV2,
 } from "@refinedev/mui";
-import GlobalStyles from "@mui/material/GlobalStyles";
-import CssBaseline from "@mui/material/CssBaseline";
-import dataProvider from "@refinedev/simple-rest";
 import routerProvider, {
     CatchAllNavigate,
+    DocumentTitleHandler,
     NavigateToResource,
     UnsavedChangesNotifier,
-    DocumentTitleHandler,
 } from "@refinedev/react-router-v6";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import dataProvider from "@refinedev/simple-rest";
 import { useTranslation } from "react-i18next";
-import AddShoppingCartOutlined from "@mui/icons-material/AddShoppingCartOutlined";
-import StarBorderOutlined from "@mui/icons-material/StarBorderOutlined";
-import CategoryOutlined from "@mui/icons-material/CategoryOutlined";
-import StoreOutlined from "@mui/icons-material/StoreOutlined";
-import LocalPizzaOutlined from "@mui/icons-material/LocalPizzaOutlined";
-import PeopleOutlineOutlined from "@mui/icons-material/PeopleOutlineOutlined";
-import Dashboard from "@mui/icons-material/Dashboard";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 
-import { authProvider } from "authProvider";
-import { DashboardPage } from "pages/dashboard";
-import { OrderList, OrderShow } from "pages/orders";
-import { UserList, UserShow } from "pages/users";
-import { ReviewsList } from "pages/reviews";
+import { authProvider } from "./authProvider";
+import { Header, OffLayoutArea, Title } from "./components";
+import { BikeWhiteIcon } from "./components/icons/bike-white";
+import { ColorModeContextProvider } from "./contexts";
+import { AuthPage } from "./pages/auth";
+import { CategoryList } from "./pages/categories";
 import {
-    CourierList,
-    CourierShow,
     CourierCreate,
     CourierEdit,
-} from "pages/couriers";
-import { AuthPage } from "pages/auth";
-import { StoreList, StoreEdit, StoreCreate } from "pages/stores";
-import { ProductList } from "pages/products";
-import { CategoryList } from "pages/categories";
-import { ColorModeContextProvider } from "contexts";
-import { Header, Title, OffLayoutArea } from "components";
-import { BikeWhiteIcon } from "components/icons/bike-white";
+    CourierList,
+    CourierShow,
+} from "./pages/couriers";
+import { DashboardPage } from "./pages/dashboard";
+import { OrderList, OrderShow } from "./pages/orders";
+import { ProductList } from "./pages/products";
+import { ReviewsList } from "./pages/reviews";
+import { StoreCreate, StoreEdit, StoreList } from "./pages/stores";
+import { UserList, UserShow } from "./pages/users";
 
 const API_URL = "https://api.finefoods.refine.dev";
 

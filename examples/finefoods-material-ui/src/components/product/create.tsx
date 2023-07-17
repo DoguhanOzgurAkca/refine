@@ -1,31 +1,31 @@
-import React from "react";
-import axios from "axios";
-import { useTranslate, useApiUrl, HttpError } from "@refinedev/core";
-import { UseModalFormReturnType } from "@refinedev/react-hook-form";
-import { Controller } from "react-hook-form";
+import { HttpError, useApiUrl, useTranslate } from "@refinedev/core";
 import { Create, useAutocomplete } from "@refinedev/mui";
+import { UseModalFormReturnType } from "@refinedev/react-hook-form";
+import axios from "axios";
+import React from "react";
+import { Controller } from "react-hook-form";
 
+import Autocomplete from "@mui/material/Autocomplete";
+import Avatar from "@mui/material/Avatar";
+import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
+import FormControl from "@mui/material/FormControl";
 import FormControlLabel from "@mui/material/FormControlLabel";
+import FormHelperText from "@mui/material/FormHelperText";
+import FormLabel from "@mui/material/FormLabel";
+import IconButton from "@mui/material/IconButton";
 import Input from "@mui/material/Input";
+import InputAdornment from "@mui/material/InputAdornment";
+import OutlinedInput from "@mui/material/OutlinedInput";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
-import Avatar from "@mui/material/Avatar";
-import Typography from "@mui/material/Typography";
-import FormLabel from "@mui/material/FormLabel";
 import Stack from "@mui/material/Stack";
-import Box from "@mui/material/Box";
-import IconButton from "@mui/material/IconButton";
-import FormControl from "@mui/material/FormControl";
-import Autocomplete from "@mui/material/Autocomplete";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputAdornment from "@mui/material/InputAdornment";
-import FormHelperText from "@mui/material/FormHelperText";
 import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
 
 import CloseOutlined from "@mui/icons-material/CloseOutlined";
 
-import { ICategory, IFile, IProduct, Nullable } from "interfaces";
+import { ICategory, IFile, IProduct, Nullable } from "../../interfaces";
 
 export const CreateProduct: React.FC<
     UseModalFormReturnType<IProduct, HttpError, Nullable<IProduct>>

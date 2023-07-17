@@ -1,35 +1,34 @@
-import React from "react";
-import axios from "axios";
-
-import InputMask from "react-input-mask";
 import {
-    IResourceComponentsProps,
-    useTranslate,
-    useApiUrl,
     HttpError,
+    IResourceComponentsProps,
+    useApiUrl,
+    useTranslate,
 } from "@refinedev/core";
 import { Create, SaveButton, useAutocomplete } from "@refinedev/mui";
+import { useStepsForm } from "@refinedev/react-hook-form";
+import axios from "axios";
+import React from "react";
+import { Controller } from "react-hook-form";
+import InputMask from "react-input-mask";
 
+import Autocomplete from "@mui/material/Autocomplete";
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import FormControl from "@mui/material/FormControl";
 import FormHelperText from "@mui/material/FormHelperText";
 import FormLabel from "@mui/material/FormLabel";
 import Grid from "@mui/material/Grid";
+import Input from "@mui/material/Input";
 import Stack from "@mui/material/Stack";
 import Step from "@mui/material/Step";
-import Stepper from "@mui/material/Stepper";
 import StepButton from "@mui/material/StepButton";
+import Stepper from "@mui/material/Stepper";
+import type { TextFieldProps } from "@mui/material/TextField";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import Autocomplete from "@mui/material/Autocomplete";
-import Input from "@mui/material/Input";
-import type { TextFieldProps } from "@mui/material/TextField";
 
-import { useStepsForm } from "@refinedev/react-hook-form";
-import { Controller } from "react-hook-form";
-import { ICourier, IFile, IStore, Nullable } from "interfaces";
+import { ICourier, IFile, IStore, Nullable } from "../../interfaces";
 
 export const CourierCreate: React.FC<IResourceComponentsProps> = () => {
     const t = useTranslate();

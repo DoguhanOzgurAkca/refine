@@ -327,7 +327,6 @@ The `<Edit>` component reads the `resource` information from the route by defaul
 ```tsx live disableScroll previewHeight=280px url=http://localhost:3000/custom/2
 setInitialRoutes(["/custom/2"]);
 
-import { Refine } from "@refinedev/core";
 import routerProvider from "@refinedev/react-router-v6/legacy";
 import dataProvider from "@refinedev/simple-rest";
 // visible-block-start
@@ -379,7 +378,7 @@ const { EditButton } = RefineAntd;
 
 // visible-block-start
 import { Edit, useModalForm } from "@refinedev/antd";
-import { Modal, Button } from "antd";
+import { Button, Modal } from "antd";
 
 const PostEdit: React.FC = () => {
     const { modalProps, id, show } = useModalForm({
@@ -623,8 +622,8 @@ If your route has no `:action` parameter or your action is `list`, the back butt
 
 ```tsx
 /* highlight-next-line */
-import { useBack } from "@refinedev/core";
 import { Edit } from "@refinedev/antd";
+import { useBack } from "@refinedev/core";
 import { Button } from "antd";
 
 const PostEdit: React.FC = () => {
@@ -690,7 +689,7 @@ To customize or disable the breadcrumb, you can use the `breadcrumb` property. B
 const { EditButton } = RefineAntd;
 
 // visible-block-start
-import { Edit, Breadcrumb } from "@refinedev/antd";
+import { Breadcrumb, Edit } from "@refinedev/antd";
 
 const PostEdit: React.FC = () => {
     return (
@@ -1109,7 +1108,7 @@ Or, instead of using the `defaultButtons`, you can create your own buttons. If y
 const { EditButton } = RefineAntd;
 
 // visible-block-start
-import { Edit, SaveButton, DeleteButton } from "@refinedev/antd";
+import { DeleteButton, Edit, SaveButton } from "@refinedev/antd";
 import { Button } from "antd";
 
 const PostEdit: React.FC = () => {
@@ -1204,6 +1203,264 @@ render(
 ```
 
 > For more information, refer to the [`Space` documentation &#8594](https://ant.design/components/space/)
+
+### `autoSaveProps`
+
+You can use the auto save feature of the `<Edit/>` component by using the `autoSaveProps` property.
+
+```tsx live url=http://localhost:3000/posts/edit/123
+const { EditButton } = RefineAntd;
+
+interface ICategory {
+    id: number;
+    title: string;
+}
+
+interface IPost {
+    id: number;
+    title: string;
+    content: string;
+    status: "published" | "draft" | "rejected";
+    category: { id: number };
+}
+
+import { Edit, useForm, useSelect } from "@refinedev/antd";
+import { Form, Input, Select } from "antd";
+
+// visible-block-start
+const PostEdit: React.FC = () => {
+    const {
+        formProps,
+        saveButtonProps,
+        queryResult,
+        // highlight-next-line
+        autoSaveProps,
+    } = useForm<IPost>({
+        warnWhenUnsavedChanges: true,
+        // highlight-start
+        autoSave: {
+            enabled: true,
+        },
+        // highlight-end
+    });
+
+    const postData = queryResult?.data?.data;
+    const { selectProps: categorySelectProps } = useSelect<ICategory>({
+        resource: "categories",
+        defaultValue: postData?.category.id,
+    });
+
+    return (
+        <Edit
+            saveButtonProps={saveButtonProps}
+            // highlight-next-line
+            autoSaveProps={autoSaveProps}
+        >
+            <Form {...formProps} layout="vertical">
+                <Form.Item
+                    label="Title"
+                    name="title"
+                    rules={[
+                        {
+                            required: true,
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+                <Form.Item
+                    label="Category"
+                    name={["category", "id"]}
+                    rules={[
+                        {
+                            required: true,
+                        },
+                    ]}
+                >
+                    <Select {...categorySelectProps} />
+                </Form.Item>
+                <Form.Item
+                    label="Status"
+                    name="status"
+                    rules={[
+                        {
+                            required: true,
+                        },
+                    ]}
+                >
+                    <Select
+                        options={[
+                            {
+                                label: "Published",
+                                value: "published",
+                            },
+                            {
+                                label: "Draft",
+                                value: "draft",
+                            },
+                            {
+                                label: "Rejected",
+                                value: "rejected",
+                            },
+                        ]}
+                    />
+                </Form.Item>
+            </Form>
+        </Edit>
+    );
+};
+// visible-block-end
+
+render(
+    <RefineAntdDemo
+        initialRoutes={["/posts/edit/123"]}
+        resources={[
+            {
+                name: "posts",
+                list: () => (
+                    <div>
+                        <p>This page is empty.</p>
+                        <EditButton recordItemId="123">
+                            Edit Item 123
+                        </EditButton>
+                    </div>
+                ),
+                edit: PostEdit,
+            },
+        ]}
+    />,
+);
+```
+
+> For more information, refer to the [`Space` documentation &#8594](https://ant.design/components/space/)
+
+### `autoSaveProps`
+
+You can use the auto save feature of the `<Edit/>` component by using the `autoSaveProps` property.
+
+```tsx live url=http://localhost:3000/posts/edit/123
+const { EditButton } = RefineAntd;
+
+interface ICategory {
+    id: number;
+    title: string;
+}
+
+interface IPost {
+    id: number;
+    title: string;
+    content: string;
+    status: "published" | "draft" | "rejected";
+    category: { id: number };
+}
+
+import { Edit, useForm, useSelect } from "@refinedev/antd";
+import { Form, Input, Select } from "antd";
+
+// visible-block-start
+const PostEdit: React.FC = () => {
+    const {
+        formProps,
+        saveButtonProps,
+        queryResult,
+        // highlight-next-line
+        autoSaveProps,
+    } = useForm<IPost>({
+        warnWhenUnsavedChanges: true,
+        // highlight-start
+        autoSave: {
+            enabled: true,
+        },
+        // highlight-end
+    });
+
+    const postData = queryResult?.data?.data;
+    const { selectProps: categorySelectProps } = useSelect<ICategory>({
+        resource: "categories",
+        defaultValue: postData?.category.id,
+    });
+
+    return (
+        <Edit
+            saveButtonProps={saveButtonProps}
+            // highlight-next-line
+            autoSaveProps={autoSaveProps}
+        >
+            <Form {...formProps} layout="vertical">
+                <Form.Item
+                    label="Title"
+                    name="title"
+                    rules={[
+                        {
+                            required: true,
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+                <Form.Item
+                    label="Category"
+                    name={["category", "id"]}
+                    rules={[
+                        {
+                            required: true,
+                        },
+                    ]}
+                >
+                    <Select {...categorySelectProps} />
+                </Form.Item>
+                <Form.Item
+                    label="Status"
+                    name="status"
+                    rules={[
+                        {
+                            required: true,
+                        },
+                    ]}
+                >
+                    <Select
+                        options={[
+                            {
+                                label: "Published",
+                                value: "published",
+                            },
+                            {
+                                label: "Draft",
+                                value: "draft",
+                            },
+                            {
+                                label: "Rejected",
+                                value: "rejected",
+                            },
+                        ]}
+                    />
+                </Form.Item>
+            </Form>
+        </Edit>
+    );
+};
+// visible-block-end
+
+render(
+    <RefineAntdDemo
+        initialRoutes={["/posts/edit/123"]}
+        resources={[
+            {
+                name: "posts",
+                list: () => (
+                    <div>
+                        <p>This page is empty.</p>
+                        <EditButton recordItemId="123">
+                            Edit Item 123
+                        </EditButton>
+                    </div>
+                ),
+                edit: PostEdit,
+            },
+        ]}
+    />,
+);
+```
 
 ## API Reference
 

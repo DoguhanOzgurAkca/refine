@@ -1,10 +1,10 @@
-import { useShow, IResourceComponentsProps } from "@refinedev/core";
+import { IResourceComponentsProps, useShow } from "@refinedev/core";
 
 import { Show } from "@refinedev/antd";
 
 import { Typography } from "antd";
 
-import { ICategory } from "interfaces";
+import { ICategory } from "../../interfaces";
 
 const { Title, Text } = Typography;
 

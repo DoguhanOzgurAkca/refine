@@ -1,25 +1,25 @@
+import {
+    ErrorComponent,
+    notificationProvider,
+    RefineThemes,
+    ThemedLayoutV2,
+} from "@refinedev/antd";
 import { GitHubBanner, Refine } from "@refinedev/core";
-import dataProvider from "@refinedev/simple-rest";
 import routerProvider, {
+    DocumentTitleHandler,
     NavigateToResource,
     UnsavedChangesNotifier,
-    DocumentTitleHandler,
 } from "@refinedev/react-router-v6";
-import {
-    notificationProvider,
-    ThemedLayoutV2,
-    ErrorComponent,
-    RefineThemes,
-} from "@refinedev/antd";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import dataProvider from "@refinedev/simple-rest";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { ConfigProvider } from "antd";
 import "@refinedev/antd/dist/reset.css";
+import { ConfigProvider } from "antd";
 
-import { BlogPostList } from "pages/blog-posts/list";
-import { BlogPostCreate } from "pages/blog-posts/create";
-import { BlogPostShow } from "pages/blog-posts/show";
-import { BlogPostEdit } from "pages/blog-posts/edit";
+import { BlogPostCreate } from "./pages/blog-posts/create";
+import { BlogPostEdit } from "./pages/blog-posts/edit";
+import { BlogPostList } from "./pages/blog-posts/list";
+import { BlogPostShow } from "./pages/blog-posts/show";
 
 function App() {
     return (

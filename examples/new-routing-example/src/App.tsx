@@ -1,14 +1,14 @@
-import { Authenticated, Refine } from "@refinedev/core";
-import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
-import dataProvider from "@refinedev/simple-rest";
 import {
-    notificationProvider,
-    ThemedLayoutV2,
-    ErrorComponent,
     AuthPage,
-    Sider,
+    ErrorComponent,
+    notificationProvider,
     RefineThemes,
+    Sider,
+    ThemedLayoutV2,
 } from "@refinedev/antd";
+import { Authenticated, Refine } from "@refinedev/core";
+import dataProvider from "@refinedev/simple-rest";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 
 /**
  * New bindings for react-router-v6 are available as default export.
@@ -40,17 +40,17 @@ import {
  *
  */
 import routerBindings, {
-    RefineRoutes,
-    NavigateToResource,
-    UnsavedChangesNotifier,
     CatchAllNavigate,
     DocumentTitleHandler,
+    NavigateToResource,
+    RefineRoutes,
+    UnsavedChangesNotifier,
 } from "@refinedev/react-router-v6";
 
-import { ConfigProvider } from "antd";
 import "@refinedev/antd/dist/reset.css";
+import { ConfigProvider } from "antd";
 
-import { PostList, PostCreate, PostEdit, PostShow } from "pages/posts";
+import { PostCreate, PostEdit, PostList, PostShow } from "./pages/posts";
 
 const API_URL = "https://api.fake-rest.refine.dev";
 

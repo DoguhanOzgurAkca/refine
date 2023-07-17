@@ -1,39 +1,36 @@
-import { ReactNode } from "react";
-import {
-    useShow,
-    IResourceComponentsProps,
-    useTranslate,
-    useUpdate,
-} from "@refinedev/core";
-import { List } from "@refinedev/antd";
-
 import {
     CheckCircleOutlined,
     CloseCircleOutlined,
     LoadingOutlined,
     MobileOutlined,
 } from "@ant-design/icons";
-
+import { List } from "@refinedev/antd";
 import {
-    Row,
-    Col,
-    Button,
-    Steps,
-    Grid,
-    Space,
+    IResourceComponentsProps,
+    useShow,
+    useTranslate,
+    useUpdate,
+} from "@refinedev/core";
+import {
     Avatar,
-    Typography,
+    Button,
     Card,
-    Table,
+    Col,
+    Grid,
+    Row,
     Skeleton,
+    Space,
+    Steps,
+    Table,
+    Typography,
 } from "antd";
-
 import dayjs from "dayjs";
+import { ReactNode } from "react";
 
-import { Map, MapMarker } from "components";
-import { BikeWhiteIcon } from "components/icons";
-import { useOrderCustomKbarActions } from "hooks";
-import { IEvent, IOrder, IProduct } from "interfaces";
+import { Map, MapMarker } from "../../components";
+import { BikeWhiteIcon } from "../../components/icons";
+import { useOrderCustomKbarActions } from "../../hooks";
+import { IEvent, IOrder, IProduct } from "../../interfaces";
 
 import {
     Courier,

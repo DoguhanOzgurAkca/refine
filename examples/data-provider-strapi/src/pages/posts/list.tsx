@@ -1,19 +1,19 @@
-import { IResourceComponentsProps, getDefaultFilter } from "@refinedev/core";
+import { getDefaultFilter, IResourceComponentsProps } from "@refinedev/core";
 
 import {
-    List,
-    useTable,
-    getDefaultSortOrder,
-    FilterDropdown,
-    useSelect,
     DateField,
-    EditButton,
     DeleteButton,
+    EditButton,
+    FilterDropdown,
+    getDefaultSortOrder,
+    List,
+    useSelect,
+    useTable,
 } from "@refinedev/antd";
 
-import { Table, Select, Space } from "antd";
+import { Select, Space, Table } from "antd";
 
-import { IPost } from "interfaces";
+import { IPost } from "../../interfaces";
 
 export const PostList: React.FC<IResourceComponentsProps> = () => {
     const { tableProps, sorter, filters } = useTable<IPost>({

@@ -7,24 +7,24 @@ title: useStepsForm
 import { useMany } from "@refinedev/core";
 
 import {
-    List,
-    TextField,
-    useTable,
-    EditButton,
-    useStepsForm as useStepsFormAntd,
-    useSelect as useSelectAntd,
-    SaveButton as AntdSaveButton,
-    Edit as AntdEdit,
     Create as AntdCreate,
+    Edit as AntdEdit,
+    EditButton,
+    List,
+    SaveButton as AntdSaveButton,
+    TextField,
+    useSelect as useSelectAntd,
+    useStepsForm as useStepsFormAntd,
+    useTable,
 } from "@refinedev/antd";
 import {
-    Table,
-    Space,
-    Select as AntdSelect,
-    Input as AntdInput,
-    Form as AntdForm,
-    Steps as AntdSteps,
     Button as AntdButton,
+    Form as AntdForm,
+    Input as AntdInput,
+    Select as AntdSelect,
+    Space,
+    Steps as AntdSteps,
+    Table,
 } from "antd";
 
 const PostList = () => {
@@ -343,11 +343,11 @@ Here is the final result of the form: We will explain the code in following sect
 setInitialRoutes(["/posts/create"]);
 
 // visible-block-start
-import React from "react";
 import { HttpError } from "@refinedev/core";
+import React from "react";
 
 import { Create, SaveButton, useSelect, useStepsForm } from "@refinedev/antd";
-import { Form, Input, Select, Button, Steps } from "antd";
+import { Button, Form, Input, Select, Steps } from "antd";
 
 const { Step } = Steps;
 
@@ -506,11 +506,11 @@ Here is the final result of the form: We will explain the code in following sect
 setInitialRoutes(["/posts/edit/123"]);
 
 // visible-block-start
-import React from "react";
 import { HttpError } from "@refinedev/core";
+import React from "react";
 
 import { Edit, SaveButton, useSelect, useStepsForm } from "@refinedev/antd";
-import { Form, Input, Select, Button, Steps } from "antd";
+import { Button, Form, Input, Select, Steps } from "antd";
 
 const { Step } = Steps;
 
@@ -676,9 +676,9 @@ For the sake of simplicity, in this example we're going to build a Post `"create
 To split your form items under a `<Steps>` component, first import and use `useStepsForm` hook in your page:
 
 ```tsx title="pages/posts/create.tsx"
-import React from "react";
-import { HttpError } from "@refinedev/core";
 import { useStepsForm } from "@refinedev/antd";
+import { HttpError } from "@refinedev/core";
+import React from "react";
 
 export const PostCreate: React.FC = () => {
     const {
@@ -714,10 +714,10 @@ This hook returns a set of useful values to render steps form. Given `current` v
 Here, each item of `formList` corresponds to one step in form:
 
 ```tsx title="pages/posts/create.tsx"
-import React from "react";
+import { useSelect, useStepsForm } from "@refinedev/antd";
 import { HttpError } from "@refinedev/core";
-import { useStepsForm, useSelect } from "@refinedev/antd";
 import { Form, Input, Select } from "antd";
+import React from "react";
 
 export const PostCreate: React.FC = () => {
     const { current, gotoStep, stepsProps, formProps, saveButtonProps } =
@@ -790,15 +790,13 @@ Refer to [`useSelect` documentation for detailed usage. &#8594](/docs/api-refere
 You should use `stepsProps` on `<Steps>` component, `formProps` on the `<Form>` component. And as the last step, you should render the `<Steps>` component besides the form like this:
 
 ```tsx title="pages/posts/create.tsx"
-import React from "react";
-import { HttpError } from "@refinedev/core";
 import {
-    useStepsForm,
-    useSelect,
     // highlight-start
     Create,
-    // highlight-end
+    useSelect,
+    useStepsForm,
 } from "@refinedev/antd";
+import { HttpError } from "@refinedev/core";
 import {
     Form,
     Input,
@@ -806,6 +804,7 @@ import {
     // highlight-next-line
     Steps,
 } from "antd";
+import React from "react";
 
 export const PostCreate: React.FC = () => {
     const {
@@ -891,16 +890,16 @@ Make sure to add as much `<Steps.Step>` components as the number of steps in the
 To help users navigate between steps in the form, you can use the action buttons. Your navigation buttons should use the `gotoStep` function that was previously returned from the the `useStepsForm` hook.
 
 ```tsx title="pages/posts/create.tsx"
-import React from "react";
-import { HttpError } from "@refinedev/core";
 import {
-    useStepsForm,
-    useSelect,
     Create,
     // highlight-next-line
     SaveButton,
+    useSelect,
+    useStepsForm,
 } from "@refinedev/antd";
+import { HttpError } from "@refinedev/core";
 import { Button, Form, Input, Select, Steps } from "antd";
+import React from "react";
 
 export const PostCreate: React.FC = () => {
     const {
@@ -1069,7 +1068,67 @@ const { overtime } = useStepsForm({
 console.log(overtime.elapsedTime); // undefined, 1000, 2000, 3000 4000, ...
 
 // You can use it like this:
-{elapsedTime >= 4000 && <div>this takes a bit longer than expected</div>}
+{
+    elapsedTime >= 4000 && <div>this takes a bit longer than expected</div>;
+}
+```
+
+### `autoSave`
+
+If you want to save the form automatically after some delay when user edits the form, you can pass true to `autoSave.enabled` prop.
+
+It also supports `onMutationSuccess` and `onMutationError` callback functions. You can use `isAutoSave` parameter to determine whether the mutation is triggered by `autoSave` or not.
+
+:::caution
+Works only in `action: "edit"` mode.
+:::
+
+`onMutationSuccess` and `onMutationError` callbacks will be called after the mutation is successful or failed.
+
+#### `enabled`
+
+To enable the `autoSave` feature, set the `enabled` parameter to `true`.
+
+```tsx
+useStepsForm({
+    autoSave: {
+        enabled: true,
+    },
+});
+```
+
+#### `debounce`
+
+Set the debounce time for the `autoSave` prop. Default value is `1000`.
+
+```tsx
+useStepsForm({
+    autoSave: {
+        enabled: true,
+        // highlight-next-line
+        debounce: 2000,
+    },
+});
+```
+
+#### `onFinish`
+
+If you want to modify the data before sending it to the server, you can use `onFinish` callback function.
+
+```tsx
+useStepsForm({
+    autoSave: {
+        enabled: true,
+        // highlight-start
+        onFinish: (values) => {
+            return {
+                foo: "bar",
+                ...values,
+            };
+        },
+        // highlight-end
+    },
+});
 ```
 
 ## Return Values
@@ -1117,6 +1176,10 @@ const { overtime } = useStepsForm();
 console.log(overtime.elapsedTime); // undefined, 1000, 2000, 3000 4000, ...
 ```
 
+### `autoSaveProps`
+
+If `autoSave` is enabled, this hook returns `autoSaveProps` object with `data`, `error`, and `status` properties from mutation.
+
 ## FAQ
 
 ### How can I change the form data before submitting it to the API?
@@ -1128,25 +1191,19 @@ We need to send the values we received from the user in two separate inputs, `na
 ```tsx title="pages/user/create.tsx"
 import { useStepsForm } from "@refinedev/antd";
 // ...
-const {
-    current,
-    gotoStep,
-    stepsProps,
-    formProps,
-    saveButtonProps,
-    onFinish,
-} = useStepsForm<IPost>({
-    submit: (values) => {
-        // highlight-start
-        const data = {
-            fullName: `${formValues.name} ${formValues.surname}`,
-            age: formValues.age,
-            city: formValues.city,
-        };
-        onFinish(data as any);
-    // highlight-end
-    },
-});
+const { current, gotoStep, stepsProps, formProps, saveButtonProps, onFinish } =
+    useStepsForm<IPost>({
+        submit: (values) => {
+            // highlight-start
+            const data = {
+                fullName: `${formValues.name} ${formValues.surname}`,
+                age: formValues.age,
+                city: formValues.city,
+            };
+            onFinish(data as any);
+            // highlight-end
+        },
+    });
 // ...
 ```
 
@@ -1175,16 +1232,17 @@ const {
 
 ### Return Values
 
-| Key                      | Description                                                  | Type                                                                           |
-| ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| stepsProps               | Ant Design steps props                                       | [`StepsProps`](https://ant.design/components/steps/#API)                       |
-| current                  | Current step, counting from 0.                               | `number`                                                                       |
-| gotoStep                 | Go to the target step                                        | `(step: number) => void`                                                       |
-| formProps                | Ant Design form props                                        | [`FormProps`](/docs/api-reference/antd/hooks/form/useForm/#formprops)          |
-| form                     | Ant Design form instance                                     | [`FormInstance<TVariables>`](https://ant.design/components/form/#FormInstance) |
-| defaultFormValuesLoading | DefaultFormValues loading status of form                     | `boolean`                                                                      |
-| submit                   | Submit method, the parameter is the value of the form fields | `() => void`                                                                   |
-| overtime                 | Overtime loading props                                       | `{ elapsedTime?: number }`                                                     |
+| Key                      | Description                                                  | Type                                                                                                                                    |
+| ------------------------ | ------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------- |
+| stepsProps               | Ant Design steps props                                       | [`StepsProps`](https://ant.design/components/steps/#API)                                                                                |
+| current                  | Current step, counting from 0.                               | `number`                                                                                                                                |
+| gotoStep                 | Go to the target step                                        | `(step: number) => void`                                                                                                                |
+| formProps                | Ant Design form props                                        | [`FormProps`](/docs/api-reference/antd/hooks/form/useForm/#formprops)                                                                   |
+| form                     | Ant Design form instance                                     | [`FormInstance<TVariables>`](https://ant.design/components/form/#FormInstance)                                                          |
+| defaultFormValuesLoading | DefaultFormValues loading status of form                     | `boolean`                                                                                                                               |
+| submit                   | Submit method, the parameter is the value of the form fields | `() => void`                                                                                                                            |
+| overtime                 | Overtime loading props                                       | `{ elapsedTime?: number }`                                                                                                              |
+| autoSaveProps            | Auto save props                                              | `{ data: UpdateResponse<TData>` \| `undefined, error: HttpError` \| `null, status: "loading"` \| `"error"` \| `"idle"` \| `"success" }` |
 
 ## Example
 

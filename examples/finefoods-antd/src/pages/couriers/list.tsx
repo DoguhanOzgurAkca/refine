@@ -1,20 +1,18 @@
 import {
-    useTranslate,
+    CloseCircleOutlined,
+    EditOutlined,
+    MoreOutlined,
+} from "@ant-design/icons";
+import { List, useTable } from "@refinedev/antd";
+import {
     IResourceComponentsProps,
     useDelete,
     useNavigation,
+    useTranslate,
 } from "@refinedev/core";
+import { Avatar, Dropdown, Menu, Space, Table, Typography } from "antd";
 
-import { List, useTable } from "@refinedev/antd";
-
-import {
-    EditOutlined,
-    CloseCircleOutlined,
-    MoreOutlined,
-} from "@ant-design/icons";
-import { Table, Avatar, Dropdown, Menu, Space, Typography } from "antd";
-
-import { ICourier } from "interfaces";
+import { ICourier } from "../../interfaces";
 
 export const CourierList: React.FC<IResourceComponentsProps> = () => {
     const { show, edit } = useNavigation();

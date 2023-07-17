@@ -1,27 +1,25 @@
-import { useTranslate, useApiUrl, BaseKey } from "@refinedev/core";
-
 import { Edit, getValueFromEvent, useSelect } from "@refinedev/antd";
-
+import { BaseKey, useApiUrl, useTranslate } from "@refinedev/core";
 import {
+    Avatar,
+    ButtonProps,
     Drawer,
     DrawerProps,
     Form,
     FormProps,
+    Grid,
     Input,
     InputNumber,
     Radio,
     Select,
     Space,
-    ButtonProps,
-    Avatar,
     Typography,
     Upload,
-    Grid,
 } from "antd";
 
-const { Text } = Typography;
+import { ICategory } from "../../interfaces";
 
-import { ICategory } from "interfaces";
+const { Text } = Typography;
 
 type EditProductProps = {
     drawerProps: DrawerProps;

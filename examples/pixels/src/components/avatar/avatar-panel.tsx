@@ -1,9 +1,9 @@
-import React from "react";
 import { UserOutlined } from "@ant-design/icons";
-import { Typography, Space, Avatar } from "antd";
+import { Avatar, Space, Typography } from "antd";
+import React from "react";
 
-import { getUniqueContributorsAvatarURL } from "utility";
-import { Pixel } from "types";
+import { Pixel } from "../../types";
+import { getUniqueContributorsAvatarURL } from "../../utility";
 
 const { Title } = Typography;
 

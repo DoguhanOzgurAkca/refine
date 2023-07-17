@@ -1,12 +1,12 @@
-import React from "react";
 import { Edit, useForm, useSelect } from "@refinedev/antd";
-import { Form, Input, Select, Col, Row } from "antd";
-import { IResourceComponentsProps } from "@refinedev/core";
 import { LogList } from "@refinedev/antd-audit-log";
+import { IResourceComponentsProps } from "@refinedev/core";
+import { Col, Form, Input, Row, Select } from "antd";
+import React from "react";
 
 import MDEditor from "@uiw/react-md-editor";
 
-import { IPost, ICategory } from "interfaces";
+import { ICategory, IPost } from "../../interfaces";
 
 export const PostEdit: React.FC<IResourceComponentsProps> = () => {
     const { formProps, saveButtonProps, queryResult } = useForm<IPost>({

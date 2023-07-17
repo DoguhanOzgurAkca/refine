@@ -1,4 +1,10 @@
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import {
+    HttpError,
+    IResourceComponentsProps,
+    useShow,
+    useTranslate,
+} from "@refinedev/core";
 import { DateField, List, NumberField, useDataGrid } from "@refinedev/mui";
 import React from "react";
 
@@ -14,21 +20,13 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Typography from "@mui/material/Typography";
 
-import {
-    HttpError,
-    IResourceComponentsProps,
-    useShow,
-    useTranslate,
-} from "@refinedev/core";
-
 import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
 import DateRangeOutlinedIcon from "@mui/icons-material/DateRangeOutlined";
 import LocalPhoneOutlinedIcon from "@mui/icons-material/LocalPhoneOutlined";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 
-import { CustomTooltip, OrderStatus } from "components";
-
-import { IOrder, IOrderFilterVariables, IUser } from "interfaces";
+import { CustomTooltip, OrderStatus } from "../../components";
+import { IOrder, IOrderFilterVariables, IUser } from "../../interfaces";
 
 const UserInfoText: React.FC<{ children: React.ReactNode }> = ({
     children,

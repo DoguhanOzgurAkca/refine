@@ -1,5 +1,5 @@
-import React from "react";
 import { HttpError, IResourceComponentsProps } from "@refinedev/core";
+import React from "react";
 
 import {
     Edit,
@@ -13,7 +13,7 @@ import { Form, Input, Select, Space } from "antd";
 
 import MDEditor from "@uiw/react-md-editor";
 
-import { IPost, ICategory } from "interfaces";
+import { ICategory, IPost } from "../../interfaces";
 
 export const PostEdit: React.FC<IResourceComponentsProps> = () => {
     const { formProps, saveButtonProps, queryResult } = useForm<

@@ -1,39 +1,39 @@
+import { DashboardOutlined } from "@ant-design/icons";
+import {
+    AuthPage,
+    ErrorComponent,
+    notificationProvider,
+    RefineThemes,
+    ThemedLayoutV2,
+} from "@refinedev/antd";
 import {
     AuthBindings,
     Authenticated,
     GitHubBanner,
     Refine,
 } from "@refinedev/core";
-import {
-    notificationProvider,
-    ThemedLayoutV2,
-    ErrorComponent,
-    AuthPage,
-    RefineThemes,
-} from "@refinedev/antd";
-import { DashboardOutlined } from "@ant-design/icons";
-import dataProvider from "@refinedev/simple-rest";
 import routerProvider, {
-    NavigateToResource,
     CatchAllNavigate,
-    UnsavedChangesNotifier,
     DocumentTitleHandler,
+    NavigateToResource,
+    UnsavedChangesNotifier,
 } from "@refinedev/react-router-v6";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import dataProvider from "@refinedev/simple-rest";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 
 import "@refinedev/antd/dist/reset.css";
 
-import { PostList, PostCreate, PostEdit, PostShow } from "pages/posts";
+import { ConfigProvider } from "antd";
+import { ILoginDto } from "./interfaces";
 import {
-    CategoryList,
     CategoryCreate,
     CategoryEdit,
+    CategoryList,
     CategoryShow,
-} from "pages/categories";
-import { DashboardPage } from "pages/dashboard";
-import { ILoginDto } from "interfaces";
-import refineSDK from "utils/refine-sdk";
-import { ConfigProvider } from "antd";
+} from "./pages/categories";
+import { DashboardPage } from "./pages/dashboard";
+import { PostCreate, PostEdit, PostList, PostShow } from "./pages/posts";
+import refineSDK from "./utils/refine-sdk";
 
 const API_URL = "https://api.fake-rest.refine.dev";
 

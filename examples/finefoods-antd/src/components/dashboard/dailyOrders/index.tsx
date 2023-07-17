@@ -1,13 +1,13 @@
-import { useMemo } from "react";
-import { useApiUrl, useCustom, useTranslate } from "@refinedev/core";
-import { Typography } from "antd";
 import { Column } from "@ant-design/charts";
 import { ColumnConfig } from "@ant-design/plots/lib/components/column";
+import { useApiUrl, useCustom, useTranslate } from "@refinedev/core";
+import { Typography } from "antd";
+import { useMemo } from "react";
 
-import { IncreaseIcon, DecreaseIcon } from "components/icons";
+import { DecreaseIcon, IncreaseIcon } from "../../../components/icons";
 
-import { ISalesChart } from "interfaces";
-import { DailyOrderWrapper, TitleAreNumber, TitleArea } from "./styled";
+import { ISalesChart } from "../../../interfaces";
+import { DailyOrderWrapper, TitleArea, TitleAreNumber } from "./styled";
 
 export const DailyOrders: React.FC = () => {
     const t = useTranslate();

@@ -1,16 +1,16 @@
-import React from "react";
 import {
     PageMetadata,
     useCurrentSidebarCategory,
 } from "@docusaurus/theme-common";
+import { useDocsVersion } from "@docusaurus/theme-common/internal";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import DocCardList from "@theme/DocCardList";
 import DocPaginator from "@theme/DocPaginator";
 import DocVersionBanner from "@theme/DocVersionBanner";
-import { DocVersionBadge } from "./doc-version-badge";
-import { DocBreadcrumbs } from "./doc-breadcrumbs";
-import { useDocsVersion } from "@docusaurus/theme-common/internal";
 import clsx from "clsx";
+import React from "react";
+import { DocBreadcrumbs } from "./doc-breadcrumbs";
+import { DocVersionBadge } from "./doc-version-badge";
 
 function DocCategoryGeneratedIndexPageMetadata({ categoryGeneratedIndex }) {
     return (
@@ -61,8 +61,8 @@ function DocCategoryGeneratedIndexPageContent({ categoryGeneratedIndex }) {
                         </header>
                         <article
                             className={clsx(
-                                "grid grid-cols-2",
-                                "gap-4",
+                                "grid grid-cols-1 sm:grid-cols-2",
+                                "gap-2 sm:gap-4 2xl:gap-8",
                                 "not-prose",
                             )}
                         >

@@ -1,12 +1,12 @@
-import React from "react";
 import { useNavigation, useSelect } from "@refinedev/core";
 import { useForm } from "@refinedev/react-hook-form";
+import React from "react";
 
 export const BlogPostEdit = () => {
     const { list } = useNavigation();
 
     const {
-        refineCore: { onFinish, formLoading, queryResult },
+        refineCore: { onFinish, queryResult },
         register,
         handleSubmit,
         resetField,

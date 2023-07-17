@@ -1,25 +1,23 @@
-import { useTranslate, BaseKey } from "@refinedev/core";
-
-import { NumberField } from "@refinedev/antd";
-
 import {
     CloseCircleOutlined,
     FormOutlined,
     MoreOutlined,
 } from "@ant-design/icons";
+import { NumberField } from "@refinedev/antd";
+import { BaseKey, useTranslate } from "@refinedev/core";
 import {
     Avatar,
     Card,
     Divider,
-    InputNumber,
     Dropdown,
+    InputNumber,
     Menu,
     Typography,
 } from "antd";
 
-const { Text, Paragraph } = Typography;
+import { IProduct } from "../../interfaces";
 
-import { IProduct } from "interfaces";
+const { Text, Paragraph } = Typography;
 
 type ProductItemProps = {
     item: IProduct;

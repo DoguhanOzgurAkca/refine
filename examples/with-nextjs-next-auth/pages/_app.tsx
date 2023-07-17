@@ -1,26 +1,26 @@
-import React from "react";
+import { SessionProvider, signIn, signOut, useSession } from "next-auth/react";
 import { AppProps } from "next/app";
-import { SessionProvider, useSession, signOut, signIn } from "next-auth/react";
+import React from "react";
 
-import { AuthBindings, GitHubBanner, Refine } from "@refinedev/core";
 import {
-    ThemedLayoutV2,
     notificationProvider,
     RefineThemes,
+    ThemedLayoutV2,
 } from "@refinedev/antd";
-import dataProvider from "@refinedev/simple-rest";
-import routerProvider, {
-    UnsavedChangesNotifier,
-    DocumentTitleHandler,
-} from "@refinedev/nextjs-router";
 import "@refinedev/antd/dist/reset.css";
+import { AuthBindings, GitHubBanner, Refine } from "@refinedev/core";
+import routerProvider, {
+    DocumentTitleHandler,
+    UnsavedChangesNotifier,
+} from "@refinedev/nextjs-router";
+import dataProvider from "@refinedev/simple-rest";
 
-import { ConfigProvider } from "antd";
 import "@styles/global.css";
+import { ConfigProvider } from "antd";
 
-import { API_URL } from "src/constants";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
+import { API_URL } from "src/constants";
 
 export type ExtendedNextPage = NextPage & {
     noLayout?: boolean;
@@ -52,15 +52,102 @@ const App = (props: React.PropsWithChildren) => {
                 };
             }
 
-            signIn("credentials", {
+            const signInResponse = await signIn("CredentialsSignIn", {
                 email,
                 password,
                 callbackUrl: to ? to.toString() : "/",
-                redirect: true,
+                redirect: false,
             });
 
+            if (!signInResponse) {
+                return {
+                    success: false,
+                };
+            }
+
+            const { ok, error } = signInResponse;
+
+            if (ok) {
+                return {
+                    success: true,
+                    redirectTo: "/",
+                };
+            }
+
             return {
-                success: true,
+                success: false,
+                error: new Error(error),
+            };
+        },
+        register: async ({ providerName, email, password }) => {
+            if (providerName) {
+                signIn(providerName, {
+                    callbackUrl: to ? to.toString() : "/",
+                    redirect: true,
+                });
+
+                return {
+                    success: true,
+                };
+            }
+
+            const signUpResponse = await signIn("CredentialsSignUp", {
+                email,
+                password,
+                callbackUrl: to ? to.toString() : "/",
+                redirect: false,
+            });
+
+            if (!signUpResponse) {
+                return {
+                    success: false,
+                };
+            }
+
+            const { ok, error } = signUpResponse;
+
+            if (ok) {
+                return {
+                    success: true,
+                    redirectTo: "/",
+                };
+            }
+
+            return {
+                success: false,
+                error: new Error(error),
+            };
+        },
+        updatePassword: async (params) => {
+            if (params.password === "demodemo") {
+                //we can update password here
+                return {
+                    success: true,
+                    redirectTo: "/login",
+                };
+            }
+            return {
+                success: false,
+                error: {
+                    message: "Update password failed",
+                    name: "Invalid password",
+                },
+            };
+        },
+        forgotPassword: async (params) => {
+            if (params.email === "demo@refine.dev") {
+                //we can send email with reset password link here
+                return {
+                    success: true,
+                    redirectTo: "/login",
+                };
+            }
+            return {
+                success: false,
+                error: {
+                    message: "Forgot password failed",
+                    name: "Invalid email",
+                },
             };
         },
         logout: async () => {

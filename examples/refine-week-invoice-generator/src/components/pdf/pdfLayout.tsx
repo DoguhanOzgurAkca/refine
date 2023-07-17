@@ -2,13 +2,14 @@ import {
     Document,
     Image,
     Page,
-    StyleSheet,
-    View,
-    Text,
     PDFViewer,
+    StyleSheet,
+    Text,
+    View,
 } from "@react-pdf/renderer";
-import { IInvoice } from "interfaces";
+
 import { API_URL } from "../../constants";
+import { IInvoice } from "../../interfaces";
 
 type PdfProps = {
     record: IInvoice | undefined;

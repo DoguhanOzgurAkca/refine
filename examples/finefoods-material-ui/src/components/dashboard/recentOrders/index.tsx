@@ -9,8 +9,8 @@ import { useNavigation, useTranslate, useUpdate } from "@refinedev/core";
 import { NumberField, useDataGrid } from "@refinedev/mui";
 import React from "react";
 
-import { OrderStatus } from "components/orderStatus";
-import { IOrder } from "interfaces";
+import { OrderStatus } from "../../../components/orderStatus";
+import { IOrder } from "../../../interfaces";
 
 export const RecentOrders: React.FC = () => {
     const t = useTranslate();

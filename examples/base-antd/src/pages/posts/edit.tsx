@@ -1,17 +1,21 @@
-import React from "react";
-import { IResourceComponentsProps } from "@refinedev/core";
 import { Edit, useForm, useSelect } from "@refinedev/antd";
+import { IResourceComponentsProps } from "@refinedev/core";
+import React from "react";
 
 import { Form, Input, Select } from "antd";
 
 import MDEditor from "@uiw/react-md-editor";
 
-import { IPost, ICategory } from "../../interfaces";
+import { ICategory, IPost } from "../../interfaces";
 
 export const PostEdit: React.FC<IResourceComponentsProps> = () => {
-    const { formProps, saveButtonProps, queryResult } = useForm<IPost>({
-        warnWhenUnsavedChanges: true,
-    });
+    const { formProps, saveButtonProps, queryResult, autoSaveProps } =
+        useForm<IPost>({
+            warnWhenUnsavedChanges: true,
+            autoSave: {
+                enabled: true,
+            },
+        });
 
     const postData = queryResult?.data?.data;
     const { selectProps: categorySelectProps } = useSelect<ICategory>({
@@ -20,7 +24,7 @@ export const PostEdit: React.FC<IResourceComponentsProps> = () => {
     });
 
     return (
-        <Edit saveButtonProps={saveButtonProps}>
+        <Edit saveButtonProps={saveButtonProps} autoSaveProps={autoSaveProps}>
             <Form {...formProps} layout="vertical">
                 <Form.Item
                     label="Title"

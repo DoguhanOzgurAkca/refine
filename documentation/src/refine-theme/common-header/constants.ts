@@ -1,18 +1,18 @@
 // import { CloudIcon } from "../icons/cloud";
 import { HackathonAltIcon } from "../icons/hackathon-alt";
 import {
-    DocumentsIcon,
-    IntegrationsIcon,
-    TutorialIcon,
-    ExamplesIcon,
+    AboutUsIcon,
     AwesomeIcon,
     // UseCasesIcon,
     ContributeIcon,
+    DocumentsIcon,
+    ExamplesIcon,
     // RefineWeekIcon,
     HackathonsIcon,
-    AboutUsIcon,
-    StoreIcon,
+    IntegrationsIcon,
     MeetIcon,
+    StoreIcon,
+    TutorialIcon,
 } from "../icons/popover";
 
 export type NavbarPopoverItemType = {
@@ -71,6 +71,11 @@ export const MENU_ITEMS: MenuItemType[] = [
                 icon: AwesomeIcon,
             },
         ],
+    },
+    {
+        isPopover: false,
+        label: "Pricing",
+        href: "/pricing",
     },
     // {
     //     isPopover: false,

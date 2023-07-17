@@ -1,7 +1,7 @@
-import React from "react";
-import clsx from "clsx";
 import { useLocation } from "@docusaurus/router";
 import { Tags } from "@site/src/components/blog";
+import clsx from "clsx";
+import React from "react";
 
 export const BlogTOCItem = ({
     id,
@@ -61,7 +61,7 @@ export const BlogTOCItem = ({
                 level === 4 && "pl-11",
                 "py-2 pr-3",
                 activeId === id &&
-                    `text-gray-900 dark:bg-gray-700 dark:text-gray-0 bg-gray-50 hover:text-gray-900`,
+                    ` dark:bg-gray-700 bg-gray-100 text-gray-900 dark:text-gray-0 hover:text-gray-900`,
                 activeId !== id &&
                     `dark:text-gray-500 hover:text-gray-900 text-gray-500`,
                 "rounded-lg",

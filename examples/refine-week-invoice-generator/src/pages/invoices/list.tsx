@@ -1,23 +1,21 @@
-import { useState } from "react";
-import { useModal } from "@refinedev/core";
 import {
-    List,
-    useTable,
     DateField,
-    TagField,
-    EmailField,
     DeleteButton,
     EditButton,
+    EmailField,
+    List,
+    TagField,
+    useTable,
 } from "@refinedev/antd";
+import { useModal } from "@refinedev/core";
+import { useState } from "react";
 
-// It is recommended to use explicit import as seen below to reduce bundle size.
-// import { IconName } from "@ant-design/icons";
 import * as Icons from "@ant-design/icons";
 
-import { Table, Space, Button, Modal } from "antd";
+import { Button, Modal, Space, Table } from "antd";
 
-import { IInvoice, IMission } from "interfaces";
-import { PdfLayout } from "components/pdf";
+import { PdfLayout } from "../../components/pdf";
+import { IInvoice, IMission } from "../../interfaces";
 
 const { FilePdfOutlined } = Icons;
 

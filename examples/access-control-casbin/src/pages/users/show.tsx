@@ -1,10 +1,10 @@
-import { useShow, IResourceComponentsProps } from "@refinedev/core";
+import { IResourceComponentsProps, useShow } from "@refinedev/core";
 
-import { Show, EmailField, ImageField } from "@refinedev/antd";
+import { EmailField, ImageField, Show } from "@refinedev/antd";
 
-import { Typography, Space } from "antd";
+import { Space, Typography } from "antd";
 
-import { IUser } from "interfaces";
+import { IUser } from "../../interfaces";
 
 const { Title, Text } = Typography;
 

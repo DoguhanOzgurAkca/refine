@@ -1,44 +1,44 @@
 import {
-    useQueryClient,
     useMutation,
-    UseMutationResult,
     UseMutationOptions,
+    UseMutationResult,
+    useQueryClient,
 } from "@tanstack/react-query";
 
-import {
-    useResource,
-    useMutationMode,
-    useCancelNotification,
-    useTranslate,
-    usePublish,
-    useHandleNotification,
-    useDataProvider,
-    useLog,
-    useInvalidate,
-    useOnError,
-    useMeta,
-    useRefineContext,
-} from "@hooks";
 import { ActionTypes } from "@contexts/undoableQueue";
 import {
-    DeleteOneResponse,
-    MutationMode,
-    PrevContext as DeleteContext,
-    BaseRecord,
-    BaseKey,
-    HttpError,
-    GetListResponse,
-    SuccessErrorNotification,
-    PreviousQuery,
-    IQueryKeys,
-    MetaQuery,
-} from "../../interfaces";
-import {
-    queryKeys,
     pickDataProvider,
     pickNotDeprecated,
+    queryKeys,
     useActiveAuthProvider,
 } from "@definitions/helpers";
+import {
+    useCancelNotification,
+    useDataProvider,
+    useHandleNotification,
+    useInvalidate,
+    useLog,
+    useMeta,
+    useMutationMode,
+    useOnError,
+    usePublish,
+    useRefineContext,
+    useResource,
+    useTranslate,
+} from "@hooks";
+import {
+    BaseKey,
+    BaseRecord,
+    DeleteOneResponse,
+    GetListResponse,
+    HttpError,
+    IQueryKeys,
+    MetaQuery,
+    MutationMode,
+    PrevContext as DeleteContext,
+    PreviousQuery,
+    SuccessErrorNotification,
+} from "../../interfaces";
 import {
     useLoadingOvertime,
     UseLoadingOvertimeOptionsProps,
@@ -46,18 +46,46 @@ import {
 } from "../useLoadingOvertime";
 
 export type DeleteParams<TData, TError, TVariables> = {
+    /**
+     * id for mutation function
+     */
     id: BaseKey;
+    /**
+     * Resource name for API data interactions
+     */
     resource: string;
+    /**
+     * [Determines when mutations are executed](/advanced-tutorials/mutation-mode.md)
+     */
     mutationMode?: MutationMode;
+    /**
+     * Duration in ms to wait before executing the mutation when `mutationMode = "undoable"`
+     */
     undoableTimeout?: number;
+    /**
+     * Provides a function to cancel the mutation when `mutationMode = "undoable"`
+     */
     onCancel?: (cancelMutation: () => void) => void;
+    /**
+     * Metadata query for dataProvider
+     */
     meta?: MetaQuery;
     /**
      * @deprecated `metaData` is deprecated with refine@4, refine will pass `meta` instead, however, we still support `metaData` for backward compatibility.
      */
     metaData?: MetaQuery;
+    /**
+     * If there is more than one `dataProvider`, you should use the `dataProviderName` that you will use.
+     * @default "default"
+     */
     dataProviderName?: string;
+    /**
+     *  You can use it to manage the invalidations that will occur at the end of the mutation.
+     */
     invalidates?: Array<keyof IQueryKeys>;
+    /**
+     * Values for mutation function
+     */
     values?: TVariables;
 } & SuccessErrorNotification<DeleteOneResponse<TData>, TError, BaseKey>;
 

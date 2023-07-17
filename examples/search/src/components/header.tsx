@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react";
-import { useList } from "@refinedev/core";
 import { SearchOutlined } from "@ant-design/icons";
-import { Layout as AntdLayout, AutoComplete, Input, Typography } from "antd";
+import { useList } from "@refinedev/core";
 import routerProvider from "@refinedev/react-router-v6/legacy";
+import { AutoComplete, Input, Layout as AntdLayout, Typography } from "antd";
 import debounce from "lodash/debounce";
+import { useEffect, useState } from "react";
+
+import { ICategory, IOptions, IPost } from "../interfaces";
 
 const { Link } = routerProvider;
 const { Text } = Typography;
-
-import { ICategory, IOptions, IPost } from "interfaces";
 
 const renderTitle = (title: string) => {
     return (

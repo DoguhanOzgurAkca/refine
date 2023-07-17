@@ -1,21 +1,21 @@
+import { ThemeProvider } from "@mui/material/styles";
 import { GitHubBanner, Refine } from "@refinedev/core";
 import {
-    ThemedLayoutV2,
     ErrorComponent,
-    RefineThemes,
     notificationProvider,
+    RefineThemes,
     SnackbarProvider,
+    ThemedLayoutV2,
 } from "@refinedev/mui";
-import dataProvider from "@refinedev/simple-rest";
 import routerProvider, {
+    DocumentTitleHandler,
     NavigateToResource,
     UnsavedChangesNotifier,
-    DocumentTitleHandler,
 } from "@refinedev/react-router-v6";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
-import { ThemeProvider } from "@mui/material/styles";
+import dataProvider from "@refinedev/simple-rest";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 
-import { PostList, PostCreate, PostEdit } from "pages/posts";
+import { PostCreate, PostEdit, PostList } from "./pages/posts";
 
 const API_URL = "https://api.fake-rest.refine.dev";
 

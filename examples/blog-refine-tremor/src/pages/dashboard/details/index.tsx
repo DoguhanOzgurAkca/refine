@@ -1,34 +1,34 @@
-import React from "react";
 import { IResourceComponentsProps } from "@refinedev/core";
 import { useTable } from "@refinedev/react-table";
 import { ColumnDef, flexRender } from "@tanstack/react-table";
+import React from "react";
 
 import {
-    Card,
-    Table,
-    TableHead,
-    TableRow,
-    TableHeaderCell,
-    TableBody,
-    TableCell,
-    Text,
-    Title,
-    Button,
-    Flex,
-    TextInput,
-    Icon,
-    DeltaType,
-    BadgeDelta,
-    Select,
-    SelectItem,
-} from "@tremor/react";
-import {
-    ChevronLeftIcon,
-    ChevronRightIcon,
     ChevronDoubleLeftIcon,
     ChevronDoubleRightIcon,
+    ChevronLeftIcon,
+    ChevronRightIcon,
     InformationCircleIcon,
 } from "@heroicons/react/24/solid";
+import {
+    BadgeDelta,
+    Button,
+    Card,
+    DeltaType,
+    Flex,
+    Icon,
+    Select,
+    SelectItem,
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableHeaderCell,
+    TableRow,
+    Text,
+    TextInput,
+    Title,
+} from "@tremor/react";
 
 const formatCurrency = Intl.NumberFormat("en-US", {
     style: "currency",
@@ -299,7 +299,7 @@ export const Details: React.FC<IResourceComponentsProps> = () => {
                 <TextInput
                     type="text"
                     placeholder="Enter Page"
-                    className="max-w-xs w-1/8"
+                    className="w-1/8 max-w-xs"
                     defaultValue={`${getState().pagination.pageIndex + 1}`}
                     onChange={(e) => {
                         const { value } = e.target;

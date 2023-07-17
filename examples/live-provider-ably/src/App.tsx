@@ -1,26 +1,26 @@
-import { GitHubBanner, Refine } from "@refinedev/core";
-import {
-    notificationProvider,
-    ThemedLayoutV2,
-    ErrorComponent,
-    RefineThemes,
-} from "@refinedev/antd";
-import dataProvider from "@refinedev/simple-rest";
 import { liveProvider } from "@refinedev/ably";
-import routerProvider, { NavigateToResource } from "@refinedev/react-router-v6";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
-import { ConfigProvider } from "antd";
-import "@refinedev/antd/dist/reset.css";
-
-import { ablyClient } from "utility";
-import { PostList, PostCreate, PostEdit, PostShow } from "pages/posts";
 import {
-    CategoryList,
+    ErrorComponent,
+    notificationProvider,
+    RefineThemes,
+    ThemedLayoutV2,
+} from "@refinedev/antd";
+import "@refinedev/antd/dist/reset.css";
+import { GitHubBanner, Refine } from "@refinedev/core";
+import routerProvider, { NavigateToResource } from "@refinedev/react-router-v6";
+import dataProvider from "@refinedev/simple-rest";
+import { ConfigProvider } from "antd";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
+
+import { CustomSider } from "./components";
+import {
     CategoryCreate,
     CategoryEdit,
+    CategoryList,
     CategoryShow,
-} from "pages/categories";
-import { CustomSider } from "components";
+} from "./pages/categories";
+import { PostCreate, PostEdit, PostList, PostShow } from "./pages/posts";
+import { ablyClient } from "./utility";
 
 const API_URL = "https://api.fake-rest.refine.dev";
 

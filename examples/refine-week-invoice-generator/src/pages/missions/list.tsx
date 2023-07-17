@@ -1,14 +1,14 @@
 import {
+    EditButton,
     List,
-    useTable,
     TagField,
     useModalForm,
-    EditButton,
+    useTable,
 } from "@refinedev/antd";
 import { Table } from "antd";
 
-import { IMission } from "interfaces";
-import { CreateMission, EditMission } from "components/mission";
+import { CreateMission, EditMission } from "../../components/mission";
+import { IMission } from "../../interfaces";
 
 export const MissionList: React.FC = () => {
     const { tableProps } = useTable<IMission>();

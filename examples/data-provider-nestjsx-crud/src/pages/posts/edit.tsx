@@ -1,14 +1,14 @@
-import React from "react";
 import { IResourceComponentsProps, useApiUrl } from "@refinedev/core";
+import React from "react";
 
-import { Edit, useForm, useSelect, useFileUploadState } from "@refinedev/antd";
+import { Edit, useFileUploadState, useForm, useSelect } from "@refinedev/antd";
 
 import { Form, Input, Select, Upload } from "antd";
 
 import MDEditor from "@uiw/react-md-editor";
 
-import { IPost, ICategory, ITags } from "interfaces";
-import { normalizeFile } from "utility/normalize";
+import { ICategory, IPost, ITags } from "../../interfaces";
+import { normalizeFile } from "../../utility/normalize";
 
 export const PostEdit: React.FC<IResourceComponentsProps> = () => {
     const { formProps, saveButtonProps, queryResult } = useForm<IPost>();

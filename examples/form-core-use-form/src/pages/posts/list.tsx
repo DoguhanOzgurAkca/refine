@@ -1,7 +1,7 @@
-import React, { useState } from "react";
 import { useList, useNavigation } from "@refinedev/core";
+import React, { useState } from "react";
 
-import { IPost } from "interfaces";
+import { IPost } from "../../interfaces";
 
 const PAGE_SIZE = 10;
 

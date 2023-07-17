@@ -1,5 +1,5 @@
+import { MultiSelect, Select, Text, TextInput } from "@mantine/core";
 import { Edit, useForm, useSelect } from "@refinedev/mantine";
-import { Select, TextInput, Text, MultiSelect } from "@mantine/core";
 import MDEditor from "@uiw/react-md-editor";
 
 import { ICategory, ITag } from "../../interfaces";
@@ -9,7 +9,7 @@ export const PostEdit: React.FC = () => {
         saveButtonProps,
         getInputProps,
         errors,
-        refineCore: { queryResult },
+        refineCore: { queryResult, autoSaveProps },
     } = useForm({
         initialValues: {
             title: "",
@@ -31,6 +31,11 @@ export const PostEdit: React.FC = () => {
             content: (value) =>
                 value.length < 10 ? "Too short content" : null,
         },
+        refineCoreProps: {
+            autoSave: {
+                enabled: true,
+            },
+        },
     });
 
     const defaultTags = queryResult?.data?.data?.tags || [];
@@ -46,7 +51,7 @@ export const PostEdit: React.FC = () => {
     });
 
     return (
-        <Edit saveButtonProps={saveButtonProps}>
+        <Edit saveButtonProps={saveButtonProps} autoSaveProps={autoSaveProps}>
             <form>
                 <TextInput
                     mt={8}

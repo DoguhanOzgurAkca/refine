@@ -1,35 +1,32 @@
+import { SearchOutlined } from "@ant-design/icons";
 import {
-    useTranslate,
-    IResourceComponentsProps,
+    BooleanField,
+    DateField,
+    List,
+    ShowButton,
+    useTable,
+} from "@refinedev/antd";
+import {
     CrudFilters,
     HttpError,
+    IResourceComponentsProps,
+    useTranslate,
 } from "@refinedev/core";
-
 import {
-    List,
-    useTable,
-    DateField,
-    BooleanField,
-    ShowButton,
-} from "@refinedev/antd";
-
-import { SearchOutlined } from "@ant-design/icons";
-
-import {
-    Table,
     Avatar,
-    Card,
-    Input,
-    Form,
-    DatePicker,
     Button,
-    Select,
-    FormProps,
-    Row,
+    Card,
     Col,
+    DatePicker,
+    Form,
+    FormProps,
+    Input,
+    Row,
+    Select,
+    Table,
 } from "antd";
 
-import { IUser, IUserFilterVariables } from "interfaces";
+import { IUser, IUserFilterVariables } from "../../interfaces";
 
 export const UserList: React.FC<IResourceComponentsProps> = () => {
     const { tableProps, searchFormProps } = useTable<

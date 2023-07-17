@@ -1,17 +1,17 @@
 import { IResourceComponentsProps, useMany } from "@refinedev/core";
 
 import {
+    DeleteButton,
+    EditButton,
     List,
+    ShowButton,
     TextField,
     useTable,
-    EditButton,
-    ShowButton,
-    DeleteButton,
 } from "@refinedev/antd";
 
-import { Table, Space } from "antd";
+import { Space, Table } from "antd";
 
-import { IPost, ICategory } from "interfaces";
+import { ICategory, IPost } from "../../interfaces";
 
 export const PostList: React.FC<IResourceComponentsProps> = () => {
     const { tableProps } = useTable<IPost>();

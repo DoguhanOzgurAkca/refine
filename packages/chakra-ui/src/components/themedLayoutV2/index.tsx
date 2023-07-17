@@ -1,10 +1,10 @@
-import React from "react";
 import { Box } from "@chakra-ui/react";
+import React from "react";
 
-import { ThemedSiderV2 as DefaultSider } from "./sider";
-import { ThemedHeaderV2 as DefaultHeader } from "./header";
-import { RefineThemedLayoutV2Props } from "./types";
 import { ThemedLayoutContextProvider } from "../../contexts";
+import { ThemedHeaderV2 as DefaultHeader } from "./header";
+import { ThemedSiderV2 as DefaultSider } from "./sider";
+import { RefineThemedLayoutV2Props } from "./types";
 
 export const ThemedLayoutV2: React.FC<RefineThemedLayoutV2Props> = ({
     Sider,
@@ -29,6 +29,7 @@ export const ThemedLayoutV2: React.FC<RefineThemedLayoutV2Props> = ({
                     flexDirection="column"
                     flex={1}
                     minH="100vh"
+                    overflow="auto"
                 >
                     <HeaderToRender />
                     <Box p={[2, 4]}>{children}</Box>

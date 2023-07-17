@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import React from "react";
 import { availableUIPackages } from "../../context/TutorialUIPackageContext";
 import { useCurrentTutorial } from "../../hooks/use-current-tutorial";
@@ -11,10 +12,12 @@ type Props = {
     unit: string;
     width: string;
     height: string;
+    isSelected?: boolean;
 };
 
 export const UnitCircle: React.FC<Props> = ({
     unit: unitName,
+    isSelected,
     width = "100px",
     height = "100px",
 }) => {
@@ -60,7 +63,7 @@ export const UnitCircle: React.FC<Props> = ({
     const r = 45;
     const cx = 50;
     const cy = 50;
-    const strokeWidth = 10;
+    const strokeWidth = 6;
     const standardOffsetLength = 20;
     const completedColor = "#48bb78";
 
@@ -136,15 +139,18 @@ export const UnitCircle: React.FC<Props> = ({
                 y="54%"
                 dominantBaseline="middle"
                 textAnchor="middle"
-                style={{
-                    fontSize: "3.5rem",
-                    fill: unitItemStatuses.every(
-                        (el) => el.status === "completed",
-                    )
-                        ? completedColor
-                        : "var(--tutorial-toc-text-color-light)",
-                }}
-                className="font-montserrat text-[3.5rem]"
+                fill="currentColor"
+                // style={{
+                //     fill: unitItemStatuses.every(
+                //         (el) => el.status === "completed",
+                //     )
+                //         ? completedColor
+                //         : "var(--tutorial-toc-text-color-light)",
+                // }}
+                className={clsx("text-[2.5rem]", {
+                    "text-gray-500": !isSelected,
+                    "text-gray-900 dark:text-white": isSelected,
+                })}
             >
                 {unit.no}
             </text>

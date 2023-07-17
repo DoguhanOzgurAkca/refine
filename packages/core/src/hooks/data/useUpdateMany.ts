@@ -5,41 +5,41 @@ import {
     useQueryClient,
 } from "@tanstack/react-query";
 
-import {
-    useResource,
-    useCancelNotification,
-    useMutationMode,
-    useTranslate,
-    usePublish,
-    useHandleNotification,
-    useDataProvider,
-    useInvalidate,
-    useLog,
-    useOnError,
-    useMeta,
-    useRefineContext,
-} from "@hooks";
 import { ActionTypes } from "@contexts/undoableQueue";
 import {
-    BaseRecord,
-    BaseKey,
-    UpdateManyResponse,
-    HttpError,
-    MutationMode,
-    QueryResponse,
-    PrevContext as UpdateContext,
-    SuccessErrorNotification,
-    MetaQuery,
-    GetListResponse,
-    IQueryKeys,
-} from "../../interfaces";
-import {
-    queryKeys,
-    pickDataProvider,
     handleMultiple,
+    pickDataProvider,
     pickNotDeprecated,
+    queryKeys,
     useActiveAuthProvider,
 } from "@definitions/helpers";
+import {
+    useCancelNotification,
+    useDataProvider,
+    useHandleNotification,
+    useInvalidate,
+    useLog,
+    useMeta,
+    useMutationMode,
+    useOnError,
+    usePublish,
+    useRefineContext,
+    useResource,
+    useTranslate,
+} from "@hooks";
+import {
+    BaseKey,
+    BaseRecord,
+    GetListResponse,
+    HttpError,
+    IQueryKeys,
+    MetaQuery,
+    MutationMode,
+    PrevContext as UpdateContext,
+    QueryResponse,
+    SuccessErrorNotification,
+    UpdateManyResponse,
+} from "../../interfaces";
 import {
     useLoadingOvertime,
     UseLoadingOvertimeOptionsProps,
@@ -47,11 +47,29 @@ import {
 } from "../useLoadingOvertime";
 
 type UpdateManyParams<TData, TError, TVariables> = {
+    /**
+     * ids for mutation function
+     */
     ids: BaseKey[];
+    /**
+     * Resource name for API data interactions
+     */
     resource: string;
+    /**
+     * [Determines when mutations are executed](/advanced-tutorials/mutation-mode.md)
+     */
     mutationMode?: MutationMode;
+    /**
+     * Duration in ms to wait before executing the mutation when `mutationMode = "undoable"`
+     */
     undoableTimeout?: number;
+    /**
+     * Provides a function to cancel the mutation when `mutationMode = "undoable"`
+     */
     onCancel?: (cancelMutation: () => void) => void;
+    /**
+     * Values for mutation function
+     */
     values: TVariables;
     /**
      * meta data for `dataProvider`
@@ -62,7 +80,14 @@ type UpdateManyParams<TData, TError, TVariables> = {
      * @deprecated `metaData` is deprecated with refine@4, refine will pass `meta` instead, however, we still support `metaData` for backward compatibility.
      */
     metaData?: MetaQuery;
+    /**
+     * If there is more than one `dataProvider`, you should use the `dataProviderName` that you will use.
+     * @default "default"
+     */
     dataProviderName?: string;
+    /**
+     *  You can use it to manage the invalidations that will occur at the end of the mutation.
+     */
     invalidates?: Array<keyof IQueryKeys>;
 } & SuccessErrorNotification<
     UpdateManyResponse<TData>,

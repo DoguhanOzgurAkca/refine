@@ -1,52 +1,48 @@
 import {
-    useTranslate,
-    IResourceComponentsProps,
     CrudFilters,
+    getDefaultFilter,
+    HttpError,
+    IResourceComponentsProps,
     useExport,
     useNavigation,
-    HttpError,
-    getDefaultFilter,
+    useTranslate,
 } from "@refinedev/core";
-
-import {
-    List,
-    TextField,
-    useTable,
-    getDefaultSortOrder,
-    DateField,
-    NumberField,
-    useSelect,
-    ExportButton,
-} from "@refinedev/antd";
+import { useMemo } from "react";
 
 import { SearchOutlined } from "@ant-design/icons";
-
 import {
-    Table,
-    Popover,
-    Card,
-    Input,
-    Form,
-    DatePicker,
-    Select,
+    DateField,
+    ExportButton,
+    getDefaultSortOrder,
+    List,
+    NumberField,
+    TextField,
+    useSelect,
+    useTable,
+} from "@refinedev/antd";
+import {
     Button,
-    FormProps,
-    Row,
+    Card,
     Col,
+    DatePicker,
+    Form,
+    FormProps,
+    Input,
+    Popover,
+    Row,
+    Select,
+    Table,
 } from "antd";
-
 import dayjs from "dayjs";
 
-import { OrderStatus, OrderActions } from "components";
-
+import { OrderActions, OrderStatus } from "../../components";
 import {
     IOrder,
-    IStore,
     IOrderFilterVariables,
     IOrderStatus,
+    IStore,
     IUser,
-} from "interfaces";
-import { useMemo } from "react";
+} from "../../interfaces";
 
 export const OrderList: React.FC<IResourceComponentsProps> = () => {
     const { tableProps, sorter, searchFormProps, filters } = useTable<

@@ -1,24 +1,24 @@
+import { StarOutlined } from "@ant-design/icons";
+import {
+    ErrorComponent,
+    notificationProvider,
+    RefineThemes,
+    ThemedLayoutV2,
+} from "@refinedev/antd";
+import "@refinedev/antd/dist/reset.css";
 import { GitHubBanner, Refine } from "@refinedev/core";
 import { RefineKbarProvider } from "@refinedev/kbar";
-import {
-    notificationProvider,
-    ThemedLayoutV2,
-    ErrorComponent,
-    RefineThemes,
-} from "@refinedev/antd";
-import { StarOutlined } from "@ant-design/icons";
-import dataProvider from "@refinedev/simple-rest";
 import routerProvider, {
+    DocumentTitleHandler,
     NavigateToResource,
     UnsavedChangesNotifier,
-    DocumentTitleHandler,
 } from "@refinedev/react-router-v6";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import dataProvider from "@refinedev/simple-rest";
 import { ConfigProvider } from "antd";
-import "@refinedev/antd/dist/reset.css";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 
-import { PostList, PostCreate, PostEdit, PostShow } from "pages/posts";
-import { CategoryList, CategoryCreate, CategoryEdit } from "pages/categories";
+import { CategoryCreate, CategoryEdit, CategoryList } from "./pages/categories";
+import { PostCreate, PostEdit, PostList, PostShow } from "./pages/posts";
 
 import { OffLayoutArea } from "./components";
 

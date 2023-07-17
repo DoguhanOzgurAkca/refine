@@ -1,13 +1,13 @@
-import { useApiUrl, useCustom, useTranslate } from "@refinedev/core";
+import ArrowDropDown from "@mui/icons-material/ArrowDropDown";
+import ArrowDropUp from "@mui/icons-material/ArrowDropUp";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import { BarChart, Bar, Tooltip, ResponsiveContainer } from "recharts";
-import ArrowDropDown from "@mui/icons-material/ArrowDropDown";
-import ArrowDropUp from "@mui/icons-material/ArrowDropUp";
+import { useApiUrl, useCustom, useTranslate } from "@refinedev/core";
+import { Bar, BarChart, ResponsiveContainer, Tooltip } from "recharts";
 
+import { ISalesChart } from "../../../interfaces";
 import { ChartTooltip } from "../chartTooltip";
-import { ISalesChart } from "interfaces";
 
 export const NewCustomers: React.FC = () => {
     const t = useTranslate();

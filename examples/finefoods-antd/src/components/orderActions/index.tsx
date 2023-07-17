@@ -1,11 +1,12 @@
-import { useTranslate, useUpdate } from "@refinedev/core";
 import {
     CheckCircleOutlined,
     CloseCircleOutlined,
     MoreOutlined,
 } from "@ant-design/icons";
+import { useTranslate, useUpdate } from "@refinedev/core";
 import { Dropdown, Menu } from "antd";
-import { IOrder } from "interfaces";
+
+import { IOrder } from "../../interfaces";
 
 type OrderActionProps = {
     record: IOrder;

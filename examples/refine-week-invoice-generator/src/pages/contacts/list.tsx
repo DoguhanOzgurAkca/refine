@@ -1,17 +1,16 @@
 import {
+    DeleteButton,
+    EditButton,
+    EmailField,
     List,
     TagField,
-    useTable,
-    EditButton,
-    DeleteButton,
     useModalForm,
-    EmailField,
+    useTable,
 } from "@refinedev/antd";
+import { Space, Table } from "antd";
 
-import { Table, Space } from "antd";
-
-import { IContact } from "interfaces";
-import { CreateContact } from "components/contact";
+import { CreateContact } from "../../components/contact";
+import { IContact } from "../../interfaces";
 
 export const ContactList: React.FC = () => {
     const { tableProps } = useTable<IContact>({

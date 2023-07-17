@@ -1,42 +1,42 @@
-import { useState, useEffect } from "react";
+import { DownOutlined, SearchOutlined } from "@ant-design/icons";
 import {
-    useGetLocale,
-    useSetLocale,
     useGetIdentity,
-    useTranslate,
+    useGetLocale,
     useList,
+    useSetLocale,
+    useTranslate,
 } from "@refinedev/core";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { SearchOutlined, DownOutlined } from "@ant-design/icons";
 
 import {
-    Dropdown,
-    Input,
-    Avatar,
-    Typography,
-    Space,
-    Grid,
-    Row,
-    Col,
     AutoComplete,
-    Layout as AntdLayout,
+    Avatar,
     Button,
-    theme,
+    Col,
+    Dropdown,
+    Grid,
+    Input,
+    Layout as AntdLayout,
     MenuProps,
+    Row,
+    Space,
+    theme,
+    Typography,
 } from "antd";
 
-import { useTranslation } from "react-i18next";
 import debounce from "lodash/debounce";
+import { useTranslation } from "react-i18next";
+
+import { IconMoon, IconSun } from "../../components/icons";
+import { useConfigProvider } from "../../context";
+import { ICourier, IIdentity, IOrder, IStore } from "../../interfaces";
+import { HeaderTitle } from "./styled";
 
 const { Header: AntdHeader } = AntdLayout;
 const { useToken } = theme;
 const { Text } = Typography;
 const { useBreakpoint } = Grid;
-
-import { IOrder, IStore, ICourier, IIdentity } from "interfaces";
-import { HeaderTitle } from "./styled";
-import { useConfigProvider } from "context";
-import { IconMoon, IconSun } from "components/icons";
 
 interface IOptionGroup {
     value: string;

@@ -1,13 +1,13 @@
-import { act, renderHook, waitFor } from "@testing-library/react";
+import { renderHook, waitFor } from "@testing-library/react";
 
 import { MockJSONServer, TestWrapper } from "@test";
 
-import { useInfiniteList } from "./useInfiniteList";
 import { defaultRefineOptions } from "@contexts/refine";
 import {
     IDataMultipleContextProvider,
     IRefineContextProvider,
 } from "../../interfaces";
+import { useInfiniteList } from "./useInfiniteList";
 
 const mockRefineProvider: IRefineContextProvider = {
     hasDashboard: false,
@@ -351,6 +351,33 @@ describe("useInfiniteList Hook", () => {
                 message: "Success",
                 type: "success",
             });
+        });
+
+        it("should not call `open` from notification provider on return `false`", async () => {
+            const openNotificationMock = jest.fn();
+
+            const { result } = renderHook(
+                () =>
+                    useInfiniteList({
+                        resource: "posts",
+                        successNotification: () => false,
+                    }),
+                {
+                    wrapper: TestWrapper({
+                        dataProvider: MockJSONServer,
+                        notificationProvider: {
+                            open: openNotificationMock,
+                        },
+                        resources: [{ name: "posts" }],
+                    }),
+                },
+            );
+
+            await waitFor(() => {
+                expect(result.current.isSuccess).toBeTruthy();
+            });
+
+            expect(openNotificationMock).toBeCalledTimes(0);
         });
 
         it("should call `open` from notification provider on error with custom notification params", async () => {

@@ -1,12 +1,17 @@
-import { useEffect } from "react";
+import {
+    EditButton,
+    FilterDropdown,
+    List,
+    ShowButton,
+    useTable,
+} from "@refinedev/antd";
 import { IResourceComponentsProps } from "@refinedev/core";
-import { List, EditButton, ShowButton, FilterDropdown } from "@refinedev/antd";
-import { Table, Space, Input } from "antd";
-import { useTable } from "@refinedev/antd";
+import { Input, Space, Table } from "antd";
+import { useEffect } from "react";
 
 import { useConnectMutation } from "@refinedev/connect";
 
-import { IProduct } from "interfaces";
+import { IProduct } from "../../interfaces";
 
 export const ProductList: React.FC<IResourceComponentsProps> = () => {
     const { mutate, data, isLoading } = useConnectMutation<IProduct[]>();

@@ -1,20 +1,20 @@
-import { useMemo, useState } from "react";
-import { useApiUrl, useCustom, useTranslate } from "@refinedev/core";
-import { NumberField } from "@refinedev/antd";
-import { Typography } from "antd";
 import { Line } from "@ant-design/charts";
 import { LineConfig } from "@ant-design/plots/lib/components/line";
+import { NumberField } from "@refinedev/antd";
+import { useApiUrl, useCustom, useTranslate } from "@refinedev/core";
+import { Typography } from "antd";
 import dayjs, { Dayjs } from "dayjs";
+import { useMemo, useState } from "react";
 
-import { IncreaseIcon, DecreaseIcon } from "components/icons";
+import { DecreaseIcon, IncreaseIcon } from "../../../components/icons";
 
-import { ISalesChart } from "interfaces";
+import { ISalesChart } from "../../../interfaces";
 import {
     DailyRevenueWrapper,
-    TitleAreNumber,
+    RangePicker,
     TitleArea,
     TitleAreaAmount,
-    RangePicker,
+    TitleAreNumber,
 } from "./styled";
 
 export const DailyRevenue: React.FC = () => {

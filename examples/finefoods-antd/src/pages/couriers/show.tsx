@@ -1,36 +1,34 @@
 import {
-    useTranslate,
-    IResourceComponentsProps,
-    useShow,
-    useNavigation,
-    HttpError,
-} from "@refinedev/core";
-
-import { List, useTable } from "@refinedev/antd";
-
-import {
-    EnvironmentOutlined,
-    PhoneOutlined,
-    MailOutlined,
     BankOutlined,
-    HomeOutlined,
     CarOutlined,
+    EnvironmentOutlined,
+    HomeOutlined,
+    MailOutlined,
+    PhoneOutlined,
     StarOutlined,
 } from "@ant-design/icons";
+import { List, useTable } from "@refinedev/antd";
 import {
-    Table,
-    Card,
+    HttpError,
+    IResourceComponentsProps,
+    useNavigation,
+    useShow,
+    useTranslate,
+} from "@refinedev/core";
+import {
+    Avatar,
     Button,
-    Space,
-    Row,
+    Card,
     Col,
     Grid,
-    Typography,
     Rate,
-    Avatar,
+    Row,
+    Space,
+    Table,
+    Typography,
 } from "antd";
 
-import { ICourier, IOrder, IOrderFilterVariables } from "interfaces";
+import { ICourier, IOrder, IOrderFilterVariables } from "../../interfaces";
 
 const { useBreakpoint } = Grid;
 

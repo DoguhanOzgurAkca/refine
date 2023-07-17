@@ -2,11 +2,11 @@ import { useList } from "@refinedev/core";
 import { NumberField } from "@refinedev/mui";
 
 import Avatar from "@mui/material/Avatar";
-import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 
-import { IOrder } from "interfaces";
+import { IOrder } from "../../../interfaces";
 
 export const TrendingMenu: React.FC = () => {
     const { data } = useList<IOrder>({

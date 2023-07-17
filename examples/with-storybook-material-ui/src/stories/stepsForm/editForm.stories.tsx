@@ -1,18 +1,18 @@
-import React, { useEffect } from "react";
-import { HttpError } from "@refinedev/core";
-import { Edit, SaveButton } from "@refinedev/mui";
-import TextField from "@mui/material/TextField";
-import MenuItem from "@mui/material/MenuItem";
-import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-import Stepper from "@mui/material/Stepper";
+import Button from "@mui/material/Button";
+import MenuItem from "@mui/material/MenuItem";
 import Step from "@mui/material/Step";
 import StepButton from "@mui/material/StepButton";
+import Stepper from "@mui/material/Stepper";
+import TextField from "@mui/material/TextField";
+import { HttpError } from "@refinedev/core";
+import { Edit, SaveButton } from "@refinedev/mui";
 import { useStepsForm } from "@refinedev/react-hook-form";
+import React, { useEffect } from "react";
 
 import { RefineWithoutLayout } from "../../../.storybook/preview";
 
-import { IPost } from "interfaces";
+import { IPost } from "../../interfaces";
 
 export default {
     title: "Hooks / Steps Form",

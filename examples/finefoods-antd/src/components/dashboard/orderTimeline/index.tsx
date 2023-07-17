@@ -1,21 +1,21 @@
-import { useTranslate, useNavigation } from "@refinedev/core";
 import { useSimpleList } from "@refinedev/antd";
+import { useNavigation, useTranslate } from "@refinedev/core";
 import {
-    Typography,
-    List as AntdList,
-    Tooltip,
     ConfigProvider,
+    List as AntdList,
     theme,
+    Tooltip,
+    Typography,
 } from "antd";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 
-import { IOrder } from "interfaces";
+import { IOrder } from "../../../interfaces";
 import {
-    TimelineContent,
     CreatedAt,
     Number,
     Timeline,
+    TimelineContent,
     TimelineItem,
 } from "./styled";
 

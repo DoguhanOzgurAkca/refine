@@ -1,9 +1,7 @@
-import React from "react";
 import { HttpError } from "@refinedev/core";
 import { EditButton } from "@refinedev/mui";
+import React from "react";
 
-import TextField from "@mui/material/TextField";
-import MenuItem from "@mui/material/MenuItem";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -12,12 +10,14 @@ import DialogTitle from "@mui/material/DialogTitle";
 import FormControl from "@mui/material/FormControl";
 import FormHelperText from "@mui/material/FormHelperText";
 import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
+import TextField from "@mui/material/TextField";
 
 import { useModalForm } from "@refinedev/react-hook-form";
 
 import { RefineWithoutLayout } from "../../../.storybook/preview";
-import { IPost } from "interfaces";
+import { IPost } from "../../interfaces";
 
 export default {
     title: "Hooks / Modal Form",

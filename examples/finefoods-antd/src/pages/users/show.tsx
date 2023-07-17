@@ -1,40 +1,38 @@
 import {
-    useShow,
+    DateField,
+    getDefaultSortOrder,
+    List,
+    NumberField,
+    TextField,
+    useTable,
+} from "@refinedev/antd";
+import {
     HttpError,
     IResourceComponentsProps,
+    useShow,
     useTranslate,
 } from "@refinedev/core";
 
 import {
-    useTable,
-    List,
-    TextField,
-    getDefaultSortOrder,
-    NumberField,
-    DateField,
-} from "@refinedev/antd";
-
-import {
-    UserOutlined,
-    PhoneOutlined,
     CalendarOutlined,
     CheckOutlined,
+    PhoneOutlined,
+    UserOutlined,
 } from "@ant-design/icons";
 import {
-    Typography,
     Avatar,
-    Row,
-    Col,
     Card,
-    Space,
-    Table,
+    Col,
     Grid,
     Popover,
+    Row,
+    Space,
+    Table,
+    Typography,
 } from "antd";
 
-import { OrderStatus } from "components";
-
-import { IUser, IOrder, IOrderFilterVariables } from "interfaces";
+import { OrderStatus } from "../../components";
+import { IOrder, IOrderFilterVariables, IUser } from "../../interfaces";
 
 const { useBreakpoint } = Grid;
 

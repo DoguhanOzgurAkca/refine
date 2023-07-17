@@ -1,16 +1,16 @@
 import React from "react";
 
 import {
+    useBack,
+    useGo,
     useMutationMode,
     useNavigation,
+    useRefineContext,
+    useResource,
+    useRouterType,
+    useToPath,
     useTranslate,
     useUserFriendlyName,
-    useRefineContext,
-    useRouterType,
-    useBack,
-    useResource,
-    useGo,
-    useToPath,
 } from "@refinedev/core";
 
 import { Box, Heading, HStack, IconButton, Spinner } from "@chakra-ui/react";
@@ -19,18 +19,19 @@ import { Box, Heading, HStack, IconButton, Spinner } from "@chakra-ui/react";
 import { IconArrowLeft } from "@tabler/icons";
 
 import {
-    DeleteButton,
-    ListButton,
-    RefreshButton,
-    SaveButton,
+    AutoSaveIndicator,
     Breadcrumb,
-    ListButtonProps,
-    RefreshButtonProps,
+    DeleteButton,
     DeleteButtonProps,
+    ListButton,
+    ListButtonProps,
+    RefreshButton,
+    RefreshButtonProps,
+    SaveButton,
     SaveButtonProps,
 } from "@components";
-import { EditProps } from "../types";
 import { RefinePageHeaderClassNames } from "@refinedev/ui-types";
+import { EditProps } from "../types";
 
 export const Edit: React.FC<EditProps> = (props) => {
     const {
@@ -53,6 +54,7 @@ export const Edit: React.FC<EditProps> = (props) => {
         goBack: goBackFromProps,
         breadcrumb: breadcrumbFromProps,
         title,
+        autoSaveProps,
     } = props;
     const translate = useTranslate();
     const { options: { breadcrumb: globalBreadcrumb } = {} } =
@@ -131,10 +133,11 @@ export const Edit: React.FC<EditProps> = (props) => {
     };
 
     const defaultHeaderButtons = (
-        <>
+        <Box display="flex" flexDirection="row" alignItems="center" gap="2">
+            {autoSaveProps && <AutoSaveIndicator {...autoSaveProps} />}
             {hasList && <ListButton {...listButtonProps} />}
             <RefreshButton {...refreshButtonProps} />
-        </>
+        </Box>
     );
 
     const defaultFooterButtons = (

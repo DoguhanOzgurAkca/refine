@@ -1,6 +1,6 @@
 import { act, renderHook, waitFor } from "@testing-library/react";
 
-import { MockJSONServer, TestWrapper, mockRouterBindings } from "@test";
+import { MockJSONServer, mockRouterBindings, TestWrapper } from "@test";
 import {
     assertList,
     assertMutationSuccess,
@@ -8,8 +8,8 @@ import {
     renderUseMany,
 } from "@test/mutation-helpers";
 
-import { useUpdateMany } from "./useUpdateMany";
 import * as UseInvalidate from "../invalidate/index";
+import { useUpdateMany } from "./useUpdateMany";
 
 describe("useUpdateMany Hook", () => {
     it("with rest json server", async () => {
@@ -494,6 +494,33 @@ describe("useUpdateMany Hook", () => {
                 message: "Success",
                 type: "success",
             });
+        });
+
+        it("should not call `open` from notification provider on return `false`", async () => {
+            const openNotificationMock = jest.fn();
+
+            const { result } = renderHook(() => useUpdateMany(), {
+                wrapper: TestWrapper({
+                    dataProvider: MockJSONServer,
+                    notificationProvider: {
+                        open: openNotificationMock,
+                    },
+                    resources: [{ name: "posts" }],
+                }),
+            });
+
+            result.current.mutate({
+                resource: "posts",
+                ids: ["1", "2"],
+                values: {},
+                successNotification: () => false,
+            });
+
+            await waitFor(() => {
+                expect(result.current.isSuccess).toBeTruthy();
+            });
+
+            expect(openNotificationMock).toBeCalledTimes(0);
         });
 
         it("should call `open` from notification provider on error with custom notification params", async () => {

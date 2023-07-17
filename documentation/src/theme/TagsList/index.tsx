@@ -1,9 +1,9 @@
-import React from "react";
-import Tag from "@theme/Tag";
-import { titleCase } from "title-case";
-import clsx from "clsx";
 import { Disclosure, Transition } from "@headlessui/react";
 import { TriangleDownIcon } from "@site/src/refine-theme/icons/triangle-down";
+import Tag from "@theme/Tag";
+import clsx from "clsx";
+import React from "react";
+import { titleCase } from "title-case";
 
 const ChevronDownIcon = () => (
     <svg
@@ -62,7 +62,7 @@ const Desktop = ({
                 "justify-between",
                 "items-start",
                 "bg-gray-50 dark:bg-gray-800",
-                "rounded-xl p-2",
+                "rounded-xl p-4 2xl:p-6",
             )}
         >
             <ul

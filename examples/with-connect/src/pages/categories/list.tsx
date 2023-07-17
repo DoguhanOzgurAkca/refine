@@ -1,12 +1,11 @@
-import { useEffect } from "react";
+import { EditButton, List, ShowButton, useTable } from "@refinedev/antd";
 import { IResourceComponentsProps } from "@refinedev/core";
-import { List, EditButton, ShowButton } from "@refinedev/antd";
-import { Table, Space } from "antd";
-import { useTable } from "@refinedev/antd";
+import { Space, Table } from "antd";
+import { useEffect } from "react";
 
 import { useConnectMutation } from "@refinedev/connect";
 
-import { ICategory } from "interfaces";
+import { ICategory } from "../../interfaces";
 
 export const CategoryList: React.FC<IResourceComponentsProps> = () => {
     const { mutate, data, isLoading } = useConnectMutation<ICategory[]>();

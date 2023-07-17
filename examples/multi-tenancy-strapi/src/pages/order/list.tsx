@@ -1,17 +1,17 @@
-import { IResourceComponentsProps, useParsed } from "@refinedev/core";
 import {
+    DeleteButton,
+    EditButton,
+    ImageField,
     List,
-    useTable,
     TagField,
     TextField,
-    EditButton,
-    DeleteButton,
-    ImageField,
+    useTable,
 } from "@refinedev/antd";
-import { Table, Space } from "antd";
+import { IResourceComponentsProps, useParsed } from "@refinedev/core";
+import { Space, Table } from "antd";
 
-import { IOrder } from "interfaces";
 import { API_URL } from "../../constants";
+import { IOrder } from "../../interfaces";
 
 export const OrderList: React.FC<IResourceComponentsProps> = () => {
     const { params } = useParsed<{ tenant: string }>();

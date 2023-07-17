@@ -1,19 +1,23 @@
 import {
-    IResourceComponentsProps,
     HttpError,
+    IResourceComponentsProps,
     useParsed,
 } from "@refinedev/core";
 
 import {
-    useSimpleList,
-    useModalForm,
     CreateButton,
     List,
+    useModalForm,
+    useSimpleList,
 } from "@refinedev/antd";
 import { List as AntdList } from "antd";
 
-import { IProduct } from "interfaces";
-import { ProductItem, EditProduct, CreateProduct } from "components/product";
+import {
+    CreateProduct,
+    EditProduct,
+    ProductItem,
+} from "../../components/product";
+import { IProduct } from "../../interfaces";
 
 export const ProductList: React.FC<IResourceComponentsProps> = () => {
     const { params } = useParsed<{ tenant?: string }>();

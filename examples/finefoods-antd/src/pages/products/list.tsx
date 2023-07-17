@@ -1,26 +1,23 @@
-import {
-    useTranslate,
-    IResourceComponentsProps,
-    CrudFilters,
-    HttpError,
-    getDefaultFilter,
-} from "@refinedev/core";
-
-import { useSimpleList, CreateButton, useDrawerForm } from "@refinedev/antd";
-
 import { SearchOutlined } from "@ant-design/icons";
-import { Row, List as AntdList, Col, Form, Input, Typography } from "antd";
-
-const { Text } = Typography;
+import { CreateButton, useDrawerForm, useSimpleList } from "@refinedev/antd";
+import {
+    CrudFilters,
+    getDefaultFilter,
+    HttpError,
+    IResourceComponentsProps,
+    useTranslate,
+} from "@refinedev/core";
+import { Col, Form, Input, List as AntdList, Row, Typography } from "antd";
 
 import {
-    ProductItem,
-    ProductCategoryFilter,
     CreateProduct,
     EditProduct,
-} from "components/product";
+    ProductCategoryFilter,
+    ProductItem,
+} from "../../components/product";
+import { IProduct } from "../../interfaces";
 
-import { IProduct } from "interfaces";
+const { Text } = Typography;
 
 export const ProductList: React.FC<IResourceComponentsProps> = () => {
     const t = useTranslate();

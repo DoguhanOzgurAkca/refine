@@ -1,20 +1,20 @@
-import React, { useEffect } from "react";
-import {
-    useForm as useHookForm,
-    UseFormProps as UseHookFormProps,
-    UseFormReturn,
-    FieldValues,
-    UseFormHandleSubmit,
-    Path,
-} from "react-hook-form";
 import {
     BaseRecord,
     HttpError,
     useForm as useFormCore,
-    useWarnAboutChange,
     UseFormProps as UseFormCoreProps,
     UseFormReturnType as UseFormReturnTypeCore,
+    useWarnAboutChange,
 } from "@refinedev/core";
+import React, { useEffect } from "react";
+import {
+    FieldValues,
+    Path,
+    useForm as useHookForm,
+    UseFormHandleSubmit,
+    UseFormProps as UseHookFormProps,
+    UseFormReturn,
+} from "react-hook-form";
 
 export type UseFormReturnType<
     TQueryFnData extends BaseRecord = BaseRecord,
@@ -114,7 +114,8 @@ export const useForm = <
         ...refineCoreProps,
     });
 
-    const { queryResult, onFinish, formLoading } = useFormCoreResult;
+    const { queryResult, onFinish, formLoading, onFinishAutoSave } =
+        useFormCoreResult;
 
     const useHookFormResult = useHookForm<TVariables, TContext>({
         ...rest,
@@ -150,10 +151,23 @@ export const useForm = <
         return () => subscription.unsubscribe();
     }, [watch]);
 
-    const onValuesChange = (changeValues: Record<string, any>) => {
+    const onValuesChange = (changeValues: TVariables) => {
         if (warnWhenUnsavedChanges) {
             setWarnWhen(true);
         }
+
+        if (refineCoreProps?.autoSave) {
+            setWarnWhen(false);
+
+            const onFinishProps = refineCoreProps.autoSave?.onFinish;
+
+            if (onFinishProps) {
+                return onFinishAutoSave(onFinishProps(changeValues));
+            }
+
+            return onFinishAutoSave(changeValues);
+        }
+
         return changeValues;
     };
 

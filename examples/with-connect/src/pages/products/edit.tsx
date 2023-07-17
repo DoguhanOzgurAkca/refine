@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
+import { Edit } from "@refinedev/antd";
 import {
     IResourceComponentsProps,
     useNavigation,
     useResource,
 } from "@refinedev/core";
-import { Edit } from "@refinedev/antd";
+import React, { useEffect } from "react";
 
 import { Form, Input } from "antd";
 
-import { IProduct } from "interfaces";
 import { useConnectMutation } from "@refinedev/connect";
+import { IProduct } from "../../interfaces";
 
 export const ProductEdit: React.FC<IResourceComponentsProps> = () => {
     const { list } = useNavigation();

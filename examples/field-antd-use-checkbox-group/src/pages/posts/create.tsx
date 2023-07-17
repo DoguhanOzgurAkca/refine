@@ -1,13 +1,12 @@
-import { useState } from "react";
 import { IResourceComponentsProps } from "@refinedev/core";
 
-import { Create, useForm, useCheckboxGroup } from "@refinedev/antd";
+import { Create, useCheckboxGroup, useForm } from "@refinedev/antd";
 
-import { Form, Input, Checkbox } from "antd";
+import { Checkbox, Form, Input } from "antd";
 
 import MDEditor from "@uiw/react-md-editor";
 
-import { IPost, ITag } from "interfaces";
+import { IPost, ITag } from "../../interfaces";
 
 export const PostCreate: React.FC<IResourceComponentsProps> = () => {
     const { formProps, saveButtonProps } = useForm<IPost>();

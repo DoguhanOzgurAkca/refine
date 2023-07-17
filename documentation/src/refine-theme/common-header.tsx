@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import SearchBar from "@site/src/theme/SearchBar";
 import Link from "@docusaurus/Link";
+import SearchBar from "@site/src/theme/SearchBar";
 import clsx from "clsx";
 import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useState } from "react";
 
+import { HamburgerIcon } from "./icons/hamburger";
 import { HeaderDiscordIcon } from "./icons/header-discord";
 import { RefineLogoIcon } from "./icons/refine-logo";
-import { HamburgerIcon } from "./icons/hamburger";
 
-import { GitHubStar } from "./common-header/github-star";
-import { MobileMenuModal } from "./common-header/mobile-menu-modal";
-import { Menu } from "./common-header/menu";
-import { CommonThemeToggle } from "./common-theme-toggle";
 import { CommonDocSearchButton } from "./common-doc-search-button";
+import { GitHubStar } from "./common-header/github-star";
+import { Menu } from "./common-header/menu";
+import { MobileMenuModal } from "./common-header/mobile-menu-modal";
+import { CommonThemeToggle } from "./common-theme-toggle";
 import { TopAnnouncement } from "./top-announcement";
 
 type Props = {
@@ -35,7 +35,7 @@ export const CommonHeader = ({ hasSticky, trackProgress }: Props) => {
             <TopAnnouncement />
             <div
                 className={clsx(
-                    "h-2 header-sm:h-4 header-md:h-6",
+                    "header-sm:h-4 blog-lg:h-6 h-2",
                     "w-full",
                     "bg-common-header-bg-light",
                     "dark:bg-common-header-bg-dark",
@@ -47,7 +47,7 @@ export const CommonHeader = ({ hasSticky, trackProgress }: Props) => {
                     "bg-common-header-bg-light",
                     "dark:bg-common-header-bg-dark",
                     "backdrop-blur-header-blur",
-                    "px-4 header-md:px-8",
+                    "blog-lg:px-8 px-4",
                     "py-3",
                     hasSticky && "sticky top-0 z-10",
                 )}
@@ -59,11 +59,11 @@ export const CommonHeader = ({ hasSticky, trackProgress }: Props) => {
                                 <RefineLogoIcon className="dark:text-gray-0 text-gray-900" />
                             </Link>
                         </div>
-                        <div className="flex items-center justify-end landing-xl:justify-between grow">
-                            <div className="hidden header-md:flex gap-8">
+                        <div className="blog-lg:justify-between flex grow items-center justify-end">
+                            <div className="blog-lg:flex hidden gap-8">
                                 <Menu />
                             </div>
-                            <div className="hidden header-md:flex items-center justify-end gap-8">
+                            <div className="blog-lg:flex hidden items-center justify-end gap-8">
                                 <SearchBar
                                     CustomButton={CommonDocSearchButton}
                                 />
@@ -82,7 +82,7 @@ export const CommonHeader = ({ hasSticky, trackProgress }: Props) => {
                             </div>
                             <button
                                 type="button"
-                                className="block header-md:hidden"
+                                className="blog-lg:hidden block"
                                 onClick={() => setIsModalOpen(true)}
                             >
                                 <HamburgerIcon className="text-gray-500 dark:text-gray-400" />
@@ -97,7 +97,7 @@ export const CommonHeader = ({ hasSticky, trackProgress }: Props) => {
             </div>
             <div
                 className={clsx(
-                    "h-2 header-sm:h-4 header-md:h-6",
+                    "header-sm:h-4 blog-lg:h-6 h-2",
                     "w-full",
                     "bg-common-header-bg-light",
                     "dark:bg-common-header-bg-dark",
@@ -107,7 +107,11 @@ export const CommonHeader = ({ hasSticky, trackProgress }: Props) => {
             <div
                 className={clsx(
                     "w-full",
-                    hasSticky && ["z-0", "sticky", "top-[64px]"],
+                    hasSticky && [
+                        "z-[2]",
+                        "sticky",
+                        "blog-lg:top-[64px] top-[56px]",
+                    ],
                 )}
             >
                 <div

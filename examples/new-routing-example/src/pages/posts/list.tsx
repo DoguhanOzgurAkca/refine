@@ -1,23 +1,21 @@
 import {
+    EditButton,
+    FilterDropdown,
+    List,
+    ShowButton,
+    TagField,
+    TextField,
+    useSelect,
+    useTable,
+} from "@refinedev/antd";
+import {
+    getDefaultFilter,
     IResourceComponentsProps,
     useMany,
-    getDefaultFilter,
 } from "@refinedev/core";
+import { Radio, Select, Space, Table } from "antd";
 
-import {
-    List,
-    TextField,
-    EditButton,
-    ShowButton,
-    FilterDropdown,
-    TagField,
-    useTable,
-    useSelect,
-} from "@refinedev/antd";
-
-import { Table, Space, Select, Radio } from "antd";
-
-import { IPost, ICategory } from "interfaces";
+import { ICategory, IPost } from "../../interfaces";
 
 export const PostList: React.FC<IResourceComponentsProps> = () => {
     const { tableProps, filters } = useTable<IPost>({

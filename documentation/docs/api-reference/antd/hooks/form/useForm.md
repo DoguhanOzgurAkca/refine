@@ -7,19 +7,19 @@ source: packages/antd/src/hooks/form/useForm.ts
 
 ```tsx live shared
 import {
+    CloneButton as AntdCloneButton,
     Create as AntdCreate,
+    EditButton as AntdEditButton,
     List as AntdList,
     useForm as useAntdForm,
     useTable as useAntdTable,
-    EditButton as AntdEditButton,
-    CloneButton as AntdCloneButton,
 } from "@refinedev/antd";
 import {
-    Table as AntdTable,
     Edit as AntdEdit,
     Form as AntdForm,
     Input as AntdInput,
     Space as AntdSpace,
+    Table as AntdTable,
 } from "antd";
 
 interface IPost {
@@ -375,7 +375,7 @@ setInitialRoutes(["/posts/clone/123"]);
 import React from "react";
 
 import { Create, useForm } from "@refinedev/antd";
-import { Form, Input, Space, Switch } from "antd";
+import { Form, Input } from "antd";
 
 interface IPost {
     id: number;
@@ -526,11 +526,12 @@ It receives the following parameters:
 -   `data`: Returned value from [`useCreate`](/docs/api-reference/core/hooks/data/useCreate/) or [`useUpdate`](/docs/api-reference/core/hooks/data/useUpdate/) depending on the `action`.
 -   `variables`: The variables passed to the mutation.
 -   `context`: react-query context.
+-   `isAutoSave`: It's a boolean value that indicates whether the mutation is triggered by the [`autoSave`](#autoSave) feature or not.
 
 ```tsx
 useForm({
-    onMutationSuccess: (data, variables, context) => {
-        console.log({ data, variables, context });
+    onMutationSuccess: (data, variables, context, isAutoSave) => {
+        console.log({ data, variables, context, isAutoSave });
     },
 });
 ```
@@ -544,11 +545,12 @@ It receives the following parameters:
 -   `data`: Returned value from [`useCreate`](/docs/api-reference/core/hooks/data/useCreate/) or [`useUpdate`](/docs/api-reference/core/hooks/data/useUpdate/) depending on the `action`.
 -   `variables`: The variables passed to the mutation.
 -   `context`: react-query context.
+-   `isAutoSave`: It's a boolean value that indicates whether the mutation is triggered by the [`autoSave`](#autoSave) feature or not.
 
 ```tsx
 useForm({
-    onMutationError: (data, variables, context) => {
-        console.log({ data, variables, context });
+    onMutationError: (data, variables, context, isAutoSave) => {
+        console.log({ data, variables, context, isAutoSave });
     },
 });
 ```
@@ -842,6 +844,64 @@ console.log(overtime.elapsedTime); // undefined, 1000, 2000, 3000 4000, ...
 }
 ```
 
+### `autoSave`
+
+If you want to save the form automatically after some delay when user edits the form, you can pass true to `autoSave.enabled` prop.
+
+It also supports [`onMutationSuccess`](#onmutationsuccess) and [`onMutationError`](#onmutationerror) callback functions. You can use `isAutoSave` parameter to determine whether the mutation is triggered by `autoSave` or not.
+
+:::caution
+Works only in `action: "edit"` mode.
+:::
+
+`onMutationSuccess` and `onMutationError` callbacks will be called after the mutation is successful or failed.
+
+#### `enabled`
+
+To enable the `autoSave` feature, set the `enabled` parameter to `true`.
+
+```tsx
+useForm({
+    autoSave: {
+        enabled: true,
+    },
+});
+```
+
+#### `debounce`
+
+Set the debounce time for the `autoSave` prop. Default value is `1000`.
+
+```tsx
+useForm({
+    autoSave: {
+        enabled: true,
+        // highlight-next-line
+        debounce: 2000,
+    },
+});
+```
+
+#### `onFinish`
+
+If you want to modify the data before sending it to the server, you can use `onFinish` callback function.
+
+```tsx
+useForm({
+    autoSave: {
+        enabled: true,
+        // highlight-start
+        onFinish: (values) => {
+            return {
+                foo: "bar",
+                ...values,
+            };
+        },
+        // highlight-end
+    },
+});
+```
+
 ## Return Values
 
 :::tip
@@ -957,6 +1017,10 @@ const { overtime } = useForm();
 console.log(overtime.elapsedTime); // undefined, 1000, 2000, 3000 4000, ...
 ```
 
+### `autoSaveProps`
+
+If `autoSave` is enabled, this hook returns `autoSaveProps` object with `data`, `error`, and `status` properties from mutation.
+
 ## FAQ
 
 ### How can Invalidate other resources?
@@ -966,9 +1030,7 @@ You can invalidate other resources with help of [`useInvalidate`](/docs/api-refe
 It is useful when you want to `invalidate` other resources don't have relation with the current resource.
 
 ```tsx
-import React from "react";
-import { Create, useForm } from "@refinedev/antd";
-import { Form, Input } from "antd";
+import { useForm } from "@refinedev/antd";
 
 const PostEdit = () => {
     const invalidate = useInvalidate();
@@ -995,9 +1057,9 @@ Here is an example where we modify the form data before submit:
 We need to send the values we received from the user in two separate inputs, `name` and `surname`, to the API as `fullName`.
 
 ```tsx title="pages/user/create.tsx"
-import React from "react";
 import { Create, useForm } from "@refinedev/antd";
 import { Form, Input } from "antd";
+import React from "react";
 
 export const UserCreate: React.FC = () => {
     // highlight-next-line
@@ -1067,6 +1129,7 @@ You can use the `meta` property to pass common values to the mutation and the qu
 | id              | Record id for `clone` and `create` action               | [`BaseKey`](/api-reference/core/interfaces.md#basekey)                                                                                                             |
 | setId           | `id` setter                                             | `Dispatch<SetStateAction<` `string` \| `number` \| `undefined>>`                                                                                                   |
 | overtime        | Overtime loading props                                  | `{ elapsedTime?: number }`                                                                                                                                         |
+| autoSaveProps   | Auto save props                                         | `{ data: UpdateResponse<TData>` \| `undefined, error: HttpError` \| `null, status: "loading"` \| `"error"` \| `"idle"` \| `"success" }`                            |
 
 ## Example
 

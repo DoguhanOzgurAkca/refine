@@ -1,4 +1,4 @@
-import { Refine, GitHubBanner, Authenticated } from "@refinedev/core";
+import { Authenticated, GitHubBanner, Refine } from "@refinedev/core";
 import { RefineKbar, RefineKbarProvider } from "@refinedev/kbar";
 
 import {
@@ -8,32 +8,32 @@ import {
 } from "@refinedev/antd";
 import "@refinedev/antd/dist/reset.css";
 
-import dataProvider from "@refinedev/simple-rest";
-import { BrowserRouter, Route, Routes, Outlet } from "react-router-dom";
 import routerBindings, {
-    NavigateToResource,
     CatchAllNavigate,
-    UnsavedChangesNotifier,
     DocumentTitleHandler,
+    NavigateToResource,
+    UnsavedChangesNotifier,
 } from "@refinedev/react-router-v6";
+import dataProvider from "@refinedev/simple-rest";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
+import { authProvider } from "./authProvider";
+import { Header } from "./components/header";
+import { ColorModeContextProvider } from "./contexts/color-mode";
 import {
-    BlogPostList,
     BlogPostCreate,
     BlogPostEdit,
+    BlogPostList,
     BlogPostShow,
-} from "pages/blog-posts";
+} from "./pages/blog-posts";
 import {
-    CategoryList,
     CategoryCreate,
     CategoryEdit,
+    CategoryList,
     CategoryShow,
-} from "pages/categories";
-import { ColorModeContextProvider } from "./contexts/color-mode";
-import { Header } from "./components/header";
-import { Login } from "pages/login";
-import { Register } from "pages/register";
-import { ForgotPassword } from "pages/forgotPassword";
-import { authProvider } from "./authProvider";
+} from "./pages/categories";
+import { ForgotPassword } from "./pages/forgotPassword";
+import { Login } from "./pages/login";
+import { Register } from "./pages/register";
 
 function App() {
     return (

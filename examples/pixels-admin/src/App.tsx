@@ -1,35 +1,34 @@
 import {
+    ErrorComponent,
+    notificationProvider,
+    ThemedLayoutV2,
+} from "@refinedev/antd";
+import {
     Authenticated,
     CanAccess,
     GitHubBanner,
     Refine,
 } from "@refinedev/core";
-import {
-    ErrorComponent,
-    ThemedLayoutV2,
-    notificationProvider,
-} from "@refinedev/antd";
-import { ConfigProvider } from "antd";
-import { dataProvider, liveProvider } from "@refinedev/supabase";
 import routerBindings, {
+    DocumentTitleHandler,
     NavigateToResource,
     UnsavedChangesNotifier,
-    DocumentTitleHandler,
 } from "@refinedev/react-router-v6";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
-
-import { Title } from "./components/layout";
-import { supabaseClient } from "utility";
+import { dataProvider, liveProvider } from "@refinedev/supabase";
+import { ConfigProvider } from "antd";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 
 import "@refinedev/antd/dist/reset.css";
 
+import { Title } from "./components/layout";
+import { CanvasList, UserList } from "./pages";
+import { AuthPage } from "./pages/auth";
 import {
+    accessControlProvider,
     auditLogProvider,
     authProvider,
-    accessControlProvider,
-} from "providers";
-import { CanvasList, UserList } from "pages";
-import { AuthPage } from "pages/auth";
+} from "./providers";
+import { supabaseClient } from "./utility";
 
 function App() {
     return (

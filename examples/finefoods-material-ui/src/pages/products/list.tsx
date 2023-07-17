@@ -1,29 +1,30 @@
-import React from "react";
 import {
-    useTranslate,
-    IResourceComponentsProps,
-    useTable,
     getDefaultFilter,
     HttpError,
+    IResourceComponentsProps,
+    useTable,
+    useTranslate,
 } from "@refinedev/core";
-import { useModalForm } from "@refinedev/react-hook-form";
 import { CreateButton } from "@refinedev/mui";
-import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
-import Typography from "@mui/material/Typography";
-import InputBase from "@mui/material/InputBase";
-import IconButton from "@mui/material/IconButton";
-import Stack from "@mui/material/Stack";
-import Pagination from "@mui/material/Pagination";
+import { useModalForm } from "@refinedev/react-hook-form";
+import React from "react";
+
 import SearchIcon from "@mui/icons-material/Search";
+import Grid from "@mui/material/Grid";
+import IconButton from "@mui/material/IconButton";
+import InputBase from "@mui/material/InputBase";
+import Pagination from "@mui/material/Pagination";
+import Paper from "@mui/material/Paper";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 
 import {
     CategoryFilter,
-    ProductItem,
     CreateProduct,
     EditProduct,
-} from "components";
-import { IProduct, Nullable } from "interfaces";
+    ProductItem,
+} from "../../components";
+import { IProduct, Nullable } from "../../interfaces";
 
 export const ProductList: React.FC<IResourceComponentsProps> = () => {
     const t = useTranslate();

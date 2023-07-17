@@ -1,8 +1,8 @@
-import React from "react";
-import { CommonLayout } from "./common-layout";
-import { CommonHeader } from "./common-header";
-import { BlogFooter } from "./blog-footer";
 import clsx from "clsx";
+import React from "react";
+import { BlogFooter } from "./blog-footer";
+import { CommonHeader } from "./common-header";
+import { CommonLayout } from "./common-layout";
 
 export const RefineBlogLayout = (props: any) => {
     const { children, toc, ...layoutProps } = props;
@@ -21,16 +21,6 @@ export const RefineBlogLayout = (props: any) => {
                     "w-full",
                 )}
             >
-                {/* if there's TOC, we need to replicate the same width in the left side to center the content */}
-                {toc && (
-                    <div
-                        className={clsx(
-                            "w-[280px]",
-                            "hidden blog-lg:block",
-                            "flex-shrink-0",
-                        )}
-                    />
-                )}
                 <div className={clsx("refine-prose", "flex-1", "min-w-0")}>
                     {children}
                 </div>

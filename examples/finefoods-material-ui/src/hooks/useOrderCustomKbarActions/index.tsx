@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import CheckOutlined from "@mui/icons-material/CheckOutlined";
+import CloseOutlined from "@mui/icons-material/CloseOutlined";
 import { useTranslate, useUpdate } from "@refinedev/core";
 import {
     Action,
@@ -6,10 +7,9 @@ import {
     Priority,
     useRegisterActions,
 } from "@refinedev/kbar";
-import CheckOutlined from "@mui/icons-material/CheckOutlined";
-import CloseOutlined from "@mui/icons-material/CloseOutlined";
+import { useEffect, useState } from "react";
 
-import { IOrder } from "interfaces";
+import { IOrder } from "../../interfaces";
 
 export const useOrderCustomKbarActions = (order?: IOrder): void => {
     const t = useTranslate();

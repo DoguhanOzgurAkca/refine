@@ -1,17 +1,17 @@
-import { useNavigation, useTranslate } from "@refinedev/core";
 import { useTable } from "@refinedev/antd";
-import { Typography, Table, Avatar, Space, Tag } from "antd";
+import { useNavigation, useTranslate } from "@refinedev/core";
+import { Avatar, Space, Table, Tag, Typography } from "antd";
 import {
-    RecentOrdersColumn,
-    Price,
     OrderId,
+    Price,
+    RecentOrdersColumn,
     Title,
     TitleWrapper,
 } from "./styled";
 
-import { OrderActions } from "components";
+import { OrderActions } from "../../../components";
 
-import { IOrder } from "interfaces";
+import { IOrder } from "../../../interfaces";
 
 const { Text, Paragraph } = Typography;
 

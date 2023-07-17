@@ -1,24 +1,22 @@
 import {
+    getDefaultFilter,
     IResourceComponentsProps,
     useMany,
-    getDefaultFilter,
 } from "@refinedev/core";
 
 import {
-    List,
-    TextField,
-    EditButton,
-    ShowButton,
     FilterDropdown,
+    List,
     TagField,
-    useTable,
+    TextField,
     useSelect,
     useSimpleList,
+    useTable,
 } from "@refinedev/antd";
 
-import { Table, Space, Select, Radio, Collapse, List as AntdList } from "antd";
+import { Collapse, List as AntdList, Radio, Select, Table } from "antd";
 
-import { IPost, ICategory, IProducts } from "interfaces";
+import { ICategory, IPost, IProducts } from "../../interfaces";
 
 export const PostList: React.FC<IResourceComponentsProps> = () => {
     const { Panel } = Collapse;

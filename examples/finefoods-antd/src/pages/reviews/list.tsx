@@ -1,31 +1,29 @@
-import React from "react";
-import {
-    useTranslate,
-    useUpdateMany,
-    useNavigation,
-    IResourceComponentsProps,
-} from "@refinedev/core";
-
-import { List, useTable } from "@refinedev/antd";
-
 import {
     CheckCircleOutlined,
     CloseCircleOutlined,
-    StarOutlined,
     MoreOutlined,
+    StarOutlined,
 } from "@ant-design/icons";
+import { List, useTable } from "@refinedev/antd";
 import {
-    Table,
-    Space,
-    Button,
+    IResourceComponentsProps,
+    useNavigation,
+    useTranslate,
+    useUpdateMany,
+} from "@refinedev/core";
+import {
     Avatar,
-    Rate,
-    Typography,
+    Button,
     Dropdown,
     Menu,
+    Rate,
+    Space,
+    Table,
+    Typography,
 } from "antd";
+import React from "react";
 
-import { IReview } from "interfaces";
+import { IReview } from "../../interfaces";
 
 export const ReviewsList: React.FC<IResourceComponentsProps> = () => {
     const [selectedRowKeys, setSelectedRowKeys] = React.useState<React.Key[]>(

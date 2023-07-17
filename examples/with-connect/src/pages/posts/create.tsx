@@ -1,16 +1,15 @@
-import React from "react";
+import { Create, useForm, useSelect } from "@refinedev/antd";
 import { IResourceComponentsProps } from "@refinedev/core";
-import { Create } from "@refinedev/antd";
-import { RcFile } from "antd/lib/upload/interface";
 import { Form, Input, Select, Upload } from "antd";
-import { useForm, useSelect } from "@refinedev/antd";
+import { RcFile } from "antd/lib/upload/interface";
+import React from "react";
 
 import MDEditor from "@uiw/react-md-editor";
 
 import { useSdk } from "@refinedev/connect";
 
-import { normalizeFile } from "utility/normalize";
-import { IPost, ICategory } from "interfaces";
+import { ICategory, IPost } from "../../interfaces";
+import { normalizeFile } from "../../utility/normalize";
 
 export const PostCreate: React.FC<IResourceComponentsProps> = () => {
     const { formProps, saveButtonProps } = useForm<IPost>();

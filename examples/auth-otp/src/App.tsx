@@ -1,29 +1,29 @@
 import {
+    ErrorComponent,
+    notificationProvider,
+    RefineThemes,
+    ThemedLayoutV2,
+} from "@refinedev/antd";
+import {
     AuthBindings,
     Authenticated,
     GitHubBanner,
     Refine,
 } from "@refinedev/core";
-import {
-    notificationProvider,
-    ThemedLayoutV2,
-    ErrorComponent,
-    RefineThemes,
-} from "@refinedev/antd";
-import dataProvider from "@refinedev/simple-rest";
 import routerProvider, {
-    NavigateToResource,
     CatchAllNavigate,
-    UnsavedChangesNotifier,
     DocumentTitleHandler,
+    NavigateToResource,
+    UnsavedChangesNotifier,
 } from "@refinedev/react-router-v6";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import dataProvider from "@refinedev/simple-rest";
 import { ConfigProvider } from "antd";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 
 import "@refinedev/antd/dist/reset.css";
 
-import { PostList, PostCreate, PostEdit, PostShow } from "pages/posts";
-import { Login } from "pages/login";
+import { Login } from "./pages/login";
+import { PostCreate, PostEdit, PostList, PostShow } from "./pages/posts";
 
 const API_URL = "https://api.fake-rest.refine.dev";
 

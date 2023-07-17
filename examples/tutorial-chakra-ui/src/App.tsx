@@ -1,23 +1,23 @@
-import { GitHubBanner, Refine } from "@refinedev/core";
-import dataProvider from "@refinedev/simple-rest";
-import routerProvider, {
-    NavigateToResource,
-    UnsavedChangesNotifier,
-    DocumentTitleHandler,
-} from "@refinedev/react-router-v6";
+import { ChakraProvider } from "@chakra-ui/react";
 import {
+    ErrorComponent,
     notificationProvider,
     RefineThemes,
-    ErrorComponent,
     ThemedLayoutV2,
 } from "@refinedev/chakra-ui";
-import { ChakraProvider } from "@chakra-ui/react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { GitHubBanner, Refine } from "@refinedev/core";
+import routerProvider, {
+    DocumentTitleHandler,
+    NavigateToResource,
+    UnsavedChangesNotifier,
+} from "@refinedev/react-router-v6";
+import dataProvider from "@refinedev/simple-rest";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { BlogPostList } from "pages/blog-posts/list";
-import { BlogPostCreate } from "pages/blog-posts/create";
-import { BlogPostEdit } from "pages/blog-posts/edit";
-import { BlogPostShow } from "pages/blog-posts/show";
+import { BlogPostCreate } from "./pages/blog-posts/create";
+import { BlogPostEdit } from "./pages/blog-posts/edit";
+import { BlogPostList } from "./pages/blog-posts/list";
+import { BlogPostShow } from "./pages/blog-posts/show";
 
 function App() {
     return (

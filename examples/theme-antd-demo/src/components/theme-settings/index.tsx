@@ -1,7 +1,7 @@
-import { FC, useState } from "react";
-import { useModal } from "@refinedev/core";
-import { Button, Modal, Space, ThemeConfig, theme } from "antd";
 import { RefineThemes } from "@refinedev/antd";
+import { useModal } from "@refinedev/core";
+import { Button, Modal, Space, theme, ThemeConfig } from "antd";
+import { FC, useState } from "react";
 
 type ThemeName = keyof typeof RefineThemes;
 
@@ -38,10 +38,11 @@ export const ThemeSettings: FC<Props> = ({ currentTheme, onThemeClick }) => {
         <>
             <div
                 style={{
-                    position: "absolute",
+                    position: "fixed",
                     bottom: "16px",
                     left: "50%",
                     transform: "translateX(-50%)",
+                    zIndex: 100,
                 }}
             >
                 <Button type="primary" onClick={show}>

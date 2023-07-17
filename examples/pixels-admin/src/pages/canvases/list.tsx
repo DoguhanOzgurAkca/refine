@@ -1,16 +1,16 @@
-import { useState } from "react";
-import { CanAccess, useUpdate } from "@refinedev/core";
 import {
+    DeleteButton,
     List,
     useEditableTable,
     useModal,
-    DeleteButton,
 } from "@refinedev/antd";
-import { Table, Form, Button, Space, Tag, Modal, Avatar } from "antd";
+import { useUpdate } from "@refinedev/core";
+import { Avatar, Button, Form, Modal, Space, Table, Tag } from "antd";
+import { useState } from "react";
 
-import { TCanvas } from "types/canvas";
-import { LogList } from "components/logs";
-import { CanvasItem } from "components/canvas";
+import { CanvasItem } from "../../components/canvas";
+import { LogList } from "../../components/logs";
+import { TCanvas } from "../../types/canvas";
 
 type TCanvasPromoteResult = {
     id: number;

@@ -1,15 +1,15 @@
-import React from "react";
 import {
-    IResourceComponentsProps,
     file2Base64,
     HttpError,
+    IResourceComponentsProps,
 } from "@refinedev/core";
+import React from "react";
 
-import { Edit, useForm, getValueFromEvent } from "@refinedev/antd";
+import { Edit, getValueFromEvent, useForm } from "@refinedev/antd";
 
 import { Form, Input, Upload } from "antd";
 
-import { IUser, IUserVariable } from "interfaces";
+import { IUser, IUserVariable } from "../../interfaces";
 
 export const UserEdit: React.FC<IResourceComponentsProps> = () => {
     const { formProps, saveButtonProps } = useForm<

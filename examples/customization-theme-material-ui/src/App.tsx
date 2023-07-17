@@ -1,23 +1,23 @@
-import { GitHubBanner, Refine } from "@refinedev/core";
-import {
-    ThemedLayoutV2,
-    ErrorComponent,
-    RefineSnackbarProvider,
-    notificationProvider,
-} from "@refinedev/mui";
 import CssBaseline from "@mui/material/CssBaseline";
 import GlobalStyles from "@mui/material/GlobalStyles";
-import dataProvider from "@refinedev/simple-rest";
+import { GitHubBanner, Refine } from "@refinedev/core";
+import {
+    ErrorComponent,
+    notificationProvider,
+    RefineSnackbarProvider,
+    ThemedLayoutV2,
+} from "@refinedev/mui";
 import routerProvider, {
+    DocumentTitleHandler,
     NavigateToResource,
     UnsavedChangesNotifier,
-    DocumentTitleHandler,
 } from "@refinedev/react-router-v6";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import dataProvider from "@refinedev/simple-rest";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 
-import { PostList, PostCreate, PostEdit } from "pages/posts";
 import { Header } from "./components/header";
 import { ColorModeContextProvider } from "./contexts";
+import { PostCreate, PostEdit, PostList } from "./pages/posts";
 
 const App: React.FC = () => {
     return (

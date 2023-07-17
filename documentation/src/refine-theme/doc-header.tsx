@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import clsx from "clsx";
 import SearchBar from "@theme/SearchBar";
-import { DocVersionDropdown } from "./doc-version-dropdown";
-import { CommonThemeToggle } from "./common-theme-toggle";
-import { CommonHomeButton } from "./common-home-button";
+import clsx from "clsx";
+import React, { useState } from "react";
 import { CommonGithubStarButton } from "./common-github-star-button";
-import { DocSidebarModal } from "./doc-sidebar-modal";
-import { RefineLogo } from "./common-refine-logo";
 import { CommonHamburgerIcon } from "./common-hamburger-icon";
+import { CommonHomeButton } from "./common-home-button";
+import { RefineLogo } from "./common-refine-logo";
+import { CommonThemeToggle } from "./common-theme-toggle";
 import { DocSearchButton } from "./doc-search-button";
+import { DocSidebarModal } from "./doc-sidebar-modal";
+import { DocVersionDropdown } from "./doc-version-dropdown";
 import { TopAnnouncement } from "./top-announcement";
 
 export const HEADER_HEIGHT = 67;
@@ -67,7 +67,6 @@ const Desktop = () => {
                             )}
                         />
                     </div>
-                    <Divider />
                     <DocVersionDropdown />
                     <Divider />
                     <CommonGithubStarButton />

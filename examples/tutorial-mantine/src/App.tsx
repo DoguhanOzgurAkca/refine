@@ -1,24 +1,24 @@
+import { Global, MantineProvider } from "@mantine/core";
+import { NotificationsProvider } from "@mantine/notifications";
 import { GitHubBanner, Refine } from "@refinedev/core";
 import {
-    notificationProvider,
-    ThemedLayoutV2,
-    RefineThemes,
     ErrorComponent,
+    notificationProvider,
+    RefineThemes,
+    ThemedLayoutV2,
 } from "@refinedev/mantine";
-import { NotificationsProvider } from "@mantine/notifications";
-import { MantineProvider, Global } from "@mantine/core";
-import dataProvider from "@refinedev/simple-rest";
 import routerProvider, {
+    DocumentTitleHandler,
     NavigateToResource,
     UnsavedChangesNotifier,
-    DocumentTitleHandler,
 } from "@refinedev/react-router-v6";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import dataProvider from "@refinedev/simple-rest";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { BlogPostList } from "pages/blog-posts/list";
-import { BlogPostCreate } from "pages/blog-posts/create";
-import { BlogPostEdit } from "pages/blog-posts/edit";
-import { BlogPostShow } from "pages/blog-posts/show";
+import { BlogPostCreate } from "./pages/blog-posts/create";
+import { BlogPostEdit } from "./pages/blog-posts/edit";
+import { BlogPostList } from "./pages/blog-posts/list";
+import { BlogPostShow } from "./pages/blog-posts/show";
 
 function App() {
     return (

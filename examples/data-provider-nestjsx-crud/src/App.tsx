@@ -1,23 +1,23 @@
-import { GitHubBanner, Refine } from "@refinedev/core";
 import {
-    notificationProvider,
-    ThemedLayoutV2,
     ErrorComponent,
+    notificationProvider,
     RefineThemes,
+    ThemedLayoutV2,
 } from "@refinedev/antd";
+import { GitHubBanner, Refine } from "@refinedev/core";
 import dataProvider from "@refinedev/nestjsx-crud";
 import routerProvider, {
+    DocumentTitleHandler,
     NavigateToResource,
     UnsavedChangesNotifier,
-    DocumentTitleHandler,
 } from "@refinedev/react-router-v6";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 
-import { ConfigProvider } from "antd";
 import "@refinedev/antd/dist/reset.css";
+import { ConfigProvider } from "antd";
 
-import { PostList, PostCreate, PostEdit, PostShow } from "pages/posts";
-import { CategoryList, CategoryCreate, CategoryEdit } from "pages/categories";
+import { CategoryCreate, CategoryEdit, CategoryList } from "./pages/categories";
+import { PostCreate, PostEdit, PostList, PostShow } from "./pages/posts";
 
 const API_URL = "https://api.nestjsx-crud.refine.dev";
 

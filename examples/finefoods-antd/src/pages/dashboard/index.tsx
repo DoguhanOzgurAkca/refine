@@ -1,15 +1,15 @@
-import { Row, Col, Card, Typography } from "antd";
+import { Card, Col, Row, Typography } from "antd";
 import { useTranslation } from "react-i18next";
 
 import {
-    DailyRevenue,
     DailyOrders,
-    NewCustomers,
+    DailyRevenue,
     DeliveryMap,
+    NewCustomers,
     OrderTimeline,
     RecentOrders,
     TrendingMenu,
-} from "components";
+} from "../../components";
 
 const { Text } = Typography;
 

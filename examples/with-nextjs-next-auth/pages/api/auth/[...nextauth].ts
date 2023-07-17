@@ -1,8 +1,8 @@
 import NextAuth, { Awaitable, User } from "next-auth";
-import GoogleProvider from "next-auth/providers/google";
 import Auth0Provider from "next-auth/providers/auth0";
-import KeycloakProvider from "next-auth/providers/keycloak";
 import CredentialsProvider from "next-auth/providers/credentials";
+import GoogleProvider from "next-auth/providers/google";
+import KeycloakProvider from "next-auth/providers/keycloak";
 
 export const authOptions = {
     // Configure one or more authentication providers
@@ -10,7 +10,7 @@ export const authOptions = {
         // !!! Should be stored in .env file.
         GoogleProvider({
             clientId: `1041339102270-e1fpe2b6v6u1didfndh7jkjmpcashs4f.apps.googleusercontent.com`,
-            clientSecret: `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`,
+            clientSecret: `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`,
         }),
         Auth0Provider({
             clientId: `Be5vsLunFvpzPf4xfXtaMxrZUVBjjNPO`,
@@ -31,14 +31,41 @@ export const authOptions = {
             },
         }),
         CredentialsProvider({
-            name: "Credentials",
+            id: "CredentialsSignIn",
             credentials: {},
-            async authorize(credentials, req) {
+            async authorize(credentials: any) {
                 // TODO: Request your API to check credentials
                 console.log(
-                    "credentials",
+                    "CredentialsSignIn",
                     JSON.stringify(credentials, null, 2),
                 );
+
+                // check credentials
+                // if not valid return null
+                if (credentials?.["email"] !== "demo@refine.dev") {
+                    return null;
+                }
+
+                const user: Awaitable<User> = {
+                    id: "1",
+                    name: "John Doe",
+                    email: "demo@refine.dev",
+                    image: "https://i.pravatar.cc/300",
+                };
+                return user;
+            },
+        }),
+        CredentialsProvider({
+            id: "CredentialsSignUp",
+            credentials: {},
+            async authorize(credentials: any) {
+                // TODO: Request your API to create new user
+                console.log(
+                    "CredentialsSignUp",
+                    JSON.stringify(credentials, null, 2),
+                );
+
+                // return mocked user
                 const user: Awaitable<User> = {
                     id: "1",
                     name: "John Doe",

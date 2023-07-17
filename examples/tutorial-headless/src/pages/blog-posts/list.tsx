@@ -1,13 +1,13 @@
-import React from "react";
 import {
-    IResourceComponentsProps,
-    useNavigation,
     GetManyResponse,
-    useMany,
+    IResourceComponentsProps,
     useDelete,
+    useMany,
+    useNavigation,
 } from "@refinedev/core";
 import { useTable } from "@refinedev/react-table";
 import { ColumnDef, flexRender } from "@tanstack/react-table";
+import React from "react";
 
 export const BlogPostList: React.FC<IResourceComponentsProps> = () => {
     const { mutate: deleteBlogPost } = useDelete();
@@ -135,7 +135,6 @@ export const BlogPostList: React.FC<IResourceComponentsProps> = () => {
         nextPage,
         previousPage,
         setPageSize,
-        getColumn,
     } = useTable({
         columns,
     });

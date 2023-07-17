@@ -1,18 +1,16 @@
-import { useShow, IResourceComponentsProps, useOne } from "@refinedev/core";
-
 import {
-    Show,
-    MarkdownField,
     DeleteButton,
-    ListButton,
     EditButton,
+    ListButton,
+    MarkdownField,
     RefreshButton,
+    Show,
 } from "@refinedev/antd";
-
-import { Typography, Alert } from "antd";
-
-import { IPost, ICategory } from "interfaces";
+import { IResourceComponentsProps, useOne, useShow } from "@refinedev/core";
+import { Alert, Typography } from "antd";
 import { useState } from "react";
+
+import { ICategory, IPost } from "../../interfaces";
 
 const { Title, Text } = Typography;
 

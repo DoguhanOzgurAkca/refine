@@ -1,13 +1,13 @@
 import {
     DeleteButton,
-    UrlField,
-    EmailField,
     EditButton,
+    EmailField,
+    UrlField,
 } from "@refinedev/antd";
 import { Card, Typography } from "antd";
 
-import { ICompany } from "interfaces";
 import { API_URL } from "../../constants";
+import { ICompany } from "../../interfaces";
 
 const { Title, Text } = Typography;
 

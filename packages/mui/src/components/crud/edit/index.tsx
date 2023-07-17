@@ -1,41 +1,42 @@
 import React from "react";
 
 import {
-    useMutationMode,
-    useNavigation,
-    useTranslate,
-    useUserFriendlyName,
-    useRefineContext,
-    useToPath,
-    useResource,
-    useRouterType,
     useBack,
     useGo,
+    useMutationMode,
+    useNavigation,
+    useRefineContext,
+    useResource,
+    useRouterType,
+    useToPath,
+    useTranslate,
+    useUserFriendlyName,
 } from "@refinedev/core";
 
+import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
 import IconButton from "@mui/material/IconButton";
-import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
 import Typography from "@mui/material/Typography";
-import Box from "@mui/material/Box";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 import {
-    DeleteButton,
-    RefreshButton,
-    ListButton,
-    SaveButton,
+    AutoSaveIndicator,
     Breadcrumb,
-    ListButtonProps,
-    RefreshButtonProps,
+    DeleteButton,
     DeleteButtonProps,
+    ListButton,
+    ListButtonProps,
+    RefreshButton,
+    RefreshButtonProps,
+    SaveButton,
     SaveButtonProps,
 } from "@components";
-import { EditProps } from "../types";
 import { RefinePageHeaderClassNames } from "@refinedev/ui-types";
+import { EditProps } from "../types";
 
 /**
  * `<Edit>` provides us a layout for displaying the page.
@@ -63,6 +64,7 @@ export const Edit: React.FC<EditProps> = ({
     footerButtonProps,
     footerButtons,
     goBack: goBackFromProps,
+    autoSaveProps,
 }) => {
     const translate = useTranslate();
     const { options: { breadcrumb: globalBreadcrumb } = {} } =
@@ -123,10 +125,11 @@ export const Edit: React.FC<EditProps> = ({
     };
 
     const defaultHeaderButtons = (
-        <>
+        <Box display="flex" flexDirection="row" alignItems="center">
+            {autoSaveProps && <AutoSaveIndicator {...autoSaveProps} />}
             {hasList && <ListButton {...listButtonProps} />}
             <RefreshButton {...refreshButtonProps} />
-        </>
+        </Box>
     );
 
     const deleteButtonProps: DeleteButtonProps | undefined =

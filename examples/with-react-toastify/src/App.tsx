@@ -1,18 +1,18 @@
-import { GitHubBanner, Refine, ErrorComponent } from "@refinedev/core";
+import { ErrorComponent, GitHubBanner, Refine } from "@refinedev/core";
 import routerProvider, {
+    DocumentTitleHandler,
     NavigateToResource,
     UnsavedChangesNotifier,
-    DocumentTitleHandler,
 } from "@refinedev/react-router-v6";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import dataProvider from "@refinedev/simple-rest";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 
-import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
+import "./App.css";
 
-import { notificationProvider } from "providers/notificationProvider";
-import { PostList, PostCreate, PostEdit } from "pages/posts";
+import { PostCreate, PostEdit, PostList } from "./pages/posts";
+import { notificationProvider } from "./providers/notificationProvider";
 
 const API_URL = "https://api.fake-rest.refine.dev";
 

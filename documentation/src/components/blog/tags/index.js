@@ -1,13 +1,13 @@
-import React from "react";
 import Link from "@docusaurus/Link";
 import { useBlogPost } from "@docusaurus/theme-common/internal";
 import clsx from "clsx";
+import React from "react";
 
 export const Tags = () => {
     const { metadata } = useBlogPost();
 
     return (
-        <div className="flex gap-2 pl-1 pb-6 flex-wrap">
+        <div className="flex flex-wrap gap-2 pb-6 pl-1">
             {metadata.tags.map((tag) => (
                 <Link
                     to={tag.permalink}

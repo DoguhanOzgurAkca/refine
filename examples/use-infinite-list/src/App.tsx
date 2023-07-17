@@ -1,20 +1,20 @@
 import {
-    GitHubBanner,
-    Refine,
-    LayoutProps,
     ErrorComponent,
+    GitHubBanner,
+    LayoutProps,
+    Refine,
 } from "@refinedev/core";
 import routerProvider, {
+    DocumentTitleHandler,
     NavigateToResource,
     UnsavedChangesNotifier,
-    DocumentTitleHandler,
 } from "@refinedev/react-router-v6";
-import { BrowserRouter, Routes, Route, Outlet, Link } from "react-router-dom";
 import dataProvider from "@refinedev/simple-rest";
+import { BrowserRouter, Link, Outlet, Route, Routes } from "react-router-dom";
 
-import { githubDataProvider } from "github-data-provider";
-import { PostList } from "pages/posts/list";
-import { CommitList } from "pages/commits/list";
+import { githubDataProvider } from "./github-data-provider";
+import { CommitList } from "./pages/commits/list";
+import { PostList } from "./pages/posts/list";
 
 import "./App.css";
 

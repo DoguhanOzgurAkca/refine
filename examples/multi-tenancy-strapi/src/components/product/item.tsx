@@ -1,9 +1,9 @@
-import { DeleteButton } from "@refinedev/antd";
 import { EditOutlined } from "@ant-design/icons";
+import { DeleteButton } from "@refinedev/antd";
 import { Card } from "antd";
 
-import { IProduct } from "interfaces";
 import { API_URL } from "../../constants";
+import { IProduct } from "../../interfaces";
 
 type ProductItemProps = {
     item: IProduct;

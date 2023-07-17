@@ -1,37 +1,34 @@
 import {
-    IResourceComponentsProps,
-    useTranslate,
-    useApiUrl,
-} from "@refinedev/core";
-
-import {
     Edit,
-    SaveButton,
     getValueFromEvent,
-    useStepsForm,
+    SaveButton,
     useSelect,
+    useStepsForm,
 } from "@refinedev/antd";
-
 import {
-    Form,
-    Select,
-    Upload,
-    Input,
+    IResourceComponentsProps,
+    useApiUrl,
+    useTranslate,
+} from "@refinedev/core";
+import {
+    Avatar,
     Button,
+    Col,
+    Form,
+    Input,
+    InputProps,
+    Row,
+    Select,
+    Space,
     Steps,
     Typography,
-    Space,
-    Avatar,
-    Row,
-    Col,
-    InputProps,
+    Upload,
 } from "antd";
-
 import InputMask from "react-input-mask";
 
-const { Text } = Typography;
+import { ICourier, IStore } from "../../interfaces";
 
-import { ICourier, IStore } from "interfaces";
+const { Text } = Typography;
 
 export const CourierEdit: React.FC<IResourceComponentsProps> = () => {
     const t = useTranslate();

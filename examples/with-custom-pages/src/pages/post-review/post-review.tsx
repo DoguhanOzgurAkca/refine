@@ -1,10 +1,10 @@
 import { useList, useOne, useUpdate } from "@refinedev/core";
 
-import { Show, MarkdownField } from "@refinedev/antd";
+import { MarkdownField, Show } from "@refinedev/antd";
 
-import { Typography, Button, Space } from "antd";
+import { Button, Space, Typography } from "antd";
 
-import { IPost, ICategory } from "interfaces";
+import { ICategory, IPost } from "../../interfaces";
 
 const { Title, Text } = Typography;
 

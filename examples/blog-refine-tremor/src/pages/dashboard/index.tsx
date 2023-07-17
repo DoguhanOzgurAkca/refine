@@ -1,15 +1,14 @@
-import React from "react";
 import {
-    Card,
     Grid,
-    Title,
-    Text,
     Tab,
-    TabList,
     TabGroup,
+    TabList,
     TabPanel,
     TabPanels,
+    Text,
+    Title,
 } from "@tremor/react";
+import React from "react";
 
 import { useApiUrl, useCustom } from "@refinedev/core";
 import dayjs from "dayjs";
@@ -19,9 +18,9 @@ const query = {
     end: dayjs().startOf("day"),
 };
 
-import { KpiCard } from "./kpiCard";
 import { ChartView } from "./chartView";
 import { Details } from "./details";
+import { KpiCard } from "./kpiCard";
 
 const calculatePercentage = (total: number, target: number): number => {
     return Math.round((total / target) * 100 * 100) / 100;
@@ -67,7 +66,7 @@ export const DashboardPage: React.FC = () => {
                         <Grid
                             numItemsMd={2}
                             numItemsLg={3}
-                            className="gap-6 mt-6"
+                            className="mt-6 gap-6"
                         >
                             <KpiCard
                                 title="Weekly Revenue"

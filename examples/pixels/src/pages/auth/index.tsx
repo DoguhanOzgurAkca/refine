@@ -1,9 +1,9 @@
-import * as React from "react";
 import { AuthPage as AntdAuthPage, AuthProps } from "@refinedev/antd";
-import { Link } from "react-router-dom";
 import { Image } from "antd";
+import * as React from "react";
+import { Link } from "react-router-dom";
 
-import { SponsorsBanner } from "components/banners";
+import { SponsorsBanner } from "../../components/banners";
 
 const authWrapperProps = {
     style: {

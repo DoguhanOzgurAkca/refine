@@ -1,26 +1,26 @@
-import { GitHubBanner, Refine } from "@refinedev/core";
-import {
-    notificationProvider,
-    RefineSnackbarProvider,
-    ThemedLayoutV2,
-    RefineThemes,
-    ErrorComponent,
-} from "@refinedev/mui";
-import { ThemeProvider } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import GlobalStyles from "@mui/material/GlobalStyles";
-import dataProvider from "@refinedev/simple-rest";
+import { ThemeProvider } from "@mui/material/styles";
+import { GitHubBanner, Refine } from "@refinedev/core";
+import {
+    ErrorComponent,
+    notificationProvider,
+    RefineSnackbarProvider,
+    RefineThemes,
+    ThemedLayoutV2,
+} from "@refinedev/mui";
 import routerProvider, {
+    DocumentTitleHandler,
     NavigateToResource,
     UnsavedChangesNotifier,
-    DocumentTitleHandler,
 } from "@refinedev/react-router-v6";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import dataProvider from "@refinedev/simple-rest";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { BlogPostList } from "pages/blog-posts/list";
-import { BlogPostEdit } from "pages/blog-posts/edit";
-import { BlogPostCreate } from "pages/blog-posts/create";
-import { BlogPostShow } from "pages/blog-posts/show";
+import { BlogPostCreate } from "./pages/blog-posts/create";
+import { BlogPostEdit } from "./pages/blog-posts/edit";
+import { BlogPostList } from "./pages/blog-posts/list";
+import { BlogPostShow } from "./pages/blog-posts/show";
 
 function App() {
     return (

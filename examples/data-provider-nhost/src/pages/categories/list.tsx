@@ -1,17 +1,17 @@
 import { IResourceComponentsProps } from "@refinedev/core";
 
 import {
+    DateField,
+    DeleteButton,
+    EditButton,
+    getDefaultSortOrder,
     List,
     useTable,
-    EditButton,
-    DeleteButton,
-    DateField,
-    getDefaultSortOrder,
 } from "@refinedev/antd";
 
-import { Table, Space } from "antd";
+import { Space, Table } from "antd";
 
-import { ICategory } from "interfaces";
+import { ICategory } from "../../interfaces";
 
 export const CategoryList: React.FC<IResourceComponentsProps> = () => {
     const { tableProps, sorter } = useTable<ICategory>({

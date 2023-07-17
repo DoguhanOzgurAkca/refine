@@ -1,15 +1,15 @@
-import { useApiUrl, useCustom, useTranslate } from "@refinedev/core";
-import { NumberField } from "@refinedev/mui";
+import ArrowDropDown from "@mui/icons-material/ArrowDropDown";
+import ArrowDropUp from "@mui/icons-material/ArrowDropUp";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import { useApiUrl, useCustom, useTranslate } from "@refinedev/core";
+import { NumberField } from "@refinedev/mui";
 import dayjs from "dayjs";
-import { LineChart, Line, Tooltip, ResponsiveContainer } from "recharts";
-import ArrowDropDown from "@mui/icons-material/ArrowDropDown";
-import ArrowDropUp from "@mui/icons-material/ArrowDropUp";
+import { Line, LineChart, ResponsiveContainer, Tooltip } from "recharts";
 
+import { ISalesChart } from "../../../interfaces";
 import { ChartTooltip } from "../chartTooltip";
-import { ISalesChart } from "interfaces";
 
 export const DailyRevenue: React.FC = () => {
     const t = useTranslate();

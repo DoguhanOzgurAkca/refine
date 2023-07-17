@@ -1,34 +1,32 @@
-import {
-    useTranslate,
-    CrudFilters,
-    useUpdate,
-    HttpError,
-} from "@refinedev/core";
-
-import { useSimpleList, CreateButton, useDrawerForm } from "@refinedev/antd";
-
 import { SearchOutlined } from "@ant-design/icons";
+import { CreateButton, useDrawerForm, useSimpleList } from "@refinedev/antd";
 import {
-    Typography,
-    Row,
+    CrudFilters,
+    HttpError,
+    useTranslate,
+    useUpdate,
+} from "@refinedev/core";
+import {
     Col,
-    List as AntdList,
-    Input,
     Form,
+    Input,
+    List as AntdList,
     Modal,
     ModalProps,
+    Row,
+    Typography,
 } from "antd";
 
-const { Text } = Typography;
-
-import { IStore, IProduct } from "interfaces";
 import {
     CreateProduct,
     EditProduct,
-    ProductItem,
     ProductCategoryFilter,
-} from "components/product";
+    ProductItem,
+} from "../../components/product";
+import { IProduct, IStore } from "../../interfaces";
 import { StyledStoreProducts } from "./styled";
+
+const { Text } = Typography;
 
 type StoreProductsProps = {
     record: IStore;

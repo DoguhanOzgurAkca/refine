@@ -1,17 +1,15 @@
 import { act, renderHook, waitFor } from "@testing-library/react";
 
-import { MockJSONServer, TestWrapper, mockRouterBindings } from "@test";
+import { MockJSONServer, mockRouterBindings, TestWrapper } from "@test";
 
-import { useDeleteMany } from "./useDeleteMany";
-import * as UseInvalidate from "../invalidate/index";
-import { useList } from "./useList";
-import { useMany } from "./useMany";
 import {
     assertListLength,
     assertMutationSuccess,
     renderUseList,
     renderUseMany,
 } from "@test/mutation-helpers";
+import * as UseInvalidate from "../invalidate/index";
+import { useDeleteMany } from "./useDeleteMany";
 
 describe("useDeleteMany Hook", () => {
     it("should work with pessimistic update", async () => {
@@ -412,6 +410,32 @@ describe("useDeleteMany Hook", () => {
                 message: "Success",
                 type: "success",
             });
+        });
+
+        it("should not call `open` from notification provider on return `false`", async () => {
+            const openNotificationMock = jest.fn();
+
+            const { result } = renderHook(() => useDeleteMany(), {
+                wrapper: TestWrapper({
+                    dataProvider: MockJSONServer,
+                    notificationProvider: {
+                        open: openNotificationMock,
+                    },
+                    resources: [{ name: "posts" }],
+                }),
+            });
+
+            result.current.mutate({
+                resource: "posts",
+                ids: ["1", "2"],
+                successNotification: () => false,
+            });
+
+            await waitFor(() => {
+                expect(result.current.isSuccess).toBeTruthy();
+            });
+
+            expect(openNotificationMock).toBeCalledTimes(0);
         });
 
         it("should call `open` from notification provider on error with custom notification params", async () => {

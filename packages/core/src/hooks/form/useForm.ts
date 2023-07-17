@@ -1,42 +1,44 @@
-import React, { Dispatch, SetStateAction } from "react";
 import { QueryObserverResult, UseQueryOptions } from "@tanstack/react-query";
+import debounce from "lodash/debounce";
+import React, { Dispatch, SetStateAction } from "react";
 import warnOnce from "warn-once";
 
 import {
-    useWarnAboutChange,
     useCreate,
-    useUpdate,
-    useRedirectionAfterSubmission,
+    useMeta,
     useMutationMode,
     useOne,
+    useRedirectionAfterSubmission,
     useRefineContext,
-    useMeta,
+    useUpdate,
+    useWarnAboutChange,
 } from "@hooks";
 
+import { pickNotDeprecated, redirectPage } from "@definitions/helpers";
 import {
+    AutoSaveProps,
+    AutoSaveReturnType,
+    BaseKey,
     BaseRecord,
     CreateResponse,
+    FormAction,
     GetOneResponse,
     HttpError,
+    IQueryKeys,
     LiveModeProps,
+    MetaQuery,
+    MutationMode,
     RedirectAction,
     SuccessErrorNotification,
     UpdateResponse,
-    MutationMode,
-    BaseKey,
-    IQueryKeys,
-    FormAction,
-    MetaQuery,
 } from "../../interfaces";
+import { UseCreateProps, UseCreateReturnType } from "../data/useCreate";
 import {
     UpdateParams,
     UseUpdateProps,
     UseUpdateReturnType,
 } from "../data/useUpdate";
-import { UseCreateProps, UseCreateReturnType } from "../data/useCreate";
-import { redirectPage } from "@definitions/helpers";
 import { useResource } from "../resource/useResource";
-import { pickNotDeprecated } from "@definitions/helpers";
 import {
     useLoadingOvertime,
     UseLoadingOvertimeOptionsProps,
@@ -104,6 +106,7 @@ type ActionFormProps<
         data: CreateResponse<TResponse> | UpdateResponse<TResponse>,
         variables: TVariables,
         context: any,
+        isAutoSave?: boolean,
     ) => void;
     /**
      * Called when a mutation encounters an error
@@ -112,6 +115,7 @@ type ActionFormProps<
         error: TResponseError,
         variables: TVariables,
         context: any,
+        isAutoSave?: boolean,
     ) => void;
     /**
      * Duration to wait before executing mutations when `mutationMode = "undoable"`
@@ -177,7 +181,8 @@ export type UseFormProps<
 > &
     ActionParams &
     LiveModeProps &
-    UseLoadingOvertimeOptionsProps;
+    UseLoadingOvertimeOptionsProps &
+    AutoSaveProps<TVariables>;
 
 export type UseFormReturnType<
     TQueryFnData extends BaseRecord = BaseRecord,
@@ -202,7 +207,8 @@ export type UseFormReturnType<
         idFromFunction?: BaseKey | undefined,
         routeParams?: Record<string, string | number>,
     ) => void;
-} & UseLoadingOvertimeReturnType;
+} & UseLoadingOvertimeReturnType &
+    AutoSaveReturnType<TResponse, TResponseError, TVariables>;
 
 /**
  * `useForm` is used to manage forms. It uses Ant Design {@link https://ant.design/components/form/ Form} data scope management under the hood and returns the required props for managing the form actions.
@@ -248,6 +254,7 @@ export const useForm = <
     createMutationOptions,
     updateMutationOptions,
     overtimeOptions,
+    autoSave,
 }: UseFormProps<
     TQueryFnData,
     TError,
@@ -378,6 +385,10 @@ export const useForm = <
     const { mutate: mutateUpdate, isLoading: isLoadingUpdate } =
         mutationResultUpdate;
 
+    const autoSaveMutation = useUpdate<TResponse, TResponseError, TVariables>(
+        {},
+    );
+
     const { setWarnWhen } = useWarnAboutChange();
 
     const handleSubmitWithRedirect = useRedirectionAfterSubmission();
@@ -442,6 +453,45 @@ export const useForm = <
             },
         );
     };
+
+    const onFinishAutoSaveMutation = (
+        values: TVariables,
+    ): Promise<UpdateResponse<TResponse> | void> | void => {
+        if (!resource || !isEdit) return;
+
+        const variables: UpdateParams<TResponse, TResponseError, TVariables> = {
+            id: id ?? "",
+            values,
+            resource: identifier ?? resource.name,
+            successNotification: false,
+            errorNotification: false,
+            meta: { ...combinedMeta, ...mutationMeta },
+            metaData: { ...combinedMeta, ...mutationMeta },
+            dataProviderName,
+            invalidates: [],
+        };
+
+        return autoSaveMutation.mutate(variables, {
+            onSuccess: (data, _, context) => {
+                if (onMutationSuccess) {
+                    onMutationSuccess(data, values, context, true);
+                }
+            },
+            onError: (error: TResponseError, _, context) => {
+                if (onMutationError) {
+                    return onMutationError(error, values, context, true);
+                }
+            },
+        });
+    };
+
+    const onFinishAutoSave = React.useMemo(
+        () =>
+            debounce((allValues) => {
+                return onFinishAutoSaveMutation(allValues);
+            }, autoSave?.debounce || 1000),
+        [],
+    );
 
     const onFinishUpdate = async (values: TVariables) => {
         setWarnWhen(false);
@@ -532,6 +582,12 @@ export const useForm = <
     return {
         ...result,
         queryResult,
+        onFinishAutoSave,
+        autoSaveProps: {
+            status: autoSaveMutation.status,
+            data: autoSaveMutation.data,
+            error: autoSaveMutation.error,
+        },
         id,
         setId,
         redirect: (redirect, idFromFunction?: BaseKey | undefined) => {

@@ -7,38 +7,38 @@ import {
 
 import { ActionTypes } from "@contexts/undoableQueue";
 import {
-    BaseRecord,
-    BaseKey,
-    UpdateResponse,
-    MutationMode,
-    PrevContext as UpdateContext,
-    HttpError,
-    SuccessErrorNotification,
-    MetaQuery,
-    PreviousQuery,
-    GetListResponse,
-    IQueryKeys,
-} from "../../interfaces";
-import {
-    useResource,
-    useMutationMode,
-    useCancelNotification,
-    useTranslate,
-    usePublish,
-    useHandleNotification,
-    useDataProvider,
-    useLog,
-    useInvalidate,
-    useOnError,
-    useMeta,
-    useRefineContext,
-} from "@hooks";
-import {
-    queryKeys,
     pickDataProvider,
     pickNotDeprecated,
+    queryKeys,
     useActiveAuthProvider,
 } from "@definitions/helpers";
+import {
+    useCancelNotification,
+    useDataProvider,
+    useHandleNotification,
+    useInvalidate,
+    useLog,
+    useMeta,
+    useMutationMode,
+    useOnError,
+    usePublish,
+    useRefineContext,
+    useResource,
+    useTranslate,
+} from "@hooks";
+import {
+    BaseKey,
+    BaseRecord,
+    GetListResponse,
+    HttpError,
+    IQueryKeys,
+    MetaQuery,
+    MutationMode,
+    PrevContext as UpdateContext,
+    PreviousQuery,
+    SuccessErrorNotification,
+    UpdateResponse,
+} from "../../interfaces";
 import {
     useLoadingOvertime,
     UseLoadingOvertimeOptionsProps,
@@ -63,7 +63,7 @@ export type UpdateParams<TData, TError, TVariables> = {
      */
     undoableTimeout?: number;
     /**
-     * Callback that runs when undo button is clicked on `mutationMode = "undoable"`
+     * Provides a function to cancel the mutation when `mutationMode = "undoable"`
      */
     onCancel?: (cancelMutation: () => void) => void;
     /**

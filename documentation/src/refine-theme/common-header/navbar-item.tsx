@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
+import React, { useEffect, useState } from "react";
 
-import { NavbarItemType } from "./constants";
 import { TwoTonedCloudIcon } from "../icons/popover";
+import { NavbarItemType } from "./constants";
 
 type NavbarItemProps = {
     item: NavbarItemType;
@@ -59,8 +59,9 @@ export const NavbarItem: React.FC<NavbarItemProps> = ({
                           "text-gray-0",
                           "bg-[length:200%_100%]",
                           "text-[14px]",
+                          "hover:text-gray-0",
                       ]
-                    : [],
+                    : ["hover:text-gray-900 dark:hover:text-white"],
             )}
         >
             {item.icon && <Icon />}

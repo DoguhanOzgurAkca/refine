@@ -1,17 +1,17 @@
 import { IResourceComponentsProps } from "@refinedev/core";
 
 import {
-    List,
-    useTable,
-    EditButton,
     DeleteButton,
-    ShowButton,
+    EditButton,
     EmailField,
+    List,
+    ShowButton,
+    useTable,
 } from "@refinedev/antd";
 
-import { Table, Space } from "antd";
+import { Space, Table } from "antd";
 
-import { IUser } from "interfaces";
+import { IUser } from "../../interfaces";
 
 export const UserList: React.FC<IResourceComponentsProps> = () => {
     const { tableProps } = useTable<IUser>();

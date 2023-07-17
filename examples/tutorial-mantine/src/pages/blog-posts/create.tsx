@@ -1,11 +1,10 @@
+import { Select, Textarea, TextInput } from "@mantine/core";
 import { Create, useForm, useSelect } from "@refinedev/mantine";
-import { TextInput, Textarea, Select } from "@mantine/core";
 
 export const BlogPostCreate = () => {
     const {
         getInputProps,
         saveButtonProps,
-        setFieldValue,
         refineCore: { formLoading },
     } = useForm({
         initialValues: {

@@ -1,27 +1,27 @@
-import { Authenticated, GitHubBanner, Refine } from "@refinedev/core";
+import { GithubOutlined, GoogleOutlined } from "@ant-design/icons";
 import {
-    notificationProvider,
+    AuthPage,
     ErrorComponent,
+    notificationProvider,
     RefineThemes,
     ThemedLayoutV2,
-    AuthPage,
 } from "@refinedev/antd";
-import { GoogleOutlined, GithubOutlined } from "@ant-design/icons";
-import { ConfigProvider, ThemeConfig, theme } from "antd";
-import dataProvider from "@refinedev/simple-rest";
+import "@refinedev/antd/dist/reset.css";
+import { Authenticated, GitHubBanner, Refine } from "@refinedev/core";
 import routerProvider, {
     CatchAllNavigate,
+    DocumentTitleHandler,
     NavigateToResource,
     UnsavedChangesNotifier,
-    DocumentTitleHandler,
 } from "@refinedev/react-router-v6";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
-import "@refinedev/antd/dist/reset.css";
-
-import { PostList, PostCreate, PostEdit, PostShow } from "pages/posts";
+import dataProvider from "@refinedev/simple-rest";
+import { ConfigProvider, theme, ThemeConfig } from "antd";
 import { useState } from "react";
-import { authProvider } from "utils/authProvider";
-import ThemeSettings from "components/theme-settings";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
+
+import ThemeSettings from "./components/theme-settings";
+import { PostCreate, PostEdit, PostList, PostShow } from "./pages/posts";
+import { authProvider } from "./utils/authProvider";
 
 const API_URL = "https://api.fake-rest.refine.dev";
 
@@ -73,6 +73,13 @@ const App: React.FC = () => {
                                 </Authenticated>
                             }
                         >
+                            <Route
+                                index
+                                element={
+                                    <NavigateToResource resource="posts" />
+                                }
+                            />
+                            ;
                             <Route path="/posts">
                                 <Route index element={<PostList />} />
                                 <Route path="create" element={<PostCreate />} />

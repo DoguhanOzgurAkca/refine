@@ -1,12 +1,23 @@
-import React from "react";
 import {
+    AutoSaveIndicator,
+    Breadcrumb,
+    DeleteButton,
+    DeleteButtonProps,
+    ListButton,
+    ListButtonProps,
+    RefreshButton,
+    RefreshButtonProps,
+    SaveButton,
+    SaveButtonProps,
+} from "@components";
+import {
+    ActionIcon,
     Box,
     Card,
     Group,
-    ActionIcon,
+    LoadingOverlay,
     Stack,
     Title,
-    LoadingOverlay,
 } from "@mantine/core";
 import {
     useBack,
@@ -15,25 +26,15 @@ import {
     useNavigation,
     useRefineContext,
     useResource,
-    useUserFriendlyName,
     useRouterType,
     useToPath,
     useTranslate,
+    useUserFriendlyName,
 } from "@refinedev/core";
-import { IconArrowLeft } from "@tabler/icons";
-import {
-    DeleteButton,
-    ListButton,
-    RefreshButton,
-    SaveButton,
-    Breadcrumb,
-    ListButtonProps,
-    RefreshButtonProps,
-    DeleteButtonProps,
-    SaveButtonProps,
-} from "@components";
-import { EditProps } from "../types";
 import { RefinePageHeaderClassNames } from "@refinedev/ui-types";
+import { IconArrowLeft } from "@tabler/icons";
+import React from "react";
+import { EditProps } from "../types";
 
 export const Edit: React.FC<EditProps> = (props) => {
     const {
@@ -56,6 +57,7 @@ export const Edit: React.FC<EditProps> = (props) => {
         goBack: goBackFromProps,
         breadcrumb: breadcrumbFromProps,
         title,
+        autoSaveProps,
     } = props;
     const translate = useTranslate();
     const { options: { breadcrumb: globalBreadcrumb } = {} } =
@@ -146,6 +148,7 @@ export const Edit: React.FC<EditProps> = (props) => {
 
     const defaultHeaderButtons = (
         <>
+            {autoSaveProps && <AutoSaveIndicator {...autoSaveProps} />}
             {hasList && <ListButton {...listButtonProps} />}
             <RefreshButton {...refreshButtonProps} />
         </>

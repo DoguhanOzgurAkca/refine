@@ -1,4 +1,4 @@
-import React from "react";
+import { useModalForm } from "@refinedev/antd";
 import {
     useIsAuthenticated,
     useLogout,
@@ -6,18 +6,18 @@ import {
     useNavigation,
     useParsed,
 } from "@refinedev/core";
+import React from "react";
 import { Link } from "react-router-dom";
-import { useModalForm } from "@refinedev/antd";
 
 import {
-    PlusSquareOutlined,
-    LogoutOutlined,
     LoginOutlined,
+    LogoutOutlined,
+    PlusSquareOutlined,
 } from "@ant-design/icons";
 import { Button, Image, Space } from "antd";
 
-import { CreateCanvas } from "components/canvas";
-import { Canvas } from "types";
+import { CreateCanvas } from "../../../components/canvas";
+import { Canvas } from "../../../types";
 
 export const Header: React.FC = () => {
     const { data } = useIsAuthenticated();

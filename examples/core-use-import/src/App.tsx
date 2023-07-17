@@ -1,13 +1,13 @@
 import { ErrorComponent, GitHubBanner, Refine } from "@refinedev/core";
 import routerProvider, {
+    DocumentTitleHandler,
     NavigateToResource,
     UnsavedChangesNotifier,
-    DocumentTitleHandler,
 } from "@refinedev/react-router-v6";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import dataProvider from "@refinedev/simple-rest";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import { DummyList } from "pages/posts";
+import { DummyList } from "./pages/posts";
 
 const App: React.FC = () => {
     return (

@@ -1,9 +1,9 @@
-import React from "react";
 import { UserOutlined } from "@ant-design/icons";
 import { Avatar } from "antd";
+import React from "react";
 
-import { getUniqueContributorsAvatarURL } from "utility";
-import { Pixel } from "types";
+import { Pixel } from "../../types";
+import { getUniqueContributorsAvatarURL } from "../../utility";
 
 type ContributorsProps = {
     pixels: Pixel[];

@@ -1,9 +1,9 @@
-import { Form, FormProps, Input, Upload, ModalProps, Modal } from "antd";
 import { Permission, Role } from "@refinedev/appwrite";
 import { useParsed } from "@refinedev/core";
+import { Form, FormProps, Input, Modal, ModalProps, Upload } from "antd";
 import { RcFile } from "antd/lib/upload/interface";
 
-import { normalizeFile, storage } from "utility";
+import { normalizeFile, storage } from "../../utility";
 
 type CreateProductProps = {
     modalProps: ModalProps;

@@ -1,16 +1,15 @@
-import React from "react";
-import { IResourceComponentsProps } from "@refinedev/core";
-import { Edit } from "@refinedev/antd";
-import { RcFile } from "antd/lib/upload/interface";
-import { Form, Input, Select, Row, Col, Upload } from "antd";
-import { useForm, useSelect } from "@refinedev/antd";
+import { Edit, useForm, useSelect } from "@refinedev/antd";
 import { LogList } from "@refinedev/antd-audit-log";
+import { IResourceComponentsProps } from "@refinedev/core";
+import { Col, Form, Input, Row, Select, Upload } from "antd";
+import { RcFile } from "antd/lib/upload/interface";
+import React from "react";
 
 import { useSdk } from "@refinedev/connect";
 import MDEditor from "@uiw/react-md-editor";
 
-import { normalizeFile } from "utility/normalize";
-import { IPost, ICategory } from "interfaces";
+import { ICategory, IPost } from "../../interfaces";
+import { normalizeFile } from "../../utility/normalize";
 
 export const PostEdit: React.FC<IResourceComponentsProps> = () => {
     const { sdk } = useSdk();

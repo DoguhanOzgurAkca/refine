@@ -1,29 +1,30 @@
 import React from "react";
 
-import { Card, Space, Spin } from "antd";
 import {
+    useBack,
+    useGo,
     useMutationMode,
     useNavigation,
+    useRefineContext,
+    useResource,
+    useRouterType,
+    useToPath,
     useTranslate,
     useUserFriendlyName,
-    useRefineContext,
-    useRouterType,
-    useBack,
-    useResource,
-    useGo,
-    useToPath,
 } from "@refinedev/core";
+import { Card, Space, Spin } from "antd";
 
 import {
-    DeleteButton,
-    RefreshButton,
-    ListButton,
-    SaveButton,
+    AutoSaveIndicator,
     Breadcrumb,
-    PageHeader,
-    ListButtonProps,
-    RefreshButtonProps,
+    DeleteButton,
     DeleteButtonProps,
+    ListButton,
+    ListButtonProps,
+    PageHeader,
+    RefreshButton,
+    RefreshButtonProps,
+    SaveButton,
     SaveButtonProps,
 } from "@components";
 import { EditProps } from "../types";
@@ -54,6 +55,7 @@ export const Edit: React.FC<EditProps> = ({
     footerButtonProps,
     footerButtons,
     goBack: goBackFromProps,
+    autoSaveProps,
 }) => {
     const translate = useTranslate();
     const { options: { breadcrumb: globalBreadcrumb } = {} } =
@@ -133,6 +135,7 @@ export const Edit: React.FC<EditProps> = ({
 
     const defaultHeaderButtons = (
         <>
+            {autoSaveProps && <AutoSaveIndicator {...autoSaveProps} />}
             {hasList && <ListButton {...listButtonProps} />}
             <RefreshButton {...refreshButtonProps} />
         </>

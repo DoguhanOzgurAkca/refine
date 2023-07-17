@@ -1,20 +1,18 @@
 import {
+    EditButton,
+    List,
+    ShowButton,
+    TextField,
+    useTable,
+} from "@refinedev/antd";
+import {
     IResourceComponentsProps,
     useMany,
     useTranslate,
 } from "@refinedev/core";
+import { Space, Table } from "antd";
 
-import {
-    List,
-    TextField,
-    useTable,
-    EditButton,
-    ShowButton,
-} from "@refinedev/antd";
-
-import { Table, Space } from "antd";
-
-import { IPost, ICategory } from "interfaces";
+import { ICategory, IPost } from "../../interfaces";
 
 export const PostList: React.FC<IResourceComponentsProps> = () => {
     const translate = useTranslate();

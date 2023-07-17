@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigation, useSelect } from "@refinedev/core";
 import { useForm } from "@refinedev/react-hook-form";
 
@@ -6,10 +5,9 @@ export const BlogPostCreate = () => {
     const { list } = useNavigation();
 
     const {
-        refineCore: { onFinish, formLoading },
+        refineCore: { onFinish },
         register,
         handleSubmit,
-        resetField,
         formState: { errors },
     } = useForm();
 

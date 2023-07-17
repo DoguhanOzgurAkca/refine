@@ -1,10 +1,10 @@
-import { useEffect } from "react";
-import { IResourceComponentsProps, useResource } from "@refinedev/core";
 import { Show } from "@refinedev/antd";
-import { Typography } from "antd";
 import { useConnectMutation } from "@refinedev/connect";
+import { IResourceComponentsProps, useResource } from "@refinedev/core";
+import { Typography } from "antd";
+import { useEffect } from "react";
 
-import { IProduct } from "interfaces";
+import { IProduct } from "../../interfaces";
 
 const { Title, Text } = Typography;
 

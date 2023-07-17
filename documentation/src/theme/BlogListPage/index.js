@@ -1,16 +1,16 @@
-import React from "react";
-import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import clsx from "clsx";
+import React from "react";
 
 import {
-    PageMetadata,
     HtmlClassNameProvider,
+    PageMetadata,
     ThemeClassNames,
 } from "@docusaurus/theme-common";
 import BlogLayout from "@theme/BlogLayout";
-import SearchMetadata from "@theme/SearchMetadata";
-import BlogPostItems from "@theme/BlogPostItems";
 import BlogListPaginator from "@theme/BlogListPaginator";
+import BlogPostItems from "@theme/BlogPostItems";
+import SearchMetadata from "@theme/SearchMetadata";
 
 import { FeaturedBlogPostItems } from "../../components/blog";
 
@@ -76,7 +76,7 @@ function BlogListPageContent(props) {
                     "blog-2xl:max-w-screen-blog-md",
                     "w-full",
                     "mx-auto",
-                    "hidden blog-md:block",
+                    "blog-md:block hidden",
                 )}
             >
                 <div className="border-b border-gray-100 dark:border-gray-700"></div>
@@ -86,7 +86,17 @@ function BlogListPageContent(props) {
                 tags={tags}
                 metadata={metadata}
             />
-            <div className="blog-md:border-t border-t-gray-200 dark:border-t-gray-700">
+            <div
+                className={clsx(
+                    "max-w-[512px]",
+                    "blog-md:max-w-screen-blog-md",
+                    "blog-2xl:max-w-screen-blog-md",
+                    "w-full",
+                    "mx-auto",
+                    "blog-md:border-t border-t-gray-200 dark:border-t-gray-700",
+                    "blog-sm:mb-16 blog-2xl:mb-20 mb-10",
+                )}
+            >
                 <BlogListPaginator metadata={metadata} />
             </div>
         </BlogLayout>

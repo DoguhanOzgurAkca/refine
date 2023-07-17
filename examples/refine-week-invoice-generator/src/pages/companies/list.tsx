@@ -1,9 +1,13 @@
-import { IResourceComponentsProps, HttpError } from "@refinedev/core";
-import { useSimpleList, List, useModalForm } from "@refinedev/antd";
+import { List, useModalForm, useSimpleList } from "@refinedev/antd";
+import { HttpError, IResourceComponentsProps } from "@refinedev/core";
 import { List as AntdList } from "antd";
 
-import { ICompany } from "interfaces";
-import { CompanyItem, CreateCompany, EditCompany } from "components/company";
+import {
+    CompanyItem,
+    CreateCompany,
+    EditCompany,
+} from "../../components/company";
+import { ICompany } from "../../interfaces";
 
 export const CompanyList: React.FC<IResourceComponentsProps> = () => {
     const //`useSimpleList` does not accept all of Ant Design's `List` component props anymore. You can directly use `List` component instead.,

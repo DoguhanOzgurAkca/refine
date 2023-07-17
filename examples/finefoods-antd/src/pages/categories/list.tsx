@@ -1,32 +1,32 @@
-import { useTranslate, IResourceComponentsProps } from "@refinedev/core";
+import { IResourceComponentsProps, useTranslate } from "@refinedev/core";
 
 import {
-    List,
-    useTable,
     BooleanField,
-    useEditableTable,
-    SaveButton,
-    NumberField,
     DateField,
+    List,
+    NumberField,
+    SaveButton,
     useDrawerForm,
+    useEditableTable,
+    useTable,
 } from "@refinedev/antd";
 
 import { FormOutlined, MoreOutlined } from "@ant-design/icons";
 import {
-    Table,
-    Space,
-    Form,
+    Avatar,
     Button,
-    Input,
     Checkbox,
     Dropdown,
-    Menu,
-    Avatar,
+    Form,
     Grid,
+    Input,
+    Menu,
+    Space,
+    Table,
 } from "antd";
 
-import { ICategory, IProduct } from "interfaces";
-import { EditProduct } from "components/product";
+import { EditProduct } from "../../components/product";
+import { ICategory, IProduct } from "../../interfaces";
 
 export const CategoryList: React.FC<IResourceComponentsProps> = () => {
     const {

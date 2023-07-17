@@ -1,30 +1,30 @@
-import { useState } from "react";
-import { Refine, Authenticated, GitHubBanner } from "@refinedev/core";
-import {
-    ErrorComponent,
-    notificationProvider,
-    RefineSnackbarProvider,
-    AuthPage,
-    RefineThemes,
-    ThemedLayoutV2,
-} from "@refinedev/mui";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import GoogleIcon from "@mui/icons-material/Google";
 import CssBaseline from "@mui/material/CssBaseline";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import { ThemeProvider } from "@mui/material/styles";
-import dataProvider from "@refinedev/simple-rest";
+import { Authenticated, GitHubBanner, Refine } from "@refinedev/core";
+import {
+    AuthPage,
+    ErrorComponent,
+    notificationProvider,
+    RefineSnackbarProvider,
+    RefineThemes,
+    ThemedLayoutV2,
+} from "@refinedev/mui";
 import routerProvider, {
-    NavigateToResource,
     CatchAllNavigate,
-    UnsavedChangesNotifier,
     DocumentTitleHandler,
+    NavigateToResource,
+    UnsavedChangesNotifier,
 } from "@refinedev/react-router-v6";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import GoogleIcon from "@mui/icons-material/Google";
+import dataProvider from "@refinedev/simple-rest";
+import { useState } from "react";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 
-import { PostList, PostCreate, PostEdit } from "pages/posts";
-import { authProvider } from "authProvider";
-import { ThemeSettings, RememeberMe } from "components";
+import { authProvider } from "./authProvider";
+import { RememeberMe, ThemeSettings } from "./components";
+import { PostCreate, PostEdit, PostList } from "./pages/posts";
 
 const App: React.FC = () => {
     const [customTheme, setCustomTheme] = useState(RefineThemes.MagentaDark);

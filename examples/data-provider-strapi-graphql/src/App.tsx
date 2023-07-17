@@ -1,29 +1,29 @@
 import {
+    ErrorComponent,
+    notificationProvider,
+    RefineThemes,
+    ThemedLayoutV2,
+} from "@refinedev/antd";
+import {
     AuthBindings,
     Authenticated,
     GitHubBanner,
     Refine,
 } from "@refinedev/core";
-import {
-    notificationProvider,
-    ThemedLayoutV2,
-    ErrorComponent,
-    RefineThemes,
-} from "@refinedev/antd";
-import dataProvider, { GraphQLClient } from "@refinedev/strapi-graphql";
 import routerProvider, {
     CatchAllNavigate,
+    DocumentTitleHandler,
     NavigateToResource,
     UnsavedChangesNotifier,
-    DocumentTitleHandler,
 } from "@refinedev/react-router-v6";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import dataProvider, { GraphQLClient } from "@refinedev/strapi-graphql";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 
-import { ConfigProvider } from "antd";
 import "@refinedev/antd/dist/reset.css";
+import { ConfigProvider } from "antd";
 
-import { Login } from "pages/login";
-import { PostList, PostCreate, PostEdit, PostShow } from "pages/posts";
+import { Login } from "./pages/login";
+import { PostCreate, PostEdit, PostList, PostShow } from "./pages/posts";
 
 const API_URL = "https://api.strapi.refine.dev/graphql";
 

@@ -18,7 +18,7 @@ import Typography from "@mui/material/Typography";
 import { DataGrid, GridActionsCellItem, GridColDef } from "@mui/x-data-grid";
 import { List, useDataGrid } from "@refinedev/mui";
 
-import { IReview } from "interfaces";
+import { IReview } from "../../interfaces";
 
 export const ReviewsList: React.FC<IResourceComponentsProps> = () => {
     const [selectedRowKeys, setSelectedRowKeys] = React.useState<React.Key[]>(

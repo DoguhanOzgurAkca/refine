@@ -1,9 +1,9 @@
-import React, { useState } from "react";
 import { useGetIdentity } from "@refinedev/core";
 import { Form, FormProps, Input, Modal, ModalProps, Radio } from "antd";
+import React, { useState } from "react";
 
-import { getRandomName, DEFAULT_CANVAS_SIZE } from "utility";
-import { User } from "types";
+import { User } from "../../types";
+import { DEFAULT_CANVAS_SIZE, getRandomName } from "../../utility";
 
 type CreateCanvasProps = {
     modalProps: ModalProps;

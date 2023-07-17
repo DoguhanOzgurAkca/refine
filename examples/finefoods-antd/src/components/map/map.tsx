@@ -1,3 +1,4 @@
+import { Wrapper } from "@googlemaps/react-wrapper";
 import {
     Children,
     cloneElement,
@@ -8,7 +9,6 @@ import {
     useRef,
     useState,
 } from "react";
-import { Wrapper } from "@googlemaps/react-wrapper";
 
 interface MapProps extends Exclude<google.maps.MapOptions, "center"> {
     center?: google.maps.LatLngLiteral;
@@ -50,7 +50,7 @@ const MapComponent: FC<PropsWithChildren<MapProps>> = ({
 
 const MapWrapper: FC<PropsWithChildren<MapProps>> = (props) => {
     return (
-        <Wrapper apiKey={process.env.REACT_APP_MAP_ID}>
+        <Wrapper apiKey={import.meta.env.VITE_APP_MAP_ID}>
             <MapComponent {...props} />
         </Wrapper>
     );

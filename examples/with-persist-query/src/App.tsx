@@ -1,18 +1,18 @@
-import { GitHubBanner, Refine, ErrorComponent } from "@refinedev/core";
-import { QueryClient } from "@tanstack/react-query";
+import { ErrorComponent, GitHubBanner, Refine } from "@refinedev/core";
 import routerProvider, {
+    DocumentTitleHandler,
     NavigateToResource,
     UnsavedChangesNotifier,
-    DocumentTitleHandler,
 } from "@refinedev/react-router-v6";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
 import dataProvider from "@refinedev/simple-rest";
+import { QueryClient } from "@tanstack/react-query";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 
-import { persistQueryClient } from "@tanstack/react-query-persist-client";
 import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persister";
+import { persistQueryClient } from "@tanstack/react-query-persist-client";
 
-import { PostList, PostCreate, PostEdit } from "pages/posts";
+import { PostCreate, PostEdit, PostList } from "./pages/posts";
 
 const queryClient = new QueryClient({
     defaultOptions: {

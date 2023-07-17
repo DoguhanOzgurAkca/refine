@@ -2,13 +2,13 @@ import { HttpError, IResourceComponentsProps } from "@refinedev/core";
 
 import { Create, useForm, useSelect } from "@refinedev/antd";
 
-import { RcFile } from "antd/lib/upload/interface";
 import { Form, Input, Select, Upload } from "antd";
+import { RcFile } from "antd/lib/upload/interface";
 
 import MDEditor from "@uiw/react-md-editor";
 
-import { IPost, IPostVariables, ICategory } from "interfaces";
-import { normalizeFile, storage } from "utility";
+import { ICategory, IPost, IPostVariables } from "../../interfaces";
+import { normalizeFile, storage } from "../../utility";
 
 export const PostCreate: React.FC<IResourceComponentsProps> = () => {
     const { formProps, saveButtonProps } = useForm<

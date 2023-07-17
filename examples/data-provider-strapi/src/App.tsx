@@ -1,33 +1,33 @@
 import {
-    GitHubBanner,
-    Refine,
+    AuthPage,
+    ErrorComponent,
+    notificationProvider,
+    RefineThemes,
+    ThemedLayoutV2,
+} from "@refinedev/antd";
+import {
     AuthBindings,
     Authenticated,
+    GitHubBanner,
+    Refine,
 } from "@refinedev/core";
-import {
-    notificationProvider,
-    ThemedLayoutV2,
-    ErrorComponent,
-    AuthPage,
-    RefineThemes,
-} from "@refinedev/antd";
-import { DataProvider, AuthHelper } from "@refinedev/strapi";
 import routerProvider, {
-    NavigateToResource,
     CatchAllNavigate,
-    UnsavedChangesNotifier,
     DocumentTitleHandler,
+    NavigateToResource,
+    UnsavedChangesNotifier,
 } from "@refinedev/react-router-v6";
+import { AuthHelper, DataProvider } from "@refinedev/strapi";
 import axios from "axios";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 
 import "@refinedev/antd/dist/reset.css";
 
-import { PostList, PostCreate, PostEdit } from "pages/posts";
-import { CategoryList, CategoryCreate, CategoryEdit } from "pages/categories";
+import { CategoryCreate, CategoryEdit, CategoryList } from "./pages/categories";
+import { PostCreate, PostEdit, PostList } from "./pages/posts";
 
-import { TOKEN_KEY, API_URL } from "./constants";
 import { ConfigProvider } from "antd";
+import { API_URL, TOKEN_KEY } from "./constants";
 
 const App: React.FC = () => {
     const axiosInstance = axios.create();

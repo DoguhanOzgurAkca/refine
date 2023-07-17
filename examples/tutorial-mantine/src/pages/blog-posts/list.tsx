@@ -1,22 +1,22 @@
-import React from "react";
+import { Group, Pagination, ScrollArea, Table } from "@mantine/core";
 import {
-    IResourceComponentsProps,
     GetManyResponse,
+    IResourceComponentsProps,
     useMany,
 } from "@refinedev/core";
+import {
+    DateField,
+    DeleteButton,
+    EditButton,
+    List,
+    MarkdownField,
+    ShowButton,
+} from "@refinedev/mantine";
 import { useTable } from "@refinedev/react-table";
 import { ColumnDef, flexRender } from "@tanstack/react-table";
-import { ScrollArea, Table, Pagination, Group } from "@mantine/core";
-import {
-    List,
-    EditButton,
-    ShowButton,
-    DeleteButton,
-    MarkdownField,
-    DateField,
-} from "@refinedev/mantine";
-import { ColumnSorter } from "components/table/ColumnSorter";
-import { ColumnFilter } from "components/table/ColumnFilter";
+import React from "react";
+import { ColumnFilter } from "../../components/table/ColumnFilter";
+import { ColumnSorter } from "../../components/table/ColumnSorter";
 
 export const BlogPostList: React.FC<IResourceComponentsProps> = () => {
     const columns = React.useMemo<ColumnDef<any>[]>(

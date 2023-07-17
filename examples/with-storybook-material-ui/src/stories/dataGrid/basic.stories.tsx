@@ -4,8 +4,8 @@ import { useDataGrid } from "@refinedev/mui";
 import { ComponentMeta, ComponentStory } from "@storybook/react";
 import React from "react";
 
-import { ICategory, IPost } from "interfaces";
 import { RefineWithoutLayout } from "../../../.storybook/preview";
+import { ICategory, IPost } from "../../interfaces";
 
 export default {
     title: "Hooks / DataGrid",

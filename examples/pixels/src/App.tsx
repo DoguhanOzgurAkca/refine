@@ -1,21 +1,19 @@
-import { GitHubBanner, Refine, Authenticated } from "@refinedev/core";
-import { notificationProvider, ErrorComponent } from "@refinedev/antd";
-import { dataProvider, liveProvider } from "@refinedev/supabase";
-import routerBindings, { NavigateToResource } from "@refinedev/react-router-v6";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
-import { ConfigProvider } from "antd";
 import { GithubOutlined } from "@ant-design/icons";
+import { ErrorComponent, notificationProvider } from "@refinedev/antd";
+import { Authenticated, GitHubBanner, Refine } from "@refinedev/core";
+import routerBindings, { NavigateToResource } from "@refinedev/react-router-v6";
+import { dataProvider, liveProvider } from "@refinedev/supabase";
+import { ConfigProvider } from "antd";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 
-import { Layout } from "components/layout";
-import { CanvasFeaturedList, CanvasList, CanvasShow } from "pages/canvases";
-import { AuthPage } from "pages/auth";
-
-import { supabaseClient } from "utility";
-import { authProvider, auditLogProvider } from "./providers";
+import { Layout } from "./components/layout";
+import { AuthPage } from "./pages/auth";
+import { CanvasFeaturedList, CanvasList, CanvasShow } from "./pages/canvases";
+import { auditLogProvider, authProvider } from "./providers";
+import { supabaseClient } from "./utility";
 
 import "@refinedev/antd/dist/reset.css";
-
-import "styles/style.css";
+import "./styles/style.css";
 
 function App() {
     return (

@@ -1,28 +1,28 @@
 import {
     AuthPage,
     ErrorComponent,
-    ThemedLayoutV2,
     notificationProvider,
     RefineThemes,
+    ThemedLayoutV2,
 } from "@refinedev/antd";
 import { Authenticated, GitHubBanner, Refine } from "@refinedev/core";
 import routerProvider, {
     CatchAllNavigate,
+    DocumentTitleHandler,
     NavigateToResource,
     UnsavedChangesNotifier,
-    DocumentTitleHandler,
 } from "@refinedev/react-router-v6";
 import { DataProvider } from "@refinedev/strapi-v4";
 import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
 
-import { ConfigProvider } from "antd";
 import "@refinedev/antd/dist/reset.css";
+import { ConfigProvider } from "antd";
 
-import { OrderCreate, OrderEdit, OrderList } from "pages/order";
-import { ProductList } from "pages/product";
-import { Header } from "components/header";
 import { authProvider, axiosInstance } from "./authProvider";
+import { Header } from "./components/header";
 import { API_URL } from "./constants";
+import { OrderCreate, OrderEdit, OrderList } from "./pages/order";
+import { ProductList } from "./pages/product";
 
 const App: React.FC = () => {
     // inital tenant

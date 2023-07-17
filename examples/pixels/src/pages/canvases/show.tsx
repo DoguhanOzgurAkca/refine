@@ -1,23 +1,23 @@
-import { useState } from "react";
+import { useModal } from "@refinedev/antd";
 import {
     useCreate,
     useGetIdentity,
-    useNavigation,
-    useShow,
-    useParsed,
     useIsAuthenticated,
+    useNavigation,
+    useParsed,
+    useShow,
 } from "@refinedev/core";
-import { useModal } from "@refinedev/antd";
+import { useState } from "react";
 
 import { LeftOutlined } from "@ant-design/icons";
-import { Button, Typography, Spin, Modal } from "antd";
+import { Button, Modal, Spin, Typography } from "antd";
 
-import { CanvasItem, DisplayCanvas } from "components/canvas";
-import { ColorSelect } from "components/color-select";
-import { AvatarPanel } from "components/avatar";
-import { colors } from "utility";
-import { Canvas } from "types";
-import { LogList } from "components/logs";
+import { AvatarPanel } from "../../components/avatar";
+import { CanvasItem, DisplayCanvas } from "../../components/canvas";
+import { ColorSelect } from "../../components/color-select";
+import { LogList } from "../../components/logs";
+import { Canvas } from "../../types";
+import { colors } from "../../utility";
 
 const { Title } = Typography;
 

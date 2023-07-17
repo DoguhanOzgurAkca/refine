@@ -1,15 +1,15 @@
+import { ErrorComponent, RefineThemes, ThemedLayoutV2 } from "@refinedev/antd";
+import "@refinedev/antd/dist/reset.css";
 import { GitHubBanner, Refine } from "@refinedev/core";
-import { ErrorComponent, ThemedLayoutV2, RefineThemes } from "@refinedev/antd";
-import dataProvider from "@refinedev/simple-rest";
 import routerProvider, {
+    DocumentTitleHandler,
     NavigateToResource,
     UnsavedChangesNotifier,
-    DocumentTitleHandler,
 } from "@refinedev/react-router-v6";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
-import "@refinedev/antd/dist/reset.css";
+import dataProvider from "@refinedev/simple-rest";
 import { ConfigProvider } from "antd";
-import { CalendarPage } from "pages/calendar";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
+import { CalendarPage } from "./pages/calendar";
 
 const API_URL = "https://api.fake-rest.refine.dev";
 

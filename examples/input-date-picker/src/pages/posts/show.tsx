@@ -1,10 +1,8 @@
-import { useShow, IResourceComponentsProps, useOne } from "@refinedev/core";
-
-import { Show, MarkdownField, DateField } from "@refinedev/antd";
-
+import { DateField, MarkdownField, Show } from "@refinedev/antd";
+import { IResourceComponentsProps, useOne, useShow } from "@refinedev/core";
 import { Typography } from "antd";
 
-import { IPost, ICategory } from "interfaces";
+import { ICategory, IPost } from "../../interfaces";
 
 const { Title, Text } = Typography;
 

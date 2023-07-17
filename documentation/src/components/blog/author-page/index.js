@@ -1,9 +1,9 @@
-import React from "react";
-import BlogLayout from "@theme/BlogLayout";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { PageMetadata } from "@docusaurus/theme-common";
-import SearchMetadata from "@theme/SearchMetadata";
+import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import BlogLayout from "@theme/BlogLayout";
 import BlogPostItems from "@theme/BlogPostItems";
+import SearchMetadata from "@theme/SearchMetadata";
+import React from "react";
 
 import { AuthorCardWithProps } from "@site/src/components/blog";
 import clsx from "clsx";
@@ -43,8 +43,7 @@ const AuthorPage = (props) => {
                         "mx-auto",
                     )}
                 >
-                    <div className="border-b border-gray-200 dark:border-gray-700 mb-8" />
-                    <h1 className="text-4xl !mb-0">Posts</h1>
+                    <h1 className="text-4xl !mb-0 px-0 lg:px-4">Posts</h1>
                 </div>
                 <div className={clsx("px-4", "blog-md:px-7", "blog-2xl:px-0")}>
                     <BlogPostItems

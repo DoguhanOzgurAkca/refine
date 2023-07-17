@@ -1,48 +1,48 @@
-import React from "react";
-import { Authenticated, GitHubBanner, Refine } from "@refinedev/core";
-import { RefineKbarProvider } from "@refinedev/kbar";
 import {
+    DashboardOutlined,
+    ShopOutlined,
+    ShoppingOutlined,
+    StarOutlined,
+    UsergroupAddOutlined,
+} from "@ant-design/icons";
+import {
+    ErrorComponent,
     notificationProvider,
     ThemedLayoutV2,
-    ErrorComponent,
 } from "@refinedev/antd";
+import { Authenticated, GitHubBanner, Refine } from "@refinedev/core";
+import { RefineKbarProvider } from "@refinedev/kbar";
 import routerProvider, {
     CatchAllNavigate,
+    DocumentTitleHandler,
     NavigateToResource,
     UnsavedChangesNotifier,
-    DocumentTitleHandler,
 } from "@refinedev/react-router-v6";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
-import {
-    ShoppingOutlined,
-    UsergroupAddOutlined,
-    ShopOutlined,
-    StarOutlined,
-    DashboardOutlined,
-} from "@ant-design/icons";
 import jsonServerDataProvider from "@refinedev/simple-rest";
-import { authProvider } from "authProvider";
+import React from "react";
+import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
+import { authProvider } from "./authProvider";
 
 import "dayjs/locale/de";
 
-import { DashboardPage } from "./pages/dashboard";
-import { OrderList, OrderShow } from "./pages/orders";
+import { useTranslation } from "react-i18next";
+import { Header, OffLayoutArea, Title } from "./components";
+import { BikeWhiteIcon, PizzaIcon } from "./components/icons";
+import { ConfigProvider } from "./context";
 import { AuthPage } from "./pages/auth";
-import { UserList, UserShow } from "./pages/users";
+import { CategoryList } from "./pages/categories";
 import {
-    CourierList,
-    CourierShow,
     CourierCreate,
     CourierEdit,
+    CourierList,
+    CourierShow,
 } from "./pages/couriers";
+import { DashboardPage } from "./pages/dashboard";
+import { OrderList, OrderShow } from "./pages/orders";
 import { ProductList } from "./pages/products";
-import { StoreCreate, StoreEdit, StoreList } from "./pages/stores";
-import { CategoryList } from "./pages/categories";
 import { ReviewsList } from "./pages/reviews";
-import { useTranslation } from "react-i18next";
-import { Header, Title, OffLayoutArea } from "components";
-import { BikeWhiteIcon, PizzaIcon } from "components/icons";
-import { ConfigProvider } from "context";
+import { StoreCreate, StoreEdit, StoreList } from "./pages/stores";
+import { UserList, UserShow } from "./pages/users";
 
 import "@refinedev/antd/dist/reset.css";
 
